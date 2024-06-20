@@ -7,7 +7,7 @@ const ProfileTop = ({
     company,
     location,
     website,
-    githubusername,
+    gitHubUsername,
     social,
     user: { name, avatar },
   },
@@ -21,8 +21,8 @@ const ProfileTop = ({
       </p>
       <p>{location && <span>{location}</span>}</p>
       <div className='icons my-1'>
-        {githubusername && (
-          <a href={'https://github.com/' + githubusername} target='_blank' rel='noopener noreferrer'>
+        {gitHubUsername && (
+          <a href={'https://github.com/' + gitHubUsername} target='_blank' rel='noopener noreferrer'>
             <i className='fas fa-brands fa-github fa-2x'></i>
           </a>
         )}

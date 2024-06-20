@@ -16,7 +16,7 @@ const EditProfile = ({
     location: '',
     status: '',
     skills: '',
-    githubusername: '',
+    gitHubUsername: '',
     bio: '',
     twitter: '',
     facebook: '',
@@ -34,7 +34,7 @@ const EditProfile = ({
       location:       loading || !profile.location       ? '' : profile.location,
       status:         loading || !profile.status         ? '' : profile.status,
       skills:         loading || !profile.skills         ? '' : profile.company,
-      githubusername: loading || !profile.githubusername ? '' : profile.githubusername,
+      gitHubUsername: loading || !profile.gitHubUsername ? '' : profile.gitHubUsername,
       bio:            loading || !profile.bio            ? '' : profile.bio,
       twitter:        loading || !profile.social         ? '' : profile.twitter,
       facebook:       loading || !profile.social         ? '' : profile.facebook,
@@ -48,7 +48,7 @@ const EditProfile = ({
     profile.bio,
     profile.company,
     profile.facebook,
-    profile.githubusername,
+    profile.gitHubUsername,
     profile.instagram,
     profile.linkedin,
     profile.location,
@@ -66,7 +66,7 @@ const EditProfile = ({
     location,
     status,
     skills,
-    githubusername,
+    gitHubUsername,
     bio,
     twitter,
     facebook,
@@ -161,8 +161,8 @@ const EditProfile = ({
           <input
             type='text'
             placeholder='Github Username'
-            name='githubusername'
-            defaultValue={githubusername}
+            name='gitHubUsername'
+            defaultValue={gitHubUsername}
             onChange={(e) => onChange(e)}
           />
           <small className='form-text'>
