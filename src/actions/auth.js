@@ -15,7 +15,7 @@ import {
 // Load user
 export const loadUser = () => async (dispatch) => {
   try {
-    const res = await axios.get('/api/auth', {withCredentials: true});
+    const res = await axios.get('/api/accounts/info', {withCredentials: true});
 
     dispatch({
       type: USER_LOADED,
@@ -39,7 +39,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
   const body = JSON.stringify({ name, email, password });
 
   try {
-    const res = await axios.post('/api/users', body, config);
+    const res = await axios.post('/api/accounts/register', body, config);
 
     dispatch({ type: REGISTER_SUCCESS, payload: res.data });
 
@@ -66,7 +66,7 @@ export const login = (email, password) => async (dispatch) => {
   const body = JSON.stringify({ email, password });
 
   try {
-    await axios.post('/api/auth', body, config);
+    await axios.post('/api/accounts/login', body, config);
 
     dispatch({ type: LOGIN_SUCCESS });
 
@@ -85,7 +85,7 @@ export const login = (email, password) => async (dispatch) => {
 // Logout / Clear Profile
 export const logout = () => async (dispatch) => {
     try {
-        const res = await axios.post('/api/auth/logout', {withCredentials: true});
+        const res = await axios.post('/api/accounts/logout', {withCredentials: true});
         if (res.status != 200) throw `Logout failure - ${res.status}`;
       
         dispatch({ type: CLEAR_PROFILE });
