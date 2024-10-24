@@ -1,18 +1,20 @@
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { FunctionComponent } from 'react'
+import gravatar from 'gravatar'
 
 type Props = { profile: any }
 
 const ProfileItem: FunctionComponent<Props> = ({
     profile: {
-        user: { id, name, avatar },
+        user: { id, name, email },
         status,
         company,
         location,
         skills,
     },
 }) => {
+    const avatar = gravatar.url(email, { s: '200', r: 'pg', d: 'mm' })
     return (
         <div className="profile bg-light">
             <img src={avatar} alt="" className="round-img" />
