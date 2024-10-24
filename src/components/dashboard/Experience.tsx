@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { deleteExperience } from '../../actions/profile'
 
 type Props = {
-    experience: any
+    experience: any[]
     deleteExperience: any
 }
 

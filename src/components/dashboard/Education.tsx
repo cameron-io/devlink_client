@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { deleteEducation } from '../../actions/profile'
 
 type Props = {
-    education: any
+    education: any[]
     deleteEducation: any
 }
 
