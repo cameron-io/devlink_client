@@ -107,7 +107,7 @@ export const createProfile = (formData, navigate, edit = false) => async (
         formData.skills = skills.split(',').map((skill) => skill.trim());
     }
 
-    const res = axios.post('/api/profile', formData, config);
+    const res = axios.post('/api/profiles', formData, config);
     dispatch({
         type: GET_PROFILE,
         payload: res.data,
