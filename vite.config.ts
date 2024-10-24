@@ -19,7 +19,7 @@ export default defineConfig(() => {
         }
     },
     resolve: {
-        mainFields: []
+        mainFields: ["browser"]
     }
   };
 });
