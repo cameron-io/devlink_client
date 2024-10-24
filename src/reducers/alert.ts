@@ -1,9 +1,10 @@
+import { Reducer } from 'redux';
 import { SET_ALERT, REMOVE_ALERT } from '../actions/include/types';
 
-const initialState = [];
+const initialState: any[] = [];
 
 // state set as initialState
-const alert = (state = initialState, action) => {
+const alert: Reducer = (state = initialState, action) => {
   // Pull from action
   const { type, payload } = action;
 
@@ -15,7 +16,7 @@ const alert = (state = initialState, action) => {
     case REMOVE_ALERT:
       // Filter through state array
       // Return alerts that don't match the payload
-      return state.filter((alert) => alert.id !== payload);
+      return state.filter((alert: any) => alert.id !== payload);
     default:
       // Every reducer requires default state
       return state;

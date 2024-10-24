@@ -1,10 +1,13 @@
-import React, { Fragment } from 'react';
+import { Fragment, FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
+import type { RootState } from '../../store';
 
-const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+type Props = { auth: any, logout: any};
+
+const Navbar: FunctionComponent<Props> = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
       <li>
@@ -60,7 +63,7 @@ Navbar.propTypes = {
   auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
   auth: state.auth,
 });
 

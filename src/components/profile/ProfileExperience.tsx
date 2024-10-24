@@ -1,9 +1,11 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import { FunctionComponent } from 'react';
 import Moment from 'react-moment';
 
-const ProfileExperience = ({
-  experience: { company, title, location, current, to, from, description },
+type Props = { experience: any };
+
+const ProfileExperience: FunctionComponent<Props> = ({
+  experience: { company, title, to, from, description },
 }) => {
   return (
     <div>

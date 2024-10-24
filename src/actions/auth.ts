@@ -11,79 +11,87 @@ import {
   LOGOUT_FAIL,
   CLEAR_PROFILE,
 } from './include/types';
+import { AppDispatch } from '../store';
 
 // Load user
-export const loadUser = () => async (dispatch) => {
-  try {
-    const res = await axios.get('/api/accounts/info', {withCredentials: true});
-
-    dispatch({
-      type: USER_LOADED,
-      payload: res.data,
-    });
-  } catch (err) {
-    dispatch({
-      type: AUTH_ERROR,
-    });
-  }
-};
+export const loadUser = () => 
+    async (dispatch: AppDispatch) => {
+        try {
+            const res = await axios.get('/api/accounts/info', {withCredentials: true});
+            dispatch({
+                type: USER_LOADED,
+                payload: res.data,
+            });
+        } catch (err) {
+            dispatch({
+                type: AUTH_ERROR,
+            });
+        }
+    };
 
 // Register User
-export const register = ({ name, email, password }) => async (dispatch) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
+type RegisterPayload = {name: string, email: string, password: string};
+export const register = ({ name, email, password }: RegisterPayload) => 
+    async (dispatch: AppDispatch) => {
+        const config = {
+            headers: {
+            'Content-Type': 'application/json',
+            },
+        };
 
-  const body = JSON.stringify({ name, email, password });
+        const body = JSON.stringify({ name, email, password });
 
-  try {
-    const res = await axios.post('/api/accounts/register', body, config);
+        try {
+            const res = await axios.post('/api/accounts/register', body, config);
 
-    dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+            dispatch({ type: REGISTER_SUCCESS, payload: res.data });
 
-    dispatch(loadUser());
-  } catch (err) {
-    const errors = err.response.data.error;
+            dispatch(loadUser());
+        } catch (err) {
+            if(axios.isAxiosError(err) && err.response) {
+                const errors = err.response.data.error;
 
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-    }
+                if (errors) {
+                errors.forEach((error: any) => dispatch(setAlert(error.msg, 'danger')));
+                }
 
-    dispatch({ type: REGISTER_FAIL });
-  }
-};
+                dispatch({ type: REGISTER_FAIL });
+            }
+        }
+    };
 
 // Login User
-export const login = (email, password) => async (dispatch) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
+export const login = (email: string, password: string) => 
+    async (dispatch: AppDispatch) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
 
-  const body = JSON.stringify({ email, password });
+        const body = JSON.stringify({ email, password });
 
-  try {
-    await axios.post('/api/accounts/login', body, config);
+        try {
+            await axios.post('/api/accounts/login', body, config);
 
-    dispatch({ type: LOGIN_SUCCESS });
+            dispatch({ type: LOGIN_SUCCESS });
 
-    dispatch(loadUser());
-  } catch (err) {
-    const errors = err.response.data.error;
+            dispatch(loadUser());
+        } catch (err) {
+            if(axios.isAxiosError(err) && err.response) {
+                const errors = err.response.data.error;
 
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-    }
+                if (errors) {
+                errors.forEach((error: any) => dispatch(setAlert(error.msg, 'danger')));
+                }
 
-    dispatch({ type: LOGIN_FAIL });
-  }
-};
+                dispatch({ type: LOGIN_FAIL });
+            }
+        }
+        };
 
 // Logout / Clear Profile
-export const logout = () => async (dispatch) => {
+export const logout = () => async (dispatch: AppDispatch) => {
     try {
         const res = await axios.post('/api/accounts/logout', {withCredentials: true});
         if (res.status != 200) throw `Logout failure - ${res.status}`;

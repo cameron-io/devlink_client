@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import { Fragment, FunctionComponent, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -7,8 +7,11 @@ import { getProfileById } from '../../actions/profile';
 import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
+import type { RootState } from '../../store';
 
-const Profile = ({
+type Props = { getProfileById: any, profile: any, auth: any };
+
+const Profile: FunctionComponent<Props> = ({
   getProfileById,
   profile: { profile, loading },
   auth
@@ -41,7 +44,7 @@ const Profile = ({
               <h2 className='text-primary'>Experience</h2>
               {profile.experience.length > 0 ? (
                 <Fragment>
-                  {profile.experience.map((experience) => (
+                  {profile.experience.map((experience: any) => (
                     <ProfileExperience
                       key={experience.id}
                       experience={experience}
@@ -65,7 +68,7 @@ Profile.propTypes = {
   auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
   profile: state.profile,
   auth: state.auth,
 });

@@ -1,7 +1,9 @@
-import React, { Fragment } from 'react';
+import { Fragment, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-const ProfileAbout = ({
+type Props = { profile: any };
+
+const ProfileAbout: FunctionComponent<Props> = ({
   profile: {
     bio,
     skills,
@@ -18,7 +20,7 @@ const ProfileAbout = ({
     )}
     <h2 className='text-primary'>Skill Set</h2>
     <div className='skills'>
-      {skills.map((skill, index) => (
+      {skills.map((skill: string, index: number) => (
         <div key={index} className='p-1'>
           <i className='fa fa-check'></i> {skill}
         </div>

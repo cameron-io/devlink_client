@@ -1,11 +1,16 @@
-import React, { Fragment } from 'react';
+import { Fragment, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { deleteExperience } from '../../actions/profile';
 
-const Experience = ({ experience, deleteExperience }) => {
-  const experiences = experience.map((exp) => (
+type Props = {
+    experience: any,
+    deleteExperience: any
+};
+
+const Experience: FunctionComponent<Props> = ({ experience, deleteExperience }) => {
+  const experiences = experience.map((exp: any) => (
     <tr key={exp.id}>
       <td>{exp.company}</td>
       <td className='hide-sm'>{exp.title}</td>

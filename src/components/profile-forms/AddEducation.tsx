@@ -1,10 +1,12 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, FunctionComponent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addEducation } from '../../actions/profile';
 
-const AddEducation = ({ addEducation }) => {
+type Props = { addEducation: any };
+
+const AddEducation: FunctionComponent<Props> = ({ addEducation }) => {
   let navigate = useNavigate();
   const [formData, setFormData] = useState({
     school: '',
@@ -28,7 +30,7 @@ const AddEducation = ({ addEducation }) => {
     description,
   } = formData;
 
-  const onChange = (e) =>
+  const onChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) =>
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -93,8 +95,8 @@ const AddEducation = ({ addEducation }) => {
               type='checkbox'
               name='current'
               checked={current}
-              value={current}
-              onChange={(e) => {
+              value={current.toString()}
+              onChange={(_e) => {
                 setFormData({ ...formData, current: !current });
                 toggleDisabled(!toDateDisabled);
               }}
@@ -109,14 +111,14 @@ const AddEducation = ({ addEducation }) => {
             name='to'
             value={to}
             onChange={(e) => onChange(e)}
-            disabled={toDateDisabled ? 'disabled' : ''}
+            disabled={toDateDisabled}
           />
         </div>
         <div className='form-group'>
           <textarea
             name='description'
-            cols='30'
-            rows='5'
+            cols={30}
+            rows={5}
             placeholder='Programme Description'
             value={description}
             onChange={(e) => onChange(e)}

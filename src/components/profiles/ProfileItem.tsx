@@ -1,8 +1,10 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { FunctionComponent } from 'react';
 
-const ProfileItem = ({
+type Props = { profile: any };
+
+const ProfileItem: FunctionComponent<Props> = ({
   profile: {
     user: { id, name, avatar },
     status,
@@ -25,7 +27,7 @@ const ProfileItem = ({
         </Link>
       </div>
       <ul>
-        {skills.slice(0, 4).map((skill, index) => (
+        {skills.slice(0, 4).map((skill: string, index: number) => (
           <li key={index} className='text-primary'>
             <i className='fas fa-check'></i> {skill}
           </li>

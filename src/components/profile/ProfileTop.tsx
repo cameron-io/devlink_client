@@ -1,7 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import { FunctionComponent } from 'react';
 
-const ProfileTop = ({
+type Props = { profile: any };
+
+const ProfileTop: FunctionComponent<Props> = ({
   profile: {
     status,
     company,

@@ -1,10 +1,12 @@
-import React, { Fragment, useState } from 'react';
+import { Fragment, FunctionComponent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExperience } from '../../actions/profile';
 
-const AddExperience = ({ addExperience }) => {
+type Props = { addExperience: any };
+
+const AddExperience: FunctionComponent<Props> = ({ addExperience }) => {
   let navigate = useNavigate();
   const [formData, setFormData] = useState({
     company: '',
@@ -20,7 +22,7 @@ const AddExperience = ({ addExperience }) => {
 
   const { company, title, location, from, to, current, description } = formData;
 
-  const onChange = (e) =>
+  const onChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) =>
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -85,8 +87,8 @@ const AddExperience = ({ addExperience }) => {
               type='checkbox'
               name='current'
               checked={current}
-              value={current}
-              onChange={(e) => {
+              value={current.toString()}
+              onChange={(_e) => {
                 setFormData({ ...formData, current: !current });
                 toggleDisabled(!toDateDisabled);
               }}
@@ -101,14 +103,14 @@ const AddExperience = ({ addExperience }) => {
             name='to'
             value={to}
             onChange={(e) => onChange(e)}
-            disabled={toDateDisabled ? 'disabled' : ''}
+            disabled={toDateDisabled}
           />
         </div>
         <div className='form-group'>
           <textarea
             name='description'
-            cols='30'
-            rows='5'
+            cols={30}
+            rows={5}
             placeholder='Job Description'
             value={description}
             onChange={(e) => onChange(e)}

@@ -1,10 +1,13 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import { Fragment, useState, useEffect, FunctionComponent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
+import { RootState } from '../../store';
 
-const EditProfile = ({
+type Props = { createProfile: any, profile: any, getCurrentProfile: any };
+
+const EditProfile: FunctionComponent<Props> = ({
   profile: { profile, loading },
   createProfile,
   getCurrentProfile
@@ -75,10 +78,12 @@ const EditProfile = ({
     instagram,
   } = formData;
 
-  const onChange = (e) =>
+  const onChange = (e: React.ChangeEvent<HTMLInputElement> 
+    | React.ChangeEvent<HTMLTextAreaElement> 
+    | React.ChangeEvent<HTMLSelectElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // call action
     createProfile(formData, navigate, true);
@@ -265,7 +270,7 @@ EditProfile.propTypes = {
   profile: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
   profile: state.profile,
 });
 

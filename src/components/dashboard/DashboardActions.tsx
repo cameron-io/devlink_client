@@ -1,7 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { FormProps, Link } from 'react-router-dom';
 
-const DashboardActions = (props) => {
+const DashboardActions = (_props: FormProps) => {
   return (
     <div className='dash-buttons' style={{marginBottom: '2rem'}}>
       <Link to='/edit-profile' className='btn btn-light'>

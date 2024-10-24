@@ -1,10 +1,12 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, FunctionComponent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile } from '../../actions/profile';
 
-const CreateProfile = ({ createProfile }) => {
+type Props = { createProfile: any };
+
+const CreateProfile: FunctionComponent<Props> = ({ createProfile }) => {
   let navigate = useNavigate();
   const [formData, setFormData] = useState({
     company: '',
@@ -38,10 +40,13 @@ const CreateProfile = ({ createProfile }) => {
     instagram,
   } = formData;
 
-  const onChange = (e) =>
+  const onChange = (
+    e: React.ChangeEvent<HTMLInputElement> 
+    | React.ChangeEvent<HTMLTextAreaElement> 
+    | React.ChangeEvent<HTMLSelectElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // call action
     createProfile(formData, navigate);

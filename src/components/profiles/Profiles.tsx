@@ -1,11 +1,14 @@
-import React, { Fragment, useEffect } from 'react';
+import { Fragment, FunctionComponent, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getProfiles } from '../../actions/profile';
 import ProfileItem from './ProfileItem';
 import Spinner from '../layout/Spinner';
+import { RootState } from '../../store';
 
-const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
+type Props = { profile: any, getProfiles: any };
+
+const Profiles: FunctionComponent<Props> = ({ getProfiles, profile: { profiles, loading } }) => {
   useEffect(() => {
     getProfiles();
   }, [getProfiles]);
@@ -23,7 +26,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
           </p>
           <div className='profiles'>
             {profiles.length > 0 ? (
-              profiles.map((profile) => (
+              profiles.map((profile: any) => (
                 <ProfileItem key={profile.id} profile={profile} />
               ))
             ) : (
@@ -41,7 +44,7 @@ Profiles.propTypes = {
   profile: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
   profile: state.profile,
 });
 

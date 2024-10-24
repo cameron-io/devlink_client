@@ -15,7 +15,7 @@ const initialState = {
   error: {},
 };
 
-const profile = (state = initialState, action) => {
+const profile = (state = initialState, action: any) => {
   const { type, payload } = action;
 
   switch (type) {

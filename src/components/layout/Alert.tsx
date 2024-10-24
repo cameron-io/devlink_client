@@ -1,12 +1,12 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import type { RootState } from '../../store';
 
 // If alerts property contains a state alert, output div with alert.msg
-const Alert = ({ alerts }) =>
+const Alert = ({ alerts }: { alerts: any }) =>
   alerts !== null &&
   alerts.length > 0 &&
-  alerts.map((alert) => (
+  alerts.map((alert: any) => (
     <div key={alert.id} className={`alert alert-${alert.alertType}`}>
       {alert.msg}
     </div>
@@ -17,7 +17,7 @@ Alert.propTypes = {
 };
 
 // Remap redux state to property in react component
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
   alerts: state.alert,
 });
 

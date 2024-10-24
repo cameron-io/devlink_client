@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import { Fragment, FunctionComponent, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -7,8 +7,16 @@ import DashboardActions from './DashboardActions';
 import Experience from './Experience';
 import Education from './Education';
 import Spinner from '../layout/Spinner';
+import { RootState } from '../../store';
 
-const Dashboard = ({
+type Props = {
+    getCurrentProfile: any,
+    deleteAccount: any,
+    auth: any,
+    profile: any
+};
+
+const Dashboard: FunctionComponent<Props> = ({
   getCurrentProfile,
   deleteAccount,
   auth: { user },
@@ -56,7 +64,7 @@ Dashboard.propTypes = {
   profile: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
   auth: state.auth,
   profile: state.profile,
 });

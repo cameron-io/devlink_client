@@ -1,11 +1,16 @@
-import React, { Fragment } from 'react';
+import { Fragment, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { deleteEducation } from '../../actions/profile';
 
-const Education = ({ education, deleteEducation }) => {
-  const educations = education.map((edu) => (
+type Props = {
+    education: any,
+    deleteEducation: any
+};
+
+const Education: FunctionComponent<Props> = ({ education, deleteEducation }) => {
+  const educations = education.map((edu: any) => (
     <tr key={edu.id}>
       <td>{edu.school}</td>
       <td className='hide-sm'>{edu.degree}</td>

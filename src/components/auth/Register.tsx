@@ -1,13 +1,16 @@
-import React, { Fragment, useState } from 'react';
+import { Fragment, FunctionComponent, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 // Redux
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
+import { RootState } from '../../store';
+
+type Props = { setAlert:any, register: any, isAuthenticated: boolean | null };
 
 // Call setAlert from state properties
-const Register = ({ setAlert, register, isAuthenticated }) => {
+const Register: FunctionComponent<Props> = ({ setAlert, register, isAuthenticated }) => {
   // Set registration fields in initialState
   const [formData, setFormData] = useState({
     name: '',
@@ -21,12 +24,12 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   const { name, email, password, password2 } = formData;
 
   // onChange required to allow field input
-  const onChange = (e) =>
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     // ... is a spread operator to copy the initialized formData fields
     // target is set to direct each input value to all inputs with name='*'
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== password2) {
       // Call state property
@@ -108,7 +111,7 @@ Register.propTypes = {
   isAuthenticated: PropTypes.bool,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
