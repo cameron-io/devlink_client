@@ -26,7 +26,7 @@ import Alert from './components/layout/Alert'
 import { loadUserAction } from './actions/auth'
 import PrivateRoute from './components/routing/PrivateRoute'
 // Style
-import './App.css'
+import './static/App.css'
 
 const App = () => {
     useEffect(() => {
