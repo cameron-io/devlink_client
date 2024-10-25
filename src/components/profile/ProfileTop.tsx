@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import { FunctionComponent } from 'react'
-import gravatar from 'gravatar'
 
 type Props = { profile: any }
 
@@ -12,13 +11,12 @@ const ProfileTop: FunctionComponent<Props> = ({
         website,
         gitHubUsername,
         social,
-        user: { name, email },
+        user: { name, avatar },
     },
 }) => {
-    const avatar = gravatar.url(email, { s: '200', r: 'pg', d: 'mm' })
     return (
         <div className="profile-top bg-primary p-2">
-            <img className="round-img my-1" src={avatar} alt="" />
+            <img className="round-img my-1" src={'https:' + avatar} alt="" />
             <h1 className="large">{name}</h1>
             <p className="lead">
                 {status} {company && <span>at {company}</span>}
