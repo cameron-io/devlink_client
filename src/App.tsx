@@ -26,7 +26,20 @@ import Alert from './components/layout/Alert'
 import { loadUserAction } from './actions/auth'
 import PrivateRoute from './components/routing/PrivateRoute'
 // Style
-import './static/App.css'
+import './static/css/Activity.css'
+import './static/css/Forms.css'
+import './static/css/Global.css'
+import './static/css/Margin.css'
+import './static/css/Mobile.css'
+import './static/css/Navbar.css'
+import './static/css/Padding.css'
+import './static/css/Table.css'
+import './static/css/Text.css'
+import './static/css/Utilities.css'
+import './static/css/pages/Landing.css'
+import './static/css/pages/Posts.css'
+import './static/css/pages/Profile.css'
+import './static/css/pages/Profiles.css'
 
 const App = () => {
     useEffect(() => {
