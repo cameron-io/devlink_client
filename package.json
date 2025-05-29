@@ -44,6 +44,6 @@
     "@types/uuid": "^10.0.0",
     "@vitejs/plugin-react": "^4.2.1",
     "prettier": "3.3.3",
-    "vite": "^5.1.1"
+    "vite": "^6.3.5"
   }
 }
