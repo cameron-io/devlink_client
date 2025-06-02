@@ -1,18 +1,19 @@
 import { Fragment, FunctionComponent } from 'react'
-import PropTypes from 'prop-types'
 import Moment from 'react-moment'
 import { connect } from 'react-redux'
 import { deleteExperience } from '../../actions/profile'
 
 type Props = {
-    experience: any[]
-    deleteExperience: any
+    experience?: any[]
+    deleteExperience: (id: number) => Promise<void>
 }
 
 const Experience: FunctionComponent<Props> = ({
     experience,
     deleteExperience,
 }) => {
+    if (experience == null) return
+
     const experiences = experience.map((exp: any) => (
         <tr key={exp.id}>
             <td>{exp.company}</td>
@@ -52,11 +53,6 @@ const Experience: FunctionComponent<Props> = ({
             </table>
         </Fragment>
     )
-}
-
-Experience.propTypes = {
-    experience: PropTypes.array.isRequired,
-    deleteExperience: PropTypes.func.isRequired,
 }
 
 export default connect(null, { deleteExperience })(Experience)

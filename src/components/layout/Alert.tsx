@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import type { RootState } from '../../store'
 
@@ -11,10 +10,6 @@ const Alert = ({ alerts }: { alerts: any }) =>
             {alert.msg}
         </div>
     ))
-
-Alert.propTypes = {
-    alerts: PropTypes.array.isRequired,
-}
 
 // Remap redux state to property in react component
 const mapStateToProps = (state: RootState) => ({

@@ -1,6 +1,5 @@
 import { Fragment, useState, useEffect, FunctionComponent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createProfile, getCurrentProfile } from '../../actions/profile'
 import { RootState } from '../../store'
@@ -282,12 +281,6 @@ const EditProfile: FunctionComponent<Props> = ({
             </form>
         </Fragment>
     )
-}
-
-EditProfile.propTypes = {
-    createProfile: PropTypes.func.isRequired,
-    getCurrentProfile: PropTypes.func.isRequired,
-    profile: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state: RootState) => ({

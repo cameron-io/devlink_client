@@ -1,6 +1,5 @@
 import { Link, Navigate } from 'react-router-dom'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
 import type { RootState } from '../../store'
 import { FunctionComponent } from 'react'
 
@@ -31,10 +30,6 @@ const Landing: FunctionComponent<Props> = function ({ isAuthenticated }) {
             </div>
         </section>
     )
-}
-
-Landing.propTypes = {
-    isAuthenticated: PropTypes.bool,
 }
 
 const mapStateToProps = (state: RootState) => ({

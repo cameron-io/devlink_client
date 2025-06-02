@@ -43,7 +43,8 @@ import './static/css/pages/Profiles.css'
 
 const App = () => {
     useEffect(() => {
-        store.dispatch(loadUserAction())
+        var user = loadUserAction()
+        store.dispatch(user)
     }, [])
 
     return (

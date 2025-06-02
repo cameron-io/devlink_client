@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import { FunctionComponent } from 'react'
 
 type Props = { profile: any }
@@ -35,10 +34,6 @@ const ProfileItem: FunctionComponent<Props> = ({
             </ul>
         </div>
     )
-}
-
-ProfileItem.propTypes = {
-    profile: PropTypes.object.isRequired,
 }
 
 export default ProfileItem

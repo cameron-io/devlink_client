@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types'
 import { FunctionComponent } from 'react'
+import { Profile } from '../types'
 
-type Props = { profile: any }
+type Props = { profile: Profile }
 
 const ProfileTop: FunctionComponent<Props> = ({
     profile: {
@@ -89,10 +89,6 @@ const ProfileTop: FunctionComponent<Props> = ({
             </div>
         </div>
     )
-}
-
-ProfileTop.propTypes = {
-    profile: PropTypes.object.isRequired,
 }
 
 export default ProfileTop

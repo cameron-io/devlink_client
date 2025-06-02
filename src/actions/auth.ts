@@ -31,10 +31,8 @@ export const loadUserAction = () => async (dispatch: AppDispatch) => {
 }
 
 // Register User
-type RegisterPayload = { name: string; email: string; password: string }
 export const registerAction =
-    ({ name, email, password }: RegisterPayload) =>
-    async (dispatch: AppDispatch) => {
+    (name: string, email: string, password: string) => async (dispatch: AppDispatch) => {
         const config = {
             headers: {
                 'Content-Type': 'application/json',

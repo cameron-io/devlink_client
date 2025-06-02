@@ -1,11 +1,14 @@
 import { Fragment, FunctionComponent } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
 import { logoutAction } from '../../actions/auth'
 import type { RootState } from '../../store'
+import { StateAuth } from '../types'
 
-type Props = { auth: any; logoutAction: any }
+type Props = {
+    auth: StateAuth;
+    logoutAction: () => Promise<void>
+}
 
 const Navbar: FunctionComponent<Props> = ({
     auth: { isAuthenticated, loading },
@@ -61,11 +64,6 @@ const Navbar: FunctionComponent<Props> = ({
             </nav>
         </div>
     )
-}
-
-Navbar.propTypes = {
-    logoutAction: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state: RootState) => ({

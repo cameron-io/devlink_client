@@ -1,5 +1,4 @@
 import { Navigate } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { RootState } from '../../store'
 import { FunctionComponent } from 'react'
@@ -18,10 +17,6 @@ const PrivateRoute: FunctionComponent<Props> = ({
         // Else display component
         <Component {...props} />
     )
-
-PrivateRoute.propTypes = {
-    auth: PropTypes.object.isRequired,
-}
 
 const mapStateToProps = (state: RootState) => ({
     auth: state.auth,

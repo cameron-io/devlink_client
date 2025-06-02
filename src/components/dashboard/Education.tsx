@@ -1,18 +1,19 @@
 import { Fragment, FunctionComponent } from 'react'
-import PropTypes from 'prop-types'
 import Moment from 'react-moment'
 import { connect } from 'react-redux'
 import { deleteEducation } from '../../actions/profile'
 
 type Props = {
-    education: any[]
-    deleteEducation: any
+    education?: any[]
+    deleteEducation: (id: number) => Promise<void>
 }
 
 const Education: FunctionComponent<Props> = ({
     education,
     deleteEducation,
 }) => {
+    if (education == null) return
+
     const educations = education.map((edu: any) => (
         <tr key={edu.id}>
             <td>{edu.school}</td>
@@ -52,11 +53,6 @@ const Education: FunctionComponent<Props> = ({
             </table>
         </Fragment>
     )
-}
-
-Education.propTypes = {
-    education: PropTypes.array.isRequired,
-    deleteEducation: PropTypes.func.isRequired,
 }
 
 export default connect(null, { deleteEducation })(Education)

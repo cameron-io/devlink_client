@@ -4,12 +4,11 @@ import { Link, Navigate } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setAlert } from '../../actions/alert'
 import { registerAction } from '../../actions/auth'
-import PropTypes from 'prop-types'
 import { RootState } from '../../store'
 
 type Props = {
     setAlert: any
-    registerAction: any
+    registerAction: (name: string, email: string, password: string) => Promise<void>
     isAuthenticated: boolean | null
 }
 
@@ -43,7 +42,7 @@ const Register: FunctionComponent<Props> = ({
             // Call state property
             setAlert('Passwords do not match', 'danger')
         } else {
-            registerAction({ name, email, password })
+            registerAction(name, email, password)
         }
     }
 
@@ -115,12 +114,6 @@ const Register: FunctionComponent<Props> = ({
             </p>
         </Fragment>
     )
-}
-
-Register.propTypes = {
-    setAlert: PropTypes.func.isRequired,
-    registerAction: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool,
 }
 
 const mapStateToProps = (state: RootState) => ({

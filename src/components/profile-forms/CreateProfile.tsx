@@ -1,6 +1,5 @@
 import React, { Fragment, FunctionComponent, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createProfile } from '../../actions/profile'
 
@@ -241,10 +240,6 @@ const CreateProfile: FunctionComponent<Props> = ({ createProfile }) => {
             </form>
         </Fragment>
     )
-}
-
-CreateProfile.propTypes = {
-    createProfile: PropTypes.func.isRequired,
 }
 
 export default connect(null, { createProfile })(CreateProfile)

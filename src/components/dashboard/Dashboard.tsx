@@ -1,6 +1,5 @@
 import { Fragment, FunctionComponent, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getCurrentProfile, deleteAccount } from '../../actions/profile'
 import DashboardActions from './DashboardActions'
@@ -8,12 +7,13 @@ import Experience from './Experience'
 import Education from './Education'
 import Spinner from '../layout/Spinner'
 import { RootState } from '../../store'
+import { StateAuth, StateProfile } from '../types'
 
 type Props = {
-    getCurrentProfile: any
-    deleteAccount: any
-    auth: any
-    profile: any
+    getCurrentProfile: () => Promise<void>
+    deleteAccount: () => Promise<void>
+    auth: StateAuth
+    profile: StateProfile
 }
 
 const Dashboard: FunctionComponent<Props> = ({
@@ -22,12 +22,9 @@ const Dashboard: FunctionComponent<Props> = ({
     auth: { user },
     profile: { profile, loading },
 }) => {
-    useEffect(() => {
-        getCurrentProfile()
-    }, [getCurrentProfile])
-    return loading && profile === null ? (
-        <Spinner />
-    ) : (
+    useEffect(() => {getCurrentProfile()}, [getCurrentProfile])
+
+    let page = (
         <Fragment>
             <h1 className="large text-primary">Dashboard</h1>
             <p className="lead">
@@ -36,8 +33,8 @@ const Dashboard: FunctionComponent<Props> = ({
             {profile != null ? (
                 <Fragment>
                     <DashboardActions />
-                    <Experience experience={profile.experience} />
-                    <Education education={profile.education} />
+                    <Experience experience={profile.experience!} />
+                    <Education education={profile.education!} />
 
                     <div className="my-2">
                         <button
@@ -62,13 +59,8 @@ const Dashboard: FunctionComponent<Props> = ({
             )}
         </Fragment>
     )
-}
 
-Dashboard.propTypes = {
-    getCurrentProfile: PropTypes.func.isRequired,
-    deleteAccount: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    profile: PropTypes.object.isRequired,
+    return loading && profile === null ? (<Spinner />) : page
 }
 
 const mapStateToProps = (state: RootState) => ({

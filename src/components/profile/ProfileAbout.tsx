@@ -1,7 +1,7 @@
 import { Fragment, FunctionComponent } from 'react'
-import PropTypes from 'prop-types'
+import { Profile } from '../types'
 
-type Props = { profile: any }
+type Props = { profile: Profile }
 
 const ProfileAbout: FunctionComponent<Props> = ({
     profile: {
@@ -30,9 +30,5 @@ const ProfileAbout: FunctionComponent<Props> = ({
         </div>
     </div>
 )
-
-ProfileAbout.propTypes = {
-    profile: PropTypes.object.isRequired,
-}
 
 export default ProfileAbout

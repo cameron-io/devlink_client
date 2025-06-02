@@ -1,11 +1,13 @@
 import { Fragment, FunctionComponent, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
 import { loginAction } from '../../actions/auth'
 import { RootState } from '../../store'
 
-type Props = { loginAction: any; isAuthenticated: boolean | null }
+type Props = {
+    loginAction: (email: string, password: string) => Promise<void>
+    isAuthenticated: boolean | null
+}
 
 const Login: FunctionComponent<Props> = ({ loginAction, isAuthenticated }) => {
     // Set login fields in initialState
@@ -80,11 +82,6 @@ const Login: FunctionComponent<Props> = ({ loginAction, isAuthenticated }) => {
             </p>
         </Fragment>
     )
-}
-
-Login.propTypes = {
-    loginAction: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool,
 }
 
 const mapStateToProps = (state: RootState) => ({

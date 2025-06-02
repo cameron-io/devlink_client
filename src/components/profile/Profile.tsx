@@ -1,5 +1,4 @@
 import { Fragment, FunctionComponent, useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { Link, useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Spinner from '../layout/Spinner'
@@ -8,15 +7,22 @@ import ProfileTop from './ProfileTop'
 import ProfileAbout from './ProfileAbout'
 import ProfileExperience from './ProfileExperience'
 import type { RootState } from '../../store'
+import { StateAuth, StateProfile } from '../types'
+import ProfileEducation from './ProfileEducation'
 
-type Props = { getProfileById: any; profile: any; auth: any }
+type Props = {
+    getProfileById: (userId: string) => Promise<void>
+    profile: StateProfile
+    auth: StateAuth
+}
 
 const Profile: FunctionComponent<Props> = ({
     getProfileById,
     profile: { profile, loading },
     auth,
 }) => {
-    const { id } = useParams()
+    const id: string = useParams().id!
+
     useEffect(() => {
         getProfileById(id)
     }, [getProfileById, id])
@@ -32,7 +38,7 @@ const Profile: FunctionComponent<Props> = ({
                     </Link>
                     {auth.isAuthenticated &&
                         auth.loading === false &&
-                        auth.user.id === profile.user.id && (
+                        auth.user!.id === profile.user.id && (
                             <Link to="/edit-profile" className="btn btn-dark">
                                 Edit Profile
                             </Link>
@@ -57,17 +63,28 @@ const Profile: FunctionComponent<Props> = ({
                                 <h4>No experience credentials</h4>
                             )}
                         </div>
+                        <div className="profile-edu bg-white p-2">
+                            <h2 className="text-primary">Education</h2>
+                            {profile.education.length > 0 ? (
+                                <Fragment>
+                                    {profile.education.map(
+                                        (education: any) => (
+                                            <ProfileEducation
+                                                key={education.id}
+                                                education={education}
+                                            />
+                                        )
+                                    )}
+                                </Fragment>
+                            ) : (
+                                <h4>No experience credentials</h4>
+                            )}
+                        </div>
                     </div>
                 </Fragment>
             )}
         </Fragment>
     )
-}
-
-Profile.propTypes = {
-    getProfileById: PropTypes.func.isRequired,
-    profile: PropTypes.object.isRequired,
-    auth: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state: RootState) => ({

@@ -1,20 +1,20 @@
 import { FunctionComponent } from 'react'
 import Moment from 'react-moment'
 
-type Props = { experience: any }
+type Props = { education: any }
 
-const ProfileExperience: FunctionComponent<Props> = ({
-    experience: { company, title, to, from, description },
+const ProfileEducation: FunctionComponent<Props> = ({
+    education: { school, degree, to, from, description },
 }) => {
     return (
         <div>
-            <h3 className="text-dark">{company}</h3>
+            <h3 className="text-dark">{school}</h3>
             <p>
                 <Moment format="YYYY/MM/DD">{from}</Moment> -{' '}
                 {!to ? 'Now' : <Moment format="YYYY/MM/DD">{to}</Moment>}
             </p>
             <p>
-                <strong>Position: </strong> {title}
+                <strong>Degree: </strong> {degree}
             </p>
             <p>
                 <strong>Description: </strong> {description}
@@ -23,4 +23,4 @@ const ProfileExperience: FunctionComponent<Props> = ({
     )
 }
 
-export default ProfileExperience
+export default ProfileEducation
