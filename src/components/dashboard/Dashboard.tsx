@@ -41,8 +41,7 @@ const Dashboard: FunctionComponent<Props> = ({
                             className="btn btn-danger"
                             onClick={() => deleteAccount()}
                         >
-                            <i className="fas fa-trash-alt"></i>
-                            Delete My Account
+                            <i className="fas fa-trash-alt"></i> Delete My Account
                         </button>
                     </div>
                 </Fragment>

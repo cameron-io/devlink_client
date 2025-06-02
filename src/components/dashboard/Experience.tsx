@@ -12,45 +12,54 @@ const Experience: FunctionComponent<Props> = ({
     experience,
     deleteExperience,
 }) => {
-    if (experience == null) return
-
-    const experiences = experience.map((exp: any) => (
-        <tr key={exp.id}>
-            <td>{exp.company}</td>
-            <td className="hide-sm">{exp.title}</td>
-            <td>
-                <Moment format="YYYY/MM/DD">{exp.from}</Moment> -{' '}
-                {exp.to === null ? (
-                    'Now'
-                ) : (
-                    <Moment format="YYYY/MM/DD">{exp.to}</Moment>
-                )}
-            </td>
-            <td>
-                <button
-                    onClick={() => deleteExperience(exp.id)}
-                    className="btn btn-danger"
-                >
-                    Delete
-                </button>
-            </td>
-        </tr>
-    ))
-
     return (
         <Fragment>
             <h2 className="my2">Experience Credentials</h2>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>Company</th>
-                        <th className="hide-sm">Title</th>
-                        <th className="hide-sm">Years</th>
-                        <th />
-                    </tr>
-                </thead>
-                <tbody>{experiences}</tbody>
-            </table>
+            {experience == null || experience.length == 0 ?
+                (
+                    <p>No Entries.</p>
+                ) : (
+                    <table className="table">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th className="hide-sm">Title</th>
+                            <th className="hide-sm">Start Date</th>
+                            <th className="hide-sm">End Date</th>
+                            <th className="hide-sm">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {experience.map((exp: any) => (
+                            <tr key={exp.id}>
+                                <td>{exp.company}</td>
+                                <td className="hide-sm">{exp.title}</td>
+                                <td><Moment format="YYYY/MM/DD">{exp.from}</Moment></td>
+                                <td>
+                                    {exp.to === null ?
+                                        (
+                                            'Now'
+                                        ) : (
+                                            <Moment format="YYYY/MM/DD">{exp.end}</Moment>
+                                        )
+                                    }
+                                </td>
+                                <td className='hide-sm'>{exp.description}</td>
+                                <td>
+                                    <button
+                                        onClick={() => deleteExperience(exp.id)}
+                                        className="btn btn-danger"
+                                    >
+                                        X
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                    </table>
+                )
+            }
+            <br></br>
         </Fragment>
     )
 }
