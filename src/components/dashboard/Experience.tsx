@@ -19,7 +19,7 @@ const Experience: FunctionComponent<Props> = ({
                 (
                     <p>No Entries.</p>
                 ) : (
-                    <table className="table">
+                    <table>
                     <thead>
                         <tr>
                             <th>Company</th>
