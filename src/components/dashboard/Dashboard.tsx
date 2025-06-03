@@ -39,7 +39,13 @@ const Dashboard: FunctionComponent<Props> = ({
                     <div className="my-2">
                         <button
                             className="btn btn-danger"
-                            onClick={() => deleteAccount()}
+                            onClick={() => {
+                                if (window.confirm(
+                                    'Are you sure you want to delete your account? This cannot be undone.'
+                                )) {
+                                    return deleteAccount()
+                                }
+                            }}
                         >
                             <i className="fas fa-trash-alt"></i> Delete My Account
                         </button>
