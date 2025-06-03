@@ -23,17 +23,17 @@ const Experience: FunctionComponent<Props> = ({
                     <thead>
                         <tr>
                             <th>Company</th>
-                            <th className="hide-sm">Title</th>
-                            <th className="hide-sm">Start Date</th>
-                            <th className="hide-sm">End Date</th>
-                            <th className="hide-sm">Description</th>
+                            <th>Title</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Description</th>
                         </tr>
                     </thead>
                     <tbody>
                         {experience.map((exp: any) => (
                             <tr key={exp.id}>
                                 <td>{exp.company}</td>
-                                <td className="hide-sm">{exp.title}</td>
+                                <td>{exp.title}</td>
                                 <td><Moment format="YYYY/MM/DD">{exp.from}</Moment></td>
                                 <td>
                                     {exp.to === null ?
@@ -44,7 +44,7 @@ const Experience: FunctionComponent<Props> = ({
                                         )
                                     }
                                 </td>
-                                <td className='hide-sm'>{exp.description}</td>
+                                <td>{exp.description}</td>
                                 <td>
                                     <button
                                         onClick={() => deleteExperience(exp.id)}

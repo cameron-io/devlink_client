@@ -23,17 +23,17 @@ const Education: FunctionComponent<Props> = ({
                     <thead>
                         <tr>
                             <th>School</th>
-                            <th className="hide-sm">Degree</th>
-                            <th className="hide-sm">Start Date</th>
-                            <th className="hide-sm">End Date</th>
-                            <th className="hide-sm">Description</th>
+                            <th>Degree</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Description</th>
                         </tr>
                     </thead>
                     <tbody>
                         {education.map((edu: any) => (
                             <tr key={edu.id}>
                                 <td>{edu.school}</td>
-                                <td className="hide-sm">{edu.degree}</td>
+                                <td>{edu.degree}</td>
                                 <td><Moment format="YYYY/MM/DD">{edu.from}</Moment></td>
                                 <td>
                                     {edu.to === null ?
@@ -44,7 +44,7 @@ const Education: FunctionComponent<Props> = ({
                                         )
                                     }
                                 </td>
-                                <td className='hide-sm'>{edu.description}</td>
+                                <td>{edu.description}</td>
                                 <td>
                                     <button
                                         onClick={() => deleteEducation(edu.id)}
