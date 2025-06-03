@@ -1,7 +1,7 @@
 import { Fragment, FunctionComponent } from 'react'
 import Moment from 'react-moment'
 import { connect } from 'react-redux'
-import { deleteExperience } from '../../actions/profile'
+import { deleteExperience } from '../../events/dispatchers/profile'
 
 type Props = {
     experience?: any[]

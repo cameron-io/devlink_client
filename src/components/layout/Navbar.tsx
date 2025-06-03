@@ -1,8 +1,8 @@
 import { Fragment, FunctionComponent } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { logoutAction } from '../../actions/auth'
-import type { RootState } from '../../store'
+import { logoutAction } from '../../events/dispatchers/auth'
+import type { RootState } from '../../events/store'
 import { StateAuth } from '../types'
 
 type Props = {

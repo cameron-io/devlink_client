@@ -2,9 +2,9 @@ import { Fragment, FunctionComponent, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 // Redux
 import { connect } from 'react-redux'
-import { setAlert } from '../../actions/alert'
-import { registerAction } from '../../actions/auth'
-import { RootState } from '../../store'
+import { setAlert } from '../../events/dispatchers/alert'
+import { registerAction } from '../../events/dispatchers/auth'
+import { RootState } from '../../events/store'
 
 type Props = {
     setAlert: any

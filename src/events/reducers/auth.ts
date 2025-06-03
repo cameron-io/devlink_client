@@ -8,7 +8,7 @@ import {
     LOGOUT,
     LOGOUT_FAIL,
     ACCOUNT_DELETED,
-} from '../actions/include/types'
+} from '../dispatchers/include/types'
 
 const initialState = {
     isAuthenticated: null,

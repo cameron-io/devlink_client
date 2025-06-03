@@ -1,7 +1,7 @@
 import React, { Fragment, FunctionComponent, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { addEducation } from '../../actions/profile'
+import { addEducation } from '../../events/dispatchers/profile'
 
 type Props = { addEducation: any }
 

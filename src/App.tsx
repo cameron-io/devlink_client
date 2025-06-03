@@ -3,7 +3,7 @@ import { Fragment, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 // Redux
 import { Provider } from 'react-redux'
-import store from './store'
+import store from './events/store'
 // Main page
 import Navbar from './components/layout/Navbar'
 import Landing from './components/layout/Landing'
@@ -23,7 +23,7 @@ import Profiles from './components/profiles/Profiles'
 // Alerts
 import Alert from './components/layout/Alert'
 // Auth
-import { loadUserAction } from './actions/auth'
+import { loadUserAction } from './events/dispatchers/auth'
 import PrivateRoute from './components/routing/PrivateRoute'
 // Style
 import './static/css/Activity.css'

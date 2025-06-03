@@ -1,8 +1,8 @@
 import { Fragment, useState, useEffect, FunctionComponent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { createProfile, getCurrentProfile } from '../../actions/profile'
-import { RootState } from '../../store'
+import { createProfile, getCurrentProfile } from '../../events/dispatchers/profile'
+import { RootState } from '../../events/store'
 
 type Props = { createProfile: any; profile: any; getCurrentProfile: any }
 

@@ -1,12 +1,12 @@
 import { Fragment, FunctionComponent, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getCurrentProfile, deleteAccount } from '../../actions/profile'
+import { getCurrentProfile, deleteAccount } from '../../events/dispatchers/profile'
 import DashboardActions from './DashboardActions'
 import Experience from './Experience'
 import Education from './Education'
 import Spinner from '../layout/Spinner'
-import { RootState } from '../../store'
+import { RootState } from '../../events/store'
 import { StateAuth, StateProfile } from '../types'
 
 type Props = {

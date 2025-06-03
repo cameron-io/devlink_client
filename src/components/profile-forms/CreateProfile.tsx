@@ -1,7 +1,7 @@
 import React, { Fragment, FunctionComponent, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { createProfile } from '../../actions/profile'
+import { createProfile } from '../../events/dispatchers/profile'
 
 type Props = { createProfile: any }
 

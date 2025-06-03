@@ -1,6 +1,6 @@
 import { Link, Navigate } from 'react-router-dom'
 import { connect } from 'react-redux'
-import type { RootState } from '../../store'
+import type { RootState } from '../../events/store'
 import { FunctionComponent } from 'react'
 
 type Props = { isAuthenticated: boolean | null }

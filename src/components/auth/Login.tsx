@@ -1,8 +1,8 @@
 import { Fragment, FunctionComponent, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { loginAction } from '../../actions/auth'
-import { RootState } from '../../store'
+import { loginAction } from '../../events/dispatchers/auth'
+import { RootState } from '../../events/store'
 
 type Props = {
     loginAction: (email: string, password: string) => Promise<void>

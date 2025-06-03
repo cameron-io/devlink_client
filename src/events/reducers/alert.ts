@@ -1,5 +1,5 @@
 import { Reducer } from 'redux'
-import { SET_ALERT, REMOVE_ALERT } from '../actions/include/types'
+import { SET_ALERT, REMOVE_ALERT } from '../dispatchers/include/types'
 
 const initialState: any[] = []
 
