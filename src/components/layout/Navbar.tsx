@@ -1,9 +1,10 @@
 import { Fragment, FunctionComponent } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { logoutAction } from '../../events/dispatchers/auth'
-import type { RootState } from '../../events/store'
-import { StateAuth } from '../types'
+import { logoutAction } from '../../redux/dispatchers/auth'
+import type { RootState } from '../../redux/store'
+import { StateAuth } from '../../types/common'
+import './Navbar.css'
 
 type Props = {
     auth: StateAuth;

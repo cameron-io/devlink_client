@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import type { RootState } from '../../events/store'
+import type { RootState } from '../../redux/store'
 
 // If alerts property contains a state alert, output div with alert.msg
 const Alert = ({ alerts }: { alerts: any }) =>

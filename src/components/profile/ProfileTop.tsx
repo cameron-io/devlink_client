@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'react'
-import { Profile } from '../types'
+import { Profile } from '../../types/common'
+import './ProfileTop.css'
 
 type Props = { profile: Profile }
 

@@ -1,16 +1,16 @@
-import React, { Fragment, FunctionComponent, useState } from 'react'
+import { Fragment, FunctionComponent, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { addEducation } from '../../events/dispatchers/profile'
+import { addExperience } from '../../redux/dispatchers/profile'
 
-type Props = { addEducation: any }
+type Props = { addExperience: any }
 
-const AddEducation: FunctionComponent<Props> = ({ addEducation }) => {
+const AddExperience: FunctionComponent<Props> = ({ addExperience }) => {
     let navigate = useNavigate()
     const [formData, setFormData] = useState({
-        school: '',
-        degree: '',
-        fieldofstudy: '',
+        company: '',
+        title: '',
+        location: '',
         from: '',
         to: '',
         current: false,
@@ -19,7 +19,7 @@ const AddEducation: FunctionComponent<Props> = ({ addEducation }) => {
 
     const [toDateDisabled, toggleDisabled] = useState(false)
 
-    const { school, degree, fieldofstudy, from, to, current, description } =
+    const { company, title, location, from, to, current, description } =
         formData
 
     const onChange = (
@@ -34,25 +34,25 @@ const AddEducation: FunctionComponent<Props> = ({ addEducation }) => {
 
     return (
         <Fragment>
-            <h1 className="large text-primary">Add Your Education</h1>
+            <h1 className="large text-primary">Add An Experience</h1>
             <p className="lead">
-                <i className="fas fa-code-branch"></i> Add any school or
-                bootcamp you have attended
+                <i className="fas fa-code-branch"></i> Add any
+                developer/programming positions that you have had in the past
             </p>
             <small>* = required field</small>
             <form
                 className="form"
                 onSubmit={(e) => {
                     e.preventDefault()
-                    addEducation(formData, navigate)
+                    addExperience(formData, navigate)
                 }}
             >
                 <div className="form-group">
                     <input
                         type="text"
-                        placeholder="* School or Bootcamp"
-                        name="school"
-                        value={school}
+                        placeholder="* Job Title"
+                        name="title"
+                        value={title}
                         onChange={(e) => onChange(e)}
                         required
                     />
@@ -60,9 +60,9 @@ const AddEducation: FunctionComponent<Props> = ({ addEducation }) => {
                 <div className="form-group">
                     <input
                         type="text"
-                        placeholder="* Degree or Certificate"
-                        name="degree"
-                        value={degree}
+                        placeholder="* Company"
+                        name="company"
+                        value={company}
                         onChange={(e) => onChange(e)}
                         required
                     />
@@ -70,9 +70,9 @@ const AddEducation: FunctionComponent<Props> = ({ addEducation }) => {
                 <div className="form-group">
                     <input
                         type="text"
-                        placeholder="Field of Study"
-                        name="fieldofstudy"
-                        value={fieldofstudy}
+                        placeholder="Location"
+                        name="location"
+                        value={location}
                         onChange={(e) => onChange(e)}
                     />
                 </div>
@@ -97,7 +97,7 @@ const AddEducation: FunctionComponent<Props> = ({ addEducation }) => {
                                 toggleDisabled(!toDateDisabled)
                             }}
                         />{' '}
-                        Current Education
+                        Current Job
                     </p>
                 </div>
                 <div className="form-group">
@@ -115,7 +115,7 @@ const AddEducation: FunctionComponent<Props> = ({ addEducation }) => {
                         name="description"
                         cols={30}
                         rows={5}
-                        placeholder="Programme Description"
+                        placeholder="Job Description"
                         value={description}
                         onChange={(e) => onChange(e)}
                     ></textarea>
@@ -129,4 +129,4 @@ const AddEducation: FunctionComponent<Props> = ({ addEducation }) => {
     )
 }
 
-export default connect(null, { addEducation })(AddEducation)
+export default connect(null, { addExperience })(AddExperience)

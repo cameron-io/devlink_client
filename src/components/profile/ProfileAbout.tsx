@@ -1,5 +1,6 @@
 import { Fragment, FunctionComponent } from 'react'
-import { Profile } from '../types'
+import { Profile } from '../../types/common'
+import './ProfileAbout.css'
 
 type Props = { profile: Profile }
 

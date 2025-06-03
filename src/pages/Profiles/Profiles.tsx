@@ -1,9 +1,9 @@
 import { Fragment, FunctionComponent, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { getProfiles } from '../../events/dispatchers/profile'
-import ProfileItem from './ProfileItem'
-import Spinner from '../layout/Spinner'
-import { RootState } from '../../events/store'
+import { getProfiles } from '../../redux/dispatchers/profile'
+import ProfileItem from '../../components/profiles/ProfileItem'
+import Spinner from '../../components/layout/Spinner'
+import { RootState } from '../../redux/store'
 
 type Props = { profile: any; getProfiles: any }
 

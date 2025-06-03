@@ -1,16 +1,11 @@
-import { Fragment, useState, useEffect, FunctionComponent } from 'react'
+import React, { Fragment, FunctionComponent, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { createProfile, getCurrentProfile } from '../../events/dispatchers/profile'
-import { RootState } from '../../events/store'
+import { createProfile } from '../../redux/dispatchers/profile'
 
-type Props = { createProfile: any; profile: any; getCurrentProfile: any }
+type Props = { createProfile: any }
 
-const EditProfile: FunctionComponent<Props> = ({
-    profile: { profile, loading },
-    createProfile,
-    getCurrentProfile,
-}) => {
+const CreateProfile: FunctionComponent<Props> = ({ createProfile }) => {
     let navigate = useNavigate()
     const [formData, setFormData] = useState({
         company: '',
@@ -28,42 +23,6 @@ const EditProfile: FunctionComponent<Props> = ({
     })
 
     const [displaySocialInputs, toggleSocialInputs] = useState(false)
-
-    useEffect(() => {
-        setFormData({
-            company: loading || !profile.company ? '' : profile.company,
-            website: loading || !profile.website ? '' : profile.website,
-            location: loading || !profile.location ? '' : profile.location,
-            status: loading || !profile.status ? '' : profile.status,
-            skills: loading || !profile.skills ? '' : profile.company,
-            gitHubUsername:
-                loading || !profile.gitHubUsername
-                    ? ''
-                    : profile.gitHubUsername,
-            bio: loading || !profile.bio ? '' : profile.bio,
-            twitter: loading || !profile.social ? '' : profile.twitter,
-            facebook: loading || !profile.social ? '' : profile.facebook,
-            linkedin: loading || !profile.social ? '' : profile.linkedin,
-            youtube: loading || !profile.social ? '' : profile.youtube,
-            instagram: loading || !profile.social ? '' : profile.instagram,
-        })
-    }, [
-        loading,
-        getCurrentProfile,
-        profile.bio,
-        profile.company,
-        profile.facebook,
-        profile.gitHubUsername,
-        profile.instagram,
-        profile.linkedin,
-        profile.location,
-        profile.skills,
-        profile.social,
-        profile.status,
-        profile.twitter,
-        profile.website,
-        profile.youtube,
-    ])
 
     const {
         company,
@@ -90,12 +49,12 @@ const EditProfile: FunctionComponent<Props> = ({
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         // call action
-        createProfile(formData, navigate, true)
+        createProfile(formData, navigate)
     }
 
     return (
         <Fragment>
-            <h1 className="large text-primary">Edit Your Profile</h1>
+            <h1 className="large text-primary">Create Your Profile</h1>
             <p className="lead">
                 <i className="fas fa-user"></i> Let's get some information to
                 make your profile stand out
@@ -105,7 +64,7 @@ const EditProfile: FunctionComponent<Props> = ({
                 <div className="form-group">
                     <select
                         name="status"
-                        defaultValue={status}
+                        value={status}
                         onChange={(e) => onChange(e)}
                     >
                         <option value="0">* Select Professional Status</option>
@@ -135,7 +94,7 @@ const EditProfile: FunctionComponent<Props> = ({
                         type="text"
                         placeholder="Company"
                         name="company"
-                        defaultValue={company}
+                        value={company}
                         onChange={(e) => onChange(e)}
                     />
                     <small className="form-text">
@@ -147,7 +106,7 @@ const EditProfile: FunctionComponent<Props> = ({
                         type="text"
                         placeholder="Website"
                         name="website"
-                        defaultValue={website}
+                        value={website}
                         onChange={(e) => onChange(e)}
                     />
                     <small className="form-text">
@@ -159,7 +118,7 @@ const EditProfile: FunctionComponent<Props> = ({
                         type="text"
                         placeholder="Location"
                         name="location"
-                        defaultValue={location}
+                        value={location}
                         onChange={(e) => onChange(e)}
                     />
                     <small className="form-text">
@@ -171,7 +130,7 @@ const EditProfile: FunctionComponent<Props> = ({
                         type="text"
                         placeholder="* Skills"
                         name="skills"
-                        defaultValue={skills}
+                        value={skills}
                         onChange={(e) => onChange(e)}
                     />
                     <small className="form-text">
@@ -184,7 +143,7 @@ const EditProfile: FunctionComponent<Props> = ({
                         type="text"
                         placeholder="Github Username"
                         name="gitHubUsername"
-                        defaultValue={gitHubUsername}
+                        value={gitHubUsername}
                         onChange={(e) => onChange(e)}
                     />
                     <small className="form-text">
@@ -196,7 +155,7 @@ const EditProfile: FunctionComponent<Props> = ({
                     <textarea
                         placeholder="A short bio of yourself"
                         name="bio"
-                        defaultValue={bio}
+                        value={bio}
                         onChange={(e) => onChange(e)}
                     ></textarea>
                     <small className="form-text">
@@ -223,7 +182,7 @@ const EditProfile: FunctionComponent<Props> = ({
                                 type="text"
                                 placeholder="Twitter URL"
                                 name="twitter"
-                                defaultValue={twitter}
+                                value={twitter}
                                 onChange={(e) => onChange(e)}
                             />
                         </div>
@@ -234,7 +193,7 @@ const EditProfile: FunctionComponent<Props> = ({
                                 type="text"
                                 placeholder="Facebook URL"
                                 name="facebook"
-                                defaultValue={facebook}
+                                value={facebook}
                                 onChange={(e) => onChange(e)}
                             />
                         </div>
@@ -245,7 +204,7 @@ const EditProfile: FunctionComponent<Props> = ({
                                 type="text"
                                 placeholder="YouTube URL"
                                 name="youtube"
-                                defaultValue={youtube}
+                                value={youtube}
                                 onChange={(e) => onChange(e)}
                             />
                         </div>
@@ -256,7 +215,7 @@ const EditProfile: FunctionComponent<Props> = ({
                                 type="text"
                                 placeholder="Linkedin URL"
                                 name="linkedin"
-                                defaultValue={linkedin}
+                                value={linkedin}
                                 onChange={(e) => onChange(e)}
                             />
                         </div>
@@ -267,7 +226,7 @@ const EditProfile: FunctionComponent<Props> = ({
                                 type="text"
                                 placeholder="Instagram URL"
                                 name="instagram"
-                                defaultValue={instagram}
+                                value={instagram}
                                 onChange={(e) => onChange(e)}
                             />
                         </div>
@@ -283,10 +242,4 @@ const EditProfile: FunctionComponent<Props> = ({
     )
 }
 
-const mapStateToProps = (state: RootState) => ({
-    profile: state.profile,
-})
-
-export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
-    EditProfile
-)
+export default connect(null, { createProfile })(CreateProfile)

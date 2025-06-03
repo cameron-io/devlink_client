@@ -1,7 +1,7 @@
 import { Fragment, FunctionComponent } from 'react'
 import Moment from 'react-moment'
 import { connect } from 'react-redux'
-import { deleteEducation } from '../../events/dispatchers/profile'
+import { deleteEducation } from '../../redux/dispatchers/profile'
 
 type Props = {
     education?: any[]

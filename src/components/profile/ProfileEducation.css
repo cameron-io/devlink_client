@@ -1,0 +1,22 @@
+
+.profile-edu {
+    grid-area: edu;
+}
+
+.profile-edu h2 {
+    margin-bottom: 1rem;
+}
+
+.profile-edu > div {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: #ccc 1px dotted;
+}
+
+.profile-edu > div:last-child {
+    border: 0;
+}
+
+.profile-edu p {
+    margin: 0.5rem 0;
+}

@@ -1,14 +1,15 @@
 import { Fragment, FunctionComponent, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Spinner from '../layout/Spinner'
-import { getProfileById } from '../../events/dispatchers/profile'
-import ProfileTop from './ProfileTop'
-import ProfileAbout from './ProfileAbout'
-import ProfileExperience from './ProfileExperience'
-import type { RootState } from '../../events/store'
-import { StateAuth, StateProfile } from '../types'
-import ProfileEducation from './ProfileEducation'
+import Spinner from '../../components/layout/Spinner'
+import { getProfileById } from '../../redux/dispatchers/profile'
+import ProfileTop from '../../components/profile/ProfileTop'
+import ProfileAbout from '../../components/profile/ProfileAbout'
+import ProfileExperience from '../../components/profile/ProfileExperience'
+import type { RootState } from '../../redux/store'
+import { StateAuth, StateProfile } from '../../types/common'
+import ProfileEducation from '../../components/profile/ProfileEducation'
+import './Profile.css'
 
 type Props = {
     getProfileById: (userId: string) => Promise<void>

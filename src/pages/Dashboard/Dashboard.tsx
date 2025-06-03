@@ -1,13 +1,13 @@
 import { Fragment, FunctionComponent, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getCurrentProfile, deleteAccount } from '../../events/dispatchers/profile'
-import DashboardActions from './DashboardActions'
-import Experience from './Experience'
-import Education from './Education'
-import Spinner from '../layout/Spinner'
-import { RootState } from '../../events/store'
-import { StateAuth, StateProfile } from '../types'
+import { getCurrentProfile, deleteAccount } from '../../redux/dispatchers/profile'
+import DashboardActions from '../../components/dashboard/DashboardActions'
+import Experience from '../../components/dashboard/Experience'
+import Education from '../../components/dashboard/Education'
+import Spinner from '../../components/layout/Spinner'
+import { RootState } from '../../redux/store'
+import { StateAuth, StateProfile } from '../../types/common'
 
 type Props = {
     getCurrentProfile: () => Promise<void>

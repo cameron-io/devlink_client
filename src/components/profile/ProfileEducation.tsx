@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'react'
 import Moment from 'react-moment'
+import './ProfileEducation.css'
 
 type Props = { education: any }
 
