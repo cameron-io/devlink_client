@@ -14,25 +14,26 @@ import {
 import { AppDispatch } from '../store'
 
 // Load user
-export const loadUserAction = () => async (dispatch: AppDispatch) => {
-    try {
-        const res = await axios.get('/api/accounts/info', {
-            withCredentials: true,
-        })
-        dispatch({
-            type: USER_LOADED,
-            payload: res.data,
-        })
-    } catch (err) {
-        dispatch({
-            type: AUTH_ERROR,
-        })
+export const loadUserAction = () =>
+    async (dispatch: AppDispatch) => {
+        try {
+            const res = await axios.get('/api/accounts/info', {
+                withCredentials: true,
+            })
+            dispatch({
+                type: USER_LOADED,
+                payload: res.data,
+            })
+        } catch (err) {
+            dispatch({
+                type: AUTH_ERROR,
+            })
+        }
     }
-}
 
 // Register User
-export const registerAction =
-    (name: string, email: string, password: string) => async (dispatch: AppDispatch) => {
+export const registerAction = (name: string, email: string, password: string) =>
+    async (dispatch: AppDispatch) => {
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -63,8 +64,8 @@ export const registerAction =
     }
 
 // Login User
-export const loginAction =
-    (email: string, password: string) => async (dispatch: AppDispatch) => {
+export const loginAction = (email: string, password: string) =>
+    async (dispatch: AppDispatch) => {
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -95,17 +96,18 @@ export const loginAction =
     }
 
 // Logout / Clear Profile
-export const logoutAction = () => async (dispatch: AppDispatch) => {
-    try {
-        const res = await axios.post('/api/accounts/logout', {
-            withCredentials: true,
-        })
-        if (res.status != 200) throw `Logout failure - ${res.status}`
+export const logoutAction = () => 
+    async (dispatch: AppDispatch) => {
+        try {
+            const res = await axios.post('/api/accounts/logout', {
+                withCredentials: true,
+            })
+            if (res.status != 200) throw `Logout failure - ${res.status}`
 
-        dispatch({ type: CLEAR_PROFILE })
-        dispatch({ type: LOGOUT })
-    } catch (err) {
-        dispatch(setAlert('Logout failure', 'danger'))
-        dispatch({ type: LOGOUT_FAIL })
+            dispatch({ type: CLEAR_PROFILE })
+            dispatch({ type: LOGOUT })
+        } catch (err) {
+            dispatch(setAlert('Logout failure', 'danger'))
+            dispatch({ type: LOGOUT_FAIL })
+        }
     }
-}

@@ -4,8 +4,7 @@ import { SET_ALERT, REMOVE_ALERT } from './include/types'
 import { AppDispatch } from '../store'
 
 // Send the msg and alertType to state with generated id
-export const setAlert =
-    (msg: any, alertType: any, timeout = 5000) =>
+export const setAlert = (msg: any, alertType: any, timeout = 5000) =>
     (dispatch: AppDispatch) => {
         // Generate random id
         const id = uuid()
