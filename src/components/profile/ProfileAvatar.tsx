@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Fragment } from 'react'
 
 type AvatarProps = {
-    avatar: string | undefined
+    avatar: string | null | undefined
     size: number | string
 }
 

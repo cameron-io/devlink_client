@@ -1,39 +1,9 @@
-export interface User {
-    id: string
-    name: string
-    email: string
-    avatar: string
-    date: string
-}
-
-export interface Social {
-    facebook: string
-    youtube: string
-    twitter: string
-    linkedin: string
-    instagram: string
-}
-
-export interface Profile {
-    id: string
-    user: User
-    company: string
-    website: string
-    location: string
-    status: string
-    gitHubUsername: string
-    social: Social
-    skills: string[]
-    bio: string
-    experience: any[]
-    education: any[]
-    date: string
-}
+import { UserDto, ProfileDto } from './api'
 
 export interface StateProfile {
-    profile: Profile | null
+    profile: ProfileDto | null
     loading: boolean
-    profiles: Profile[]
+    profiles: ProfileDto[]
     repos: any[]
     error: any
 }
@@ -41,5 +11,5 @@ export interface StateProfile {
 export interface StateAuth {
     isAuthenticated: boolean | null
     loading: boolean
-    user: User | null
+    user: UserDto | null
 }

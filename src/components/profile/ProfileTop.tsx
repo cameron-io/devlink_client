@@ -1,11 +1,11 @@
-import { FunctionComponent } from 'react'
+import { Fragment, FunctionComponent } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGlobe } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faGithub, faInstagram, faLinkedin, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
-import { Profile } from '../../types/common'
+import { ProfileDto } from '../../types/api'
 import Avatar from './ProfileAvatar'
 
-type Props = { profile: Profile }
+type Props = { profile: ProfileDto }
 
 const ProfileTop: FunctionComponent<Props> = ({
     profile: {
@@ -15,14 +15,18 @@ const ProfileTop: FunctionComponent<Props> = ({
         website,
         gitHubUsername,
         social,
-        user: { name, avatar },
+        user: user,
     },
 }) => {
     return (
         <div className="d-flex justify-content-center border rounded-3 p-4 mb-4">
             <div>
-                <Avatar avatar={avatar} size={200}></Avatar>
-                <h1 className="my-3">{name}</h1>
+                {user && (
+                    <Fragment>
+                        <Avatar avatar={user.avatar} size={200}></Avatar>
+                        <h1 className="my-3">{user.name}</h1>
+                    </Fragment>
+                )}
                 <p className="lead">
                     {status} {company && <span>@ {company}</span>}
                 </p>
@@ -53,51 +57,55 @@ const ProfileTop: FunctionComponent<Props> = ({
                             </a>
                         </div>
                     )}
-                    {social && social.twitter && (
-                        <a
-                            href={social.twitter}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <FontAwesomeIcon icon={faXTwitter}/>
-                        </a>
-                    )}
-                    {social && social.facebook && (
-                        <a
-                            href={social.facebook}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <FontAwesomeIcon icon={faFacebook}/>
-                        </a>
-                    )}
-                    {social && social.linkedin && (
-                        <a
-                            href={social.linkedin}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <FontAwesomeIcon icon={faLinkedin}/>
-                        </a>
-                    )}
-                    {social && social.youtube && (
-                        <a
-                            href={social.youtube}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <FontAwesomeIcon icon={faYoutube}/>
-                        </a>
-                    )}
-                    {social && social.instagram && (
-                        <a
-                            href={social.instagram}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <FontAwesomeIcon icon={faInstagram}/>
-                        </a>
-                    )}
+                    {social && Array.isArray(social) && social.map((item, index) => (
+                        <Fragment key={index}>
+                            {item.twitter && (
+                                <a
+                                    href={item.twitter}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <FontAwesomeIcon icon={faXTwitter}/>
+                                </a>
+                            )}
+                            {item.facebook && (
+                                <a
+                                    href={item.facebook}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <FontAwesomeIcon icon={faFacebook}/>
+                                </a>
+                            )}
+                            {item.linkedIn && (
+                                <a
+                                    href={item.linkedIn}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <FontAwesomeIcon icon={faLinkedin}/>
+                                </a>
+                            )}
+                            {item.youTube && (
+                                <a
+                                    href={item.youTube}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <FontAwesomeIcon icon={faYoutube}/>
+                                </a>
+                            )}
+                            {item.instagram && (
+                                <a
+                                    href={item.instagram}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <FontAwesomeIcon icon={faInstagram}/>
+                                </a>
+                            )}
+                        </Fragment>
+                    ))}
                 </div>
             </div>
         </div>

@@ -1,7 +1,8 @@
 import { FunctionComponent, Fragment } from 'react'
 import Moment from 'react-moment'
+import { ExperienceDto } from '../../types/api'
 
-type Props = { experience: any }
+type Props = { experience: ExperienceDto }
 
 const ProfileExperience: FunctionComponent<Props> = ({
     experience: { company, title, to, from, description },
@@ -10,7 +11,7 @@ const ProfileExperience: FunctionComponent<Props> = ({
         <Fragment>
             <h5 className="card-title">{company}</h5>
             <p className="card-text">
-                <Moment format="YYYY/MM/DD">{from}</Moment> -{' '}
+                {from && <Moment format="YYYY/MM/DD">{from}</Moment>} -{' '}
                 {!to ? 'Now' : <Moment format="YYYY/MM/DD">{to}</Moment>}
             </p>
             <p className="card-text">

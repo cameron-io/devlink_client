@@ -6,7 +6,7 @@ import { getProfiles } from '../../redux/dispatchers/profile'
 import ProfileItem from '../../components/profiles/ProfileItem'
 import Spinner from '../../components/layout/Spinner'
 import { RootState } from '../../redux/store'
-import { Profile } from '../../types/common'
+import { ProfileDto } from '../../types/api'
 
 type Props = { profileData: any; getProfiles: any }
 
@@ -30,7 +30,7 @@ const Profiles: FunctionComponent<Props> = ({
                         Browse and connect with developers
                     </p>
                     {profiles.length > 0 ? (
-                        profiles.map((profile: Profile) => (
+                        profiles.map((profile: ProfileDto) => (
                             <ProfileItem
                                 key={profile.id}
                                 profile={profile}

@@ -1,11 +1,11 @@
 import { Fragment, FunctionComponent } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
-import { Profile } from '../../types/common'
+import { ProfileDto } from '../../types/api'
 import ProfileEducation from '../../components/profile/ProfileEducation'
 import ProfileExperience from '../../components/profile/ProfileExperience'
 
-type Props = { profile: Profile }
+type Props = { profile: ProfileDto }
 
 const ProfileAbout: FunctionComponent<Props> = ({
     profile: {
@@ -36,7 +36,7 @@ const ProfileAbout: FunctionComponent<Props> = ({
                 <div className="card-body">
                     <div className='container'>
                         <div className='row'>
-                            {skills.map((skill: string, index: number) => (
+                            {skills && skills.map((skill: string, index: number) => (
                                 <div className='col' key={index}>
                                     <FontAwesomeIcon icon={faCheck} className='me-2'/>{skill}
                                 </div>
@@ -49,7 +49,7 @@ const ProfileAbout: FunctionComponent<Props> = ({
         <div className="card mt-4">
             <h5 className="card-header">Experience</h5>
             <div className="card-body">
-                {experience.length > 0 ? (
+                {experience && experience.length > 0 ? (
                     <Fragment>
                         {experience.map(
                             (experience: any) => (
@@ -68,7 +68,7 @@ const ProfileAbout: FunctionComponent<Props> = ({
         <div className="card mt-4">
             <h5 className="card-header">Education</h5>
             <div className="card-body">
-                {education.length > 0 ? (
+                {education && education.length > 0 ? (
                     <Fragment>
                         {education.map(
                             (education: any) => (

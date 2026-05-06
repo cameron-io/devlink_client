@@ -656,7 +656,7 @@ export interface components {
             gitHubUsername?: string | null;
             experience?: components["schemas"]["ExperienceDto"][] | null;
             education?: components["schemas"]["EducationDto"][] | null;
-            social?: components["schemas"]["SocialDto"][] | null;
+            social?: components["schemas"]["SocialDto"];
             user?: components["schemas"]["UserDto2"];
         };
         RegisterDto: {
@@ -670,7 +670,7 @@ export interface components {
             facebook?: string | null;
             linkedIn?: string | null;
             instagram?: string | null;
-        };
+        } | null;
         UserDto: {
             /** Format: int32 */
             id?: number;

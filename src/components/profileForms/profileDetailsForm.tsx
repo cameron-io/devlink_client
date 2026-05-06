@@ -6,10 +6,11 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faInstagram, faLinkedin, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { createProfile, getCurrentProfile } from '../../redux/dispatchers/profile'
 import { RootState } from '../../redux/store'
+import { StateProfile } from '../../types/common'
 
 type Props = {
     createProfile: any;
-    profileData: any;
+    profileData: StateProfile;
     getCurrentProfile: any
 }
 
@@ -27,11 +28,13 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
         skills: '',
         gitHubUsername: '',
         bio: '',
-        twitter: '',
-        facebook: '',
-        linkedin: '',
-        youtube: '',
-        instagram: '',
+        social: {
+            twitter: '',
+            facebook: '',
+            linkedIn: '',
+            youTube: '',
+            instagram: '',
+        },
     })
 
     const [displaySocialInputs, toggleSocialInputs] = useState(false)
@@ -44,11 +47,7 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
         skills,
         gitHubUsername,
         bio,
-        twitter,
-        facebook,
-        linkedin,
-        youtube,
-        instagram,
+        social
     } = formData
 
     if (profileData.profile) {
@@ -60,31 +59,34 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
                 website: loading || !profile.website ? '' : profile.website,
                 location: loading || !profile.location ? '' : profile.location,
                 status: loading || !profile.status ? '' : profile.status,
-                skills: loading || !profile.skills ? '' : profile.skills,
+                skills: loading || !profile.skills ? '' : Array.isArray(profile.skills) ? profile.skills.join(', ') : profile.skills,
                 gitHubUsername: loading || !profile.gitHubUsername ? '' : profile.gitHubUsername,
                 bio: loading || !profile.bio ? '' : profile.bio,
-                twitter: loading || !profile.social ? '' : profile.twitter,
-                facebook: loading || !profile.social ? '' : profile.facebook,
-                linkedin: loading || !profile.social ? '' : profile.linkedin,
-                youtube: loading || !profile.social ? '' : profile.youtube,
-                instagram: loading || !profile.social ? '' : profile.instagram,
+                social: loading || !profile.social ? {
+                    twitter: '',
+                    facebook: '',
+                    linkedIn: '',
+                    youTube: '',
+                    instagram: '',
+                } : {
+                    twitter: profile.social?.twitter || '',
+                    facebook: profile.social?.facebook || '',
+                    linkedIn: profile.social?.linkedIn || '',
+                    youTube: profile.social?.youTube || '',
+                    instagram: profile.social?.instagram || '',
+                },
             })
         }, [
             loading,
             getCurrentProfile,
-            profile.bio,
             profile.company,
-            profile.facebook,
-            profile.gitHubUsername,
-            profile.instagram,
-            profile.linkedin,
-            profile.location,
-            profile.skills,
-            profile.social,
-            profile.status,
-            profile.twitter,
             profile.website,
-            profile.youtube,
+            profile.location,
+            profile.status,
+            profile.skills,
+            profile.gitHubUsername,
+            profile.bio,
+            profile.social,
         ])
     }
 
@@ -93,7 +95,20 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
             | React.ChangeEvent<HTMLInputElement>
             | React.ChangeEvent<HTMLTextAreaElement>
             | React.ChangeEvent<HTMLSelectElement>
-    ) => setFormData({ ...formData, [e.target.name]: e.target.value })
+    ) => {
+        if (e.target.name.startsWith('social.')) {
+            const socialField = e.target.name.split('.')[1]
+            setFormData({
+                ...formData,
+                social: {
+                    ...formData.social,
+                    [socialField]: e.target.value,
+                },
+            })
+        } else {
+            setFormData({ ...formData, [e.target.name]: e.target.value })
+        }
+    }
 
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
@@ -242,8 +257,8 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
                                             className='mx-3 rounded'
                                             type="text"
                                             placeholder="Twitter URL"
-                                            name="twitter"
-                                            defaultValue={twitter}
+                                            name="social.twitter"
+                                            defaultValue={social.twitter}
                                             onChange={(e) => onChange(e)}
                                         />
                                         <FontAwesomeIcon icon={faXTwitter}/>
@@ -254,8 +269,8 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
                                             className='mx-3 rounded'
                                             type="text"
                                             placeholder="Facebook URL"
-                                            name="facebook"
-                                            defaultValue={facebook}
+                                            name="social.facebook"
+                                            defaultValue={social.facebook}
                                             onChange={(e) => onChange(e)}
                                         />
                                         <FontAwesomeIcon icon={faFacebook}/>
@@ -266,8 +281,8 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
                                             className='mx-3 rounded'
                                             type="text"
                                             placeholder="YouTube URL"
-                                            name="youtube"
-                                            defaultValue={youtube}
+                                            name="social.youTube"
+                                            defaultValue={social.youTube}
                                             onChange={(e) => onChange(e)}
                                         />
                                         <FontAwesomeIcon icon={faYoutube}/>
@@ -278,8 +293,8 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
                                             className='mx-3 rounded'
                                             type="text"
                                             placeholder="Linkedin URL"
-                                            name="linkedin"
-                                            defaultValue={linkedin}
+                                            name="social.linkedIn"
+                                            defaultValue={social.linkedIn}
                                             onChange={(e) => onChange(e)}
                                         />
                                         <FontAwesomeIcon icon={faLinkedin}/>
@@ -290,8 +305,8 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
                                             className='mx-3 rounded'
                                             type="text"
                                             placeholder="Instagram URL"
-                                            name="instagram"
-                                            defaultValue={instagram}
+                                            name="social.instagram"
+                                            defaultValue={social.instagram}
                                             onChange={(e) => onChange(e)}
                                         />
                                         <FontAwesomeIcon icon={faInstagram}/>

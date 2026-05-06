@@ -37,7 +37,7 @@ const Profile: FunctionComponent<Props> = ({
                     </Link>
                     {authData.isAuthenticated &&
                         authData.loading === false &&
-                        authData.user!.id === profile.user.id && (
+                        authData.user!.id === profile.user?.id && (
                             <Link to="/edit-profile" className="btn border m-2">
                                 Edit Profile
                             </Link>
@@ -46,7 +46,7 @@ const Profile: FunctionComponent<Props> = ({
                         <div className='row'>
                             <div className='col'>
                                 <ProfileTop profile={profile} />
-                                <ProfileGithub gitHubUsername={profile.gitHubUsername} />
+                                {profile.gitHubUsername && <ProfileGithub gitHubUsername={profile.gitHubUsername} />}
                             </div>
                             <div className='col'>
                                 <ProfileAbout profile={profile} />
