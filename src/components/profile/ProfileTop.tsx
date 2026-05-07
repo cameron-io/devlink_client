@@ -23,7 +23,7 @@ const ProfileTop: FunctionComponent<Props> = ({
             <div>
                 {user && (
                     <Fragment>
-                        <Avatar avatar={user.avatar} size={200}></Avatar>
+                        <Avatar avatar={user.avatar} size={150}></Avatar>
                         <h1 className="my-3">{user.name}</h1>
                     </Fragment>
                 )}

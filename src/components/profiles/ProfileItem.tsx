@@ -21,8 +21,8 @@ const ProfileItem: FunctionComponent<Props> = ({
             {user && (
                 <div className="container border rounded-3 p-4">
                     <div className='row'>
-                        <div className='col me-4' style={{maxWidth: 180}}>
-                            <Avatar avatar={user.avatar} size={180}></Avatar>
+                        <div className='col me-4' style={{maxWidth: 150}}>
+                            <Avatar avatar={user.avatar} size={150}></Avatar>
                         </div>
                         <div className='col border-end'>
                             <div>
