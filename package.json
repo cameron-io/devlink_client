@@ -10,7 +10,7 @@
     "@fortawesome/react-fontawesome": "^3.1.0",
     "@popperjs/core": "^2.11.8",
     "@redux-devtools/extension": "^4.0.0",
-    "@reduxjs/toolkit": "^2.1.0",
+    "@reduxjs/toolkit": "^2.12.0",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.5.2",
