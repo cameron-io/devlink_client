@@ -110,7 +110,7 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
         }
     }
 
-    const onSubmit = (e: React.FormEvent) => {
+    const onSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault()
         // call action
         createProfile(formData, navigate, true)

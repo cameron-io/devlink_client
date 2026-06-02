@@ -5,20 +5,20 @@ import { loginAction } from '../../redux/dispatchers/auth'
 import { RootState } from '../../redux/store'
 
 type Props = {
-    loginAction: (email: string, password: string) => Promise<void>
+    loginAction: (username: string, password: string) => Promise<void>
     isAuthenticated: boolean | null
 }
 
 const Login: FunctionComponent<Props> = ({ loginAction, isAuthenticated }) => {
     // Set login fields in initialState
     const [formData, setFormData] = useState({
-        email: '',
+        username: '',
         password: '',
     })
 
     // Allows to pull fields without formData.name etc
     // To be used in name={*}
-    const { email, password } = formData
+    const { username, password } = formData
 
     // onChange required to allow field input
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,9 +29,9 @@ const Login: FunctionComponent<Props> = ({ loginAction, isAuthenticated }) => {
         }
     }
 
-    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault()
-        loginAction(email, password)
+        loginAction(username, password)
     }
 
     // Redirect if logged in
@@ -54,15 +54,15 @@ const Login: FunctionComponent<Props> = ({ loginAction, isAuthenticated }) => {
                     <form className="form" onSubmit={(e) => onSubmit(e)}>
                         <div className="form-floating mt-4">
                             <input
-                                type="email"
+                                type="username"
                                 className='form-control'
-                                placeholder="Email Address"
-                                name="email"
-                                value={email}
+                                placeholder="Username"
+                                name="username"
+                                value={username}
                                 onChange={(e) => onChange(e)}
                                 required
                             />
-                            <label htmlFor="floatingInput">Email</label>
+                            <label htmlFor="floatingInput">Username</label>
                         </div>
                         <div className="form-floating mt-2">
                             <input

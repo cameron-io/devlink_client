@@ -8,7 +8,7 @@ import { RootState } from '../../redux/store'
 
 type Props = {
     setAlert: any
-    registerAction: (name: string, email: string, password: string) => Promise<void>
+    registerAction: (username: string, email: string, password: string) => Promise<void>
     isAuthenticated: boolean | null
 }
 
@@ -20,7 +20,7 @@ const Register: FunctionComponent<Props> = ({
 }) => {
     // Set registration fields in initialState
     const [formData, setFormData] = useState({
-        name: '',
+        username: '',
         email: '',
         password: '',
         password2: '',
@@ -28,7 +28,7 @@ const Register: FunctionComponent<Props> = ({
 
     // Allows to pull fields without formData.name etc
     // To be used in name={*}
-    const { name, email, password, password2 } = formData
+    const { username, email, password, password2 } = formData
 
     // onChange required to allow field input
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -36,13 +36,13 @@ const Register: FunctionComponent<Props> = ({
         // target is set to direct each input value to all inputs with name='*'
         setFormData({ ...formData, [e.target.name]: e.target.value })
 
-    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (password !== password2) {
             // Call state property
             setAlert('Passwords do not match', 'danger')
         } else {
-            registerAction(name, email, password)
+            registerAction(username, email, password)
         }
     }
 
@@ -61,11 +61,11 @@ const Register: FunctionComponent<Props> = ({
                         <h1 className="h3 mb-3 fw-normal">Account Details</h1>
                         <div className="form-floating mt-4">
                             <input
-                                name="name"
+                                name="username"
                                 className='form-control'
                                 type="text"
-                                placeholder="Name"
-                                value={name}
+                                placeholder="Username"
+                                value={username}
                                 onChange={(e) => onChange(e)}
                             />
                             <label htmlFor="floatingInput">Username</label>

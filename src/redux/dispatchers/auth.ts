@@ -17,7 +17,7 @@ import { AppDispatch } from '../store'
 export const loadUserAction: any = () =>
     async (dispatch: AppDispatch) => {
         try {
-            const res = await axios.get('/api/accounts/info', {
+            const res = await axios.get('/api/accounts/info/', {
                 withCredentials: true,
             })
             dispatch({
@@ -32,7 +32,7 @@ export const loadUserAction: any = () =>
     }
 
 // Register User
-export const registerAction: any = (name: string, email: string, password: string) =>
+export const registerAction: any = (username: string, email: string, password: string) =>
     async (dispatch: AppDispatch) => {
         const config = {
             headers: {
@@ -40,10 +40,10 @@ export const registerAction: any = (name: string, email: string, password: strin
             },
         }
 
-        const body = JSON.stringify({ name, email, password })
+        const body = JSON.stringify({ username, email, password })
 
         try {
-            const res = await axios.post('/api/accounts/register', body, config)
+            const res = await axios.post('/api/accounts/register/', body, config)
 
             dispatch({ type: REGISTER_SUCCESS, payload: res.data })
 
@@ -64,7 +64,7 @@ export const registerAction: any = (name: string, email: string, password: strin
     }
 
 // Login User
-export const loginAction: any = (email: string, password: string) =>
+export const loginAction: any = (username: string, password: string) =>
     async (dispatch: AppDispatch) => {
         const config = {
             headers: {
@@ -72,10 +72,10 @@ export const loginAction: any = (email: string, password: string) =>
             },
         }
 
-        const body = JSON.stringify({ email, password })
+        const body = JSON.stringify({ username, password })
 
         try {
-            await axios.post('/api/accounts/login', body, config)
+            await axios.post('/api/auth/login/', body, config)
 
             dispatch({ type: LOGIN_SUCCESS })
 
@@ -99,7 +99,7 @@ export const loginAction: any = (email: string, password: string) =>
 export const logoutAction: any = () => 
     async (dispatch: AppDispatch) => {
         try {
-            const res = await axios.post('/api/accounts/logout', {
+            const res = await axios.post('/api/auth/logout/', {
                 withCredentials: true,
             })
             if (res.status != 200) throw `Logout failure - ${res.status}`

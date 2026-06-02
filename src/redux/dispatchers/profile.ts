@@ -16,7 +16,7 @@ import { AppDispatch } from '../store'
 export const getCurrentProfile: any = () =>
     async (dispatch: AppDispatch) => {
         try {
-            const res = await axios.get('/api/profiles/me')
+            const res = await axios.get('/api/profiles/me/')
             dispatch({
                 type: GET_PROFILE,
                 payload: res.data,
@@ -39,7 +39,7 @@ export const getProfiles: any = () =>
     async (dispatch: AppDispatch) => {
         dispatch({ type: CLEAR_PROFILE })
         try {
-            const res = await axios.get('/api/profiles')
+            const res = await axios.get('/api/profiles/')
             dispatch({
                 type: GET_PROFILES,
                 payload: res.data,
@@ -61,7 +61,7 @@ export const getProfiles: any = () =>
 export const getProfileById: any = (userId: string) =>
     async (dispatch: AppDispatch) => {
         try {
-            const res = await axios.get(`/api/profiles/user/${userId}`)
+            const res = await axios.get(`/api/profiles/user/${userId}/`)
             dispatch({
                 type: GET_PROFILE,
                 payload: res.data,
@@ -84,7 +84,7 @@ export const getGithubRepos: any = (gitHubUsername: string) =>
     async (dispatch: AppDispatch) => {
         try {
             const res = await axios.get(
-                `/api/profiles/github/${gitHubUsername}`
+                `/api/profiles/github/${gitHubUsername}/`
             )
 
             dispatch({
@@ -120,7 +120,7 @@ export const createProfile: any = (formData: any, navigate: any, edit = false) =
                     .map((skill: string) => skill.trim())
             }
 
-            const res = await axios.post('/api/profiles', formData, config)
+            const res = await axios.post('/api/profiles/', formData, config)
             dispatch({
                 type: GET_PROFILE,
                 payload: res.data,
@@ -207,7 +207,7 @@ export const addEducation: any = (formData: any, navigate: any) =>
             }
 
             const res = await axios.put(
-                '/api/profiles/education',
+                '/api/profiles/education/',
                 formData,
                 config
             )
@@ -245,7 +245,7 @@ export const addEducation: any = (formData: any, navigate: any) =>
 export const deleteExperience: any = (id: number) =>
     async (dispatch: AppDispatch) => {
         try {
-            const res = await axios.delete(`/api/profiles/experience/${id}`)
+            const res = await axios.delete(`/api/profiles/experience/${id}/`)
 
             dispatch({ type: UPDATE_PROFILE, payload: res.data })
 
@@ -267,7 +267,7 @@ export const deleteExperience: any = (id: number) =>
 export const deleteEducation: any = (id: number) =>
     async (dispatch: AppDispatch) => {
         try {
-            const res = await axios.delete(`/api/profiles/education/${id}`)
+            const res = await axios.delete(`/api/profiles/education/${id}/`)
 
             dispatch({ type: UPDATE_PROFILE, payload: res.data })
 
@@ -289,7 +289,7 @@ export const deleteEducation: any = (id: number) =>
 export const deleteAccount: any = () =>
     async (dispatch: AppDispatch) => {
         try {
-            await axios.delete('/api/accounts')
+            await axios.delete('/api/accounts/')
 
             dispatch({ type: CLEAR_PROFILE })
             dispatch({ type: ACCOUNT_DELETED })
