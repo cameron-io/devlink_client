@@ -29,7 +29,7 @@
     "start": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "gen-api-types": "openapi-typescript http://localhost:5000/openapi/v1.json --output src/types/api.ts --root-types --root-types-no-schema-prefix"
+    "gen-api-types": "openapi-typescript http://localhost:8000/api/schema/ --output src/types/api.ts --root-types --root-types-no-schema-prefix"
   },
   "eslintConfig": {
     "extends": "react-app"
