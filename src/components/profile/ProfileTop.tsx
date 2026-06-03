@@ -13,7 +13,7 @@ const ProfileTop: FunctionComponent<Props> = ({
         company,
         location,
         website,
-        gitHubUsername,
+        github_username,
         social,
         user: user,
     },
@@ -32,15 +32,15 @@ const ProfileTop: FunctionComponent<Props> = ({
                 </p>
                 <p>{location && <span>{location}</span>}</p>
                 <div className="my-1">
-                    {gitHubUsername && (
+                    {github_username && (
                         <div>
                             <a
-                                href={'https://github.com/' + gitHubUsername}
+                                href={'https://github.com/' + github_username}
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 <FontAwesomeIcon icon={faGithub} className='me-2'/>
-                                {gitHubUsername}
+                                {github_username}
                             </a>
                         </div>
                     )}

@@ -26,7 +26,7 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
         location: '',
         status: '',
         skills: '',
-        gitHubUsername: '',
+        github_username: '',
         bio: '',
         social: {
             twitter: '',
@@ -45,7 +45,7 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
         location,
         status,
         skills,
-        gitHubUsername,
+        github_username,
         bio,
         social
     } = formData
@@ -60,7 +60,7 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
                 location: loading || !profile.location ? '' : profile.location,
                 status: loading || !profile.status ? '' : profile.status,
                 skills: loading || !profile.skills ? '' : Array.isArray(profile.skills) ? profile.skills.join(', ') : profile.skills,
-                gitHubUsername: loading || !profile.gitHubUsername ? '' : profile.gitHubUsername,
+                github_username: loading || !profile.github_username ? '' : profile.github_username,
                 bio: loading || !profile.bio ? '' : profile.bio,
                 social: loading || !profile.social ? {
                     twitter: '',
@@ -84,7 +84,7 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
             profile.location,
             profile.status,
             profile.skills,
-            profile.gitHubUsername,
+            profile.github_username,
             profile.bio,
             profile.social,
         ])
@@ -214,8 +214,8 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
                                 className='form-control'
                                 type="text"
                                 placeholder="Github Username"
-                                name="gitHubUsername"
-                                defaultValue={gitHubUsername}
+                                name="github_username"
+                                defaultValue={github_username}
                                 onChange={(e) => onChange(e)}
                             />
                             <small className="form-text">

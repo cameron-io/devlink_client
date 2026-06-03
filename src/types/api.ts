@@ -653,7 +653,7 @@ export interface components {
             website?: string | null;
             location?: string | null;
             bio?: string | null;
-            gitHubUsername?: string | null;
+            github_username?: string | null;
             experiences?: components["schemas"]["ExperienceDto"][] | null;
             educations?: components["schemas"]["EducationDto"][] | null;
             social?: components["schemas"]["SocialDto"] | null;

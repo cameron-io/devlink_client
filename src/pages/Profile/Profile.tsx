@@ -46,7 +46,7 @@ const Profile: FunctionComponent<Props> = ({
                         <div className='row'>
                             <div className='col'>
                                 <ProfileTop profile={profile} />
-                                {profile.gitHubUsername && <ProfileGithub gitHubUsername={profile.gitHubUsername} />}
+                                {profile.github_username && <ProfileGithub github_username={profile.github_username} />}
                             </div>
                             <div className='col'>
                                 <ProfileAbout profile={profile} />

@@ -7,18 +7,18 @@ import { getGithubRepos } from '../../redux/dispatchers/profile';
 import Spinner from '../layout/Spinner';
 
 type Props = {
-    gitHubUsername: string,
+    github_username: string,
     getGithubRepos: any,
     repos: Array<any>
 }
 
 const ProfileGithub: FunctionComponent<Props> = ({
-    gitHubUsername,
+    github_username,
     getGithubRepos,
     repos
 }) => {
     useEffect(() => {
-        getGithubRepos(gitHubUsername)
+        getGithubRepos(github_username)
     }, [getGithubRepos])
 
     return (
