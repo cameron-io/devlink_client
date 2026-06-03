@@ -38,7 +38,7 @@ const Dashboard: FunctionComponent<Props> = ({
                 <div className='row'>
                     <p className="col lead">
                         <FontAwesomeIcon icon={faUser} className='me-2'/>
-                        Welcome {user && user.name}
+                        Welcome {user && user.username}
                     </p>
                 </div>
             </div>
@@ -46,10 +46,10 @@ const Dashboard: FunctionComponent<Props> = ({
             {profile && (
                 <div className='container mt-3'>
                     <div className='row'>
-                        <Experience experience={profile.experience!} />
+                        <Experience experiences={profile.experiences!} />
                     </div>
                     <div className='row mt-5'>
-                        <Education education={profile.education!} />
+                        <Education education={profile.educations!} />
                     </div>
                 </div>
             ) || (

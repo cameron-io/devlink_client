@@ -164,7 +164,7 @@ export const addExperience: any = (formData: any, navigate: any) =>
             }
 
             const res = await axios.put(
-                '/api/profiles/experience',
+                '/api/profiles/experience/',
                 formData,
                 config
             )

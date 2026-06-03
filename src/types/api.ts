@@ -623,7 +623,7 @@ export interface components {
             id?: number;
             school: string | null;
             degree: string | null;
-            fieldOfStudy: string | null;
+            field_of_study: string | null;
             from: string | null;
             to?: string | null;
             current?: boolean;
@@ -654,9 +654,9 @@ export interface components {
             location?: string | null;
             bio?: string | null;
             gitHubUsername?: string | null;
-            experience?: components["schemas"]["ExperienceDto"][] | null;
-            education?: components["schemas"]["EducationDto"][] | null;
-            social?: components["schemas"]["SocialDto"];
+            experiences?: components["schemas"]["ExperienceDto"][] | null;
+            educations?: components["schemas"]["EducationDto"][] | null;
+            social?: components["schemas"]["SocialDto"] | null;
             user?: components["schemas"]["UserDto2"];
         };
         RegisterDto: {
@@ -665,25 +665,23 @@ export interface components {
             password: string | null;
         };
         SocialDto: {
-            youTube?: string | null;
+            youtube?: string | null;
             twitter?: string | null;
             facebook?: string | null;
-            linkedIn?: string | null;
+            linkedin?: string | null;
             instagram?: string | null;
         } | null;
         UserDto: {
             /** Format: int32 */
             id?: number;
             email: string | null;
-            name: string | null;
-            avatar?: string | null;
+            username: string | null;
         };
         UserDto2: {
             /** Format: int32 */
             id?: number;
             email: string | null;
-            name: string | null;
-            avatar?: string | null;
+            username: string | null;
         } | null;
     };
     responses: never;

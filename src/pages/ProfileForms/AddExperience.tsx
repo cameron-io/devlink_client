@@ -13,15 +13,15 @@ const AddExperience: FunctionComponent<Props> = ({ addExperience }) => {
         company: '',
         title: '',
         location: '',
-        from: '',
-        to: '',
+        from_date: '',
+        to_date: null,
         current: false,
         description: '',
     })
 
     const [toDateDisabled, toggleDisabled] = useState(false)
 
-    const { company, title, location, from, to, current, description } =
+    const { company, title, location, from_date, to_date, current, description } =
         formData
 
     const onChange = (
@@ -92,8 +92,8 @@ const AddExperience: FunctionComponent<Props> = ({ addExperience }) => {
                             <input
                                 className='form-control'
                                 type="date"
-                                name="from"
-                                value={from}
+                                name="from_date"
+                                value={from_date}
                                 onChange={(e) => onChange(e)}
                             />
                         </div>
@@ -118,8 +118,8 @@ const AddExperience: FunctionComponent<Props> = ({ addExperience }) => {
                             <input
                                 className='form-control'
                                 type="date"
-                                name="to"
-                                value={to}
+                                name="to_date"
+                                value={to_date == null ? '' : to_date}
                                 onChange={(e) => onChange(e)}
                                 disabled={toDateDisabled}
                             />

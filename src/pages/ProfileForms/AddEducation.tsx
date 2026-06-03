@@ -12,16 +12,16 @@ const AddEducation: FunctionComponent<Props> = ({ addEducation }) => {
     const [formData, setFormData] = useState({
         school: '',
         degree: '',
-        fieldofstudy: '',
-        from: '',
-        to: '',
+        field_of_study: '',
+        from_date: '',
+        to_date: null,
         current: false,
         description: '',
     })
 
     const [toDateDisabled, toggleDisabled] = useState(false)
 
-    const { school, degree, fieldofstudy, from, to, current, description } =
+    const { school, degree, field_of_study, from_date, to_date, current, description } =
         formData
 
     const onChange = (
@@ -81,8 +81,8 @@ const AddEducation: FunctionComponent<Props> = ({ addEducation }) => {
                                 className='form-control'
                                 type="text"
                                 placeholder="Field of Study"
-                                name="fieldofstudy"
-                                value={fieldofstudy}
+                                name="field_of_study"
+                                value={field_of_study}
                                 onChange={(e) => onChange(e)}
                             />
                             <label htmlFor="floatingInput">Field of Study</label>
@@ -92,8 +92,8 @@ const AddEducation: FunctionComponent<Props> = ({ addEducation }) => {
                             <input
                                 className='form-control'
                                 type="date"
-                                name="from"
-                                value={from}
+                                name="from_date"
+                                value={from_date}
                                 onChange={(e) => onChange(e)}
                             />
                         </div>
@@ -118,8 +118,8 @@ const AddEducation: FunctionComponent<Props> = ({ addEducation }) => {
                             <input
                                 className='form-control'
                                 type="date"
-                                name="to"
-                                value={to}
+                                name="to_date"
+                                value={to_date == null ? '' : to_date}
                                 onChange={(e) => onChange(e)}
                                 disabled={toDateDisabled}
                             />

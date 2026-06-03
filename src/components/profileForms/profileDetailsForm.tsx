@@ -71,8 +71,8 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
                 } : {
                     twitter: profile.social?.twitter || '',
                     facebook: profile.social?.facebook || '',
-                    linkedIn: profile.social?.linkedIn || '',
-                    youTube: profile.social?.youTube || '',
+                    linkedIn: profile.social?.linkedin || '',
+                    youTube: profile.social?.youtube || '',
                     instagram: profile.social?.instagram || '',
                 },
             })

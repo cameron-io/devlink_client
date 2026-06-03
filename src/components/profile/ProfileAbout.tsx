@@ -10,8 +10,8 @@ type Props = { profile: ProfileDto }
 const ProfileAbout: FunctionComponent<Props> = ({
     profile: {
         bio,
-        education,
-        experience,
+        educations,
+        experiences,
         skills,
     },
 }) => (
@@ -49,9 +49,9 @@ const ProfileAbout: FunctionComponent<Props> = ({
         <div className="card mt-4">
             <h5 className="card-header">Experience</h5>
             <div className="card-body">
-                {experience && experience.length > 0 ? (
+                {experiences && experiences.length > 0 ? (
                     <Fragment>
-                        {experience.map(
+                        {experiences.map(
                             (experience: any) => (
                                 <ProfileExperience
                                     key={experience.id}
@@ -68,9 +68,9 @@ const ProfileAbout: FunctionComponent<Props> = ({
         <div className="card mt-4">
             <h5 className="card-header">Education</h5>
             <div className="card-body">
-                {education && education.length > 0 ? (
+                {educations && educations.length > 0 ? (
                     <Fragment>
-                        {education.map(
+                        {educations.map(
                             (education: any) => (
                                 <ProfileEducation
                                     key={education.id}

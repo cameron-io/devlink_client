@@ -8,18 +8,18 @@ import { faBlackTie } from '@fortawesome/free-brands-svg-icons'
 import { deleteExperience } from '../../redux/dispatchers/profile'
 
 type Props = {
-    experience?: any[]
+    experiences?: any[]
     deleteExperience: (id: number) => Promise<void>
 }
 
 const Experience: FunctionComponent<Props> = ({
-    experience,
+    experiences,
     deleteExperience,
 }) => {
     return (
         <Fragment>
             <h2 className="my2">Experience Credentials</h2>
-            {experience == null || experience.length == 0 ?
+            {experiences == null || experiences.length == 0 ?
                 (
                     <p>No Entries.</p>
                 ) : (
@@ -35,13 +35,13 @@ const Experience: FunctionComponent<Props> = ({
                             </tr>
                         </thead>
                         <tbody>
-                            {experience.map((exp: any) => (
+                            {experiences.map((exp: any) => (
                                 <tr key={exp.id}>
                                     <td>{exp.company}</td>
                                     <td>{exp.title}</td>
-                                    <td><Moment format="YYYY/MM/DD">{exp.from}</Moment></td>
+                                    <td><Moment format="YYYY/MM/DD">{exp.from_date}</Moment></td>
                                     <td>
-                                        {exp.to === null ?
+                                        {exp.to_date === null ?
                                             (
                                                 'Now'
                                             ) : (
