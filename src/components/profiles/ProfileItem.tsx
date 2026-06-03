@@ -3,9 +3,9 @@ import { Fragment, FunctionComponent } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import Avatar from '../../components/profile/ProfileAvatar'
-import { ProfileDto } from '../../types/api'
+import { ProfileDetail } from '../../types/api'
 
-type Props = { profile: ProfileDto }
+type Props = { profile: ProfileDetail }
 
 const ProfileItem: FunctionComponent<Props> = ({
     profile: {
@@ -26,7 +26,7 @@ const ProfileItem: FunctionComponent<Props> = ({
                         </div>
                         <div className='col border-end'>
                             <div>
-                                <h2>{user.name}</h2>
+                                <h2>{user.username}</h2>
                                 <p>{status} {company && <span> @ {company}</span>}</p>
                                 <p>{location && <span>{location}</span>}</p>
                                 <Link to={`/profile/${user.id}`} className="btn btn-primary">

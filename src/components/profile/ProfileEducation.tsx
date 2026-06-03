@@ -1,8 +1,8 @@
 import { FunctionComponent, Fragment } from 'react'
 import Moment from 'react-moment'
-import { EducationDto } from '../../types/api'
+import { Education } from '../../types/api'
 
-type Props = { education: EducationDto }
+type Props = { education: Education }
 
 const ProfileEducation: FunctionComponent<Props> = ({
     education: { school, degree, to, from, description },

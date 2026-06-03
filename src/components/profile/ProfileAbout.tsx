@@ -1,11 +1,11 @@
 import { Fragment, FunctionComponent } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
-import { ProfileDto } from '../../types/api'
+import { ProfileDetail } from '../../types/api'
 import ProfileEducation from '../../components/profile/ProfileEducation'
 import ProfileExperience from '../../components/profile/ProfileExperience'
 
-type Props = { profile: ProfileDto }
+type Props = { profile: ProfileDetail }
 
 const ProfileAbout: FunctionComponent<Props> = ({
     profile: {

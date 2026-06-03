@@ -59,7 +59,7 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
                 website: loading || !profile.website ? '' : profile.website,
                 location: loading || !profile.location ? '' : profile.location,
                 status: loading || !profile.status ? '' : profile.status,
-                skills: loading || !profile.skills ? '' : Array.isArray(profile.skills) ? profile.skills.join(', ') : profile.skills,
+                skills: loading || !profile.skills ? '' : profile.skills.join(', '),
                 github_username: loading || !profile.github_username ? '' : profile.github_username,
                 bio: loading || !profile.bio ? '' : profile.bio,
                 social: loading || !profile.social ? {

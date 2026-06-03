@@ -1,9 +1,9 @@
-import { UserDto, ProfileDto } from './api'
+import { User, ProfileDetail } from './api'
 
 export interface StateProfile {
-    profile: ProfileDto | null
+    profile: ProfileDetail | null
     loading: boolean
-    profiles: ProfileDto[]
+    profiles: ProfileDetail[]
     repos: any[]
     error: any
 }
@@ -11,5 +11,5 @@ export interface StateProfile {
 export interface StateAuth {
     isAuthenticated: boolean | null
     loading: boolean
-    user: UserDto | null
+    user: User | null
 }

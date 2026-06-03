@@ -4,35 +4,14 @@
  */
 
 export interface paths {
-    "/api/accounts/info": {
+    "/api/accounts/info/": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["UserDto"];
-                        "application/json": components["schemas"]["UserDto"];
-                        "text/json": components["schemas"]["UserDto"];
-                    };
-                };
-            };
-        };
+        get: operations["accounts_info_retrieve"];
         put?: never;
         post?: never;
         delete?: never;
@@ -41,7 +20,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/accounts/login": {
+    "/api/accounts/register/": {
         parameters: {
             query?: never;
             header?: never;
@@ -50,41 +29,14 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": components["schemas"]["LoginDto"];
-                    "text/json": components["schemas"]["LoginDto"];
-                    "application/*+json": components["schemas"]["LoginDto"];
-                };
-            };
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["UserDto"];
-                        "application/json": components["schemas"]["UserDto"];
-                        "text/json": components["schemas"]["UserDto"];
-                    };
-                };
-            };
-        };
+        post: operations["accounts_register_create"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/api/accounts/logout": {
+    "/api/auth/login/": {
         parameters: {
             query?: never;
             header?: never;
@@ -93,31 +45,23 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
+        /**
+         * @description Check the credentials and return the REST Token
+         *     if the credentials are valid and authenticated.
+         *     Calls Django Auth login method to register User ID
+         *     in Django session framework
+         *
+         *     Accept the following POST parameters: username, password
+         *     Return the REST Framework Token Object's key.
+         */
+        post: operations["auth_login_create"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/api/accounts/register": {
+    "/api/auth/logout/": {
         parameters: {
             query?: never;
             header?: never;
@@ -126,80 +70,20 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": components["schemas"]["RegisterDto"];
-                    "text/json": components["schemas"]["RegisterDto"];
-                    "application/*+json": components["schemas"]["RegisterDto"];
-                };
-            };
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["UserDto"];
-                        "application/json": components["schemas"]["UserDto"];
-                        "text/json": components["schemas"]["UserDto"];
-                    };
-                };
-            };
-        };
+        /**
+         * @description Calls Django logout method and delete the Token object
+         *     assigned to the current User object.
+         *
+         *     Accepts/Returns nothing.
+         */
+        post: operations["auth_logout_create"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/api/accounts/emailexists": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: {
-            parameters: {
-                query?: {
-                    email?: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": boolean;
-                        "application/json": boolean;
-                        "text/json": boolean;
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/accounts": {
+    "/api/auth/password/change/": {
         parameters: {
             query?: never;
             header?: never;
@@ -208,249 +92,20 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        post?: never;
-        delete: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": boolean;
-                        "application/json": boolean;
-                        "text/json": boolean;
-                    };
-                };
-            };
-        };
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/profiles": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["ProfileDto"][];
-                        "application/json": components["schemas"]["ProfileDto"][];
-                        "text/json": components["schemas"]["ProfileDto"][];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": components["schemas"]["ProfileDto"];
-                    "text/json": components["schemas"]["ProfileDto"];
-                    "application/*+json": components["schemas"]["ProfileDto"];
-                };
-            };
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["ProfileDto"];
-                        "application/json": components["schemas"]["ProfileDto"];
-                        "text/json": components["schemas"]["ProfileDto"];
-                    };
-                };
-            };
-        };
+        /**
+         * @description Calls Django Auth SetPasswordForm save method.
+         *
+         *     Accepts the following POST parameters: new_password1, new_password2
+         *     Returns the success/fail message.
+         */
+        post: operations["auth_password_change_create"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/api/profiles/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: number;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["ProfileDto"];
-                        "application/json": components["schemas"]["ProfileDto"];
-                        "text/json": components["schemas"]["ProfileDto"];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/profiles/user/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: number;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["ProfileDto"];
-                        "application/json": components["schemas"]["ProfileDto"];
-                        "text/json": components["schemas"]["ProfileDto"];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/profiles/me": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["ProfileDto"];
-                        "application/json": components["schemas"]["ProfileDto"];
-                        "text/json": components["schemas"]["ProfileDto"];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/profiles/github/{username}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    username: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/profiles/experience": {
+    "/api/auth/password/reset/": {
         parameters: {
             query?: never;
             header?: never;
@@ -458,42 +113,21 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": components["schemas"]["ExperienceDto"];
-                    "text/json": components["schemas"]["ExperienceDto"];
-                    "application/*+json": components["schemas"]["ExperienceDto"];
-                };
-            };
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["ProfileDto"];
-                        "application/json": components["schemas"]["ProfileDto"];
-                        "text/json": components["schemas"]["ProfileDto"];
-                    };
-                };
-            };
-        };
-        post?: never;
+        put?: never;
+        /**
+         * @description Calls Django Auth PasswordResetForm save method.
+         *
+         *     Accepts the following POST parameters: email
+         *     Returns the success/fail message.
+         */
+        post: operations["auth_password_reset_create"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/api/profiles/education": {
+    "/api/auth/password/reset/confirm/": {
         parameters: {
             query?: never;
             header?: never;
@@ -501,34 +135,133 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": components["schemas"]["EducationDto"];
-                    "text/json": components["schemas"]["EducationDto"];
-                    "application/*+json": components["schemas"]["EducationDto"];
-                };
-            };
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["ProfileDto"];
-                        "application/json": components["schemas"]["ProfileDto"];
-                        "text/json": components["schemas"]["ProfileDto"];
-                    };
-                };
-            };
+        put?: never;
+        /**
+         * @description Password reset e-mail link is confirmed, therefore
+         *     this resets the user's password.
+         *
+         *     Accepts the following POST parameters: token, uid,
+         *         new_password1, new_password2
+         *     Returns the success/fail message.
+         */
+        post: operations["auth_password_reset_confirm_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/auth/token/refresh/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
+        get?: never;
+        put?: never;
+        /**
+         * @description Takes a refresh type JSON web token and returns an access type JSON web
+         *     token if the refresh token is valid.
+         */
+        post: operations["auth_token_refresh_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/auth/token/verify/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * @description Takes a token and indicates if it is valid.  This view provides no
+         *     information about a token's fitness for a particular use.
+         */
+        post: operations["auth_token_verify_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/auth/user/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * @description Reads and updates UserModel fields
+         *     Accepts GET, PUT, PATCH methods.
+         *
+         *     Default accepted fields: username, first_name, last_name
+         *     Default display fields: pk, username, email, first_name, last_name
+         *     Read-only fields: pk, email
+         *
+         *     Returns UserModel fields.
+         */
+        get: operations["auth_user_retrieve"];
+        /**
+         * @description Reads and updates UserModel fields
+         *     Accepts GET, PUT, PATCH methods.
+         *
+         *     Default accepted fields: username, first_name, last_name
+         *     Default display fields: pk, username, email, first_name, last_name
+         *     Read-only fields: pk, email
+         *
+         *     Returns UserModel fields.
+         */
+        put: operations["auth_user_update"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /**
+         * @description Reads and updates UserModel fields
+         *     Accepts GET, PUT, PATCH methods.
+         *
+         *     Default accepted fields: username, first_name, last_name
+         *     Default display fields: pk, username, email, first_name, last_name
+         *     Read-only fields: pk, email
+         *
+         *     Returns UserModel fields.
+         */
+        patch: operations["auth_user_partial_update"];
+        trace?: never;
+    };
+    "/api/profiles/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["profiles_list"];
+        put?: never;
+        post: operations["profiles_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/profiles/{id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["profiles_retrieve"];
+        put?: never;
         post?: never;
         delete?: never;
         options?: never;
@@ -536,7 +269,39 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/profiles/experience/{id}": {
+    "/api/profiles/education/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["profiles_education_update"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/profiles/experience/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["profiles_experience_update"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/profiles/experience/{id}/": {
         parameters: {
             query?: never;
             header?: never;
@@ -546,69 +311,77 @@ export interface paths {
         get?: never;
         put?: never;
         post?: never;
-        delete: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: number;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["ProfileDto"];
-                        "application/json": components["schemas"]["ProfileDto"];
-                        "text/json": components["schemas"]["ProfileDto"];
-                    };
-                };
-            };
-        };
+        delete: operations["profiles_experience_destroy"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/api/profiles/education/{id}": {
+    "/api/profiles/github/{username}/": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        get?: never;
+        get: operations["profiles_github_retrieve"];
         put?: never;
         post?: never;
-        delete: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: number;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["ProfileDto"];
-                        "application/json": components["schemas"]["ProfileDto"];
-                        "text/json": components["schemas"]["ProfileDto"];
-                    };
-                };
-            };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/profiles/me/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
+        get: operations["profiles_me_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/profiles/user/{user_id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["profiles_user_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/schema/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * @description OpenApi3 schema for this API. Format can be selected via content negotiation.
+         *
+         *     - YAML: application/vnd.oai.openapi
+         *     - JSON: application/vnd.oai.openapi+json
+         */
+        get: operations["schema_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
@@ -618,71 +391,148 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
-        EducationDto: {
-            /** Format: int32 */
-            id?: number;
-            school: string | null;
-            degree: string | null;
-            field_of_study: string | null;
-            from: string | null;
-            to?: string | null;
-            current?: boolean;
-            description?: string | null;
+        Education: {
+            readonly id: number;
+            school: string;
+            degree: string;
+            field_of_study: string;
+            /** Format: date */
+            from_date: string;
+            /** Format: date */
+            to_date?: string | null;
+            /** @default false */
+            current: boolean;
+            description: string;
+            profile: number | null;
         };
-        ExperienceDto: {
-            /** Format: int32 */
-            id?: number;
-            title: string | null;
-            company: string | null;
-            from: string | null;
-            location?: string | null;
-            to?: string | null;
-            current?: boolean;
-            description?: string | null;
+        Experience: {
+            readonly id: number;
+            title: string;
+            company: string;
+            location: string;
+            /** Format: date */
+            from_date: string;
+            /** Format: date */
+            to_date?: string | null;
+            /** @default false */
+            current: boolean;
+            description: string;
+            profile: number | null;
         };
-        LoginDto: {
-            email: string | null;
-            password: string | null;
+        /** @description Serializer for JWT authentication. */
+        JWT: {
+            access: string;
+            refresh: string;
+            user: components["schemas"]["UserDetails"];
         };
-        ProfileDto: {
-            /** Format: int32 */
-            id?: number;
-            status: string | null;
-            skills: string[] | null;
+        Login: {
+            username?: string;
+            /** Format: email */
+            email?: string;
+            password: string;
+        };
+        PasswordChange: {
+            new_password1: string;
+            new_password2: string;
+        };
+        /** @description Serializer for requesting a password reset e-mail. */
+        PasswordReset: {
+            /** Format: email */
+            email: string;
+        };
+        /** @description Serializer for confirming a password reset attempt. */
+        PasswordResetConfirm: {
+            new_password1: string;
+            new_password2: string;
+            uid: string;
+            token: string;
+        };
+        /** @description User model w/o password */
+        PatchedUserDetails: {
+            /** ID */
+            readonly pk?: number;
+            /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
+            username?: string;
+            /**
+             * Email address
+             * Format: email
+             */
+            readonly email?: string;
+            first_name?: string;
+            last_name?: string;
+        };
+        Profile: {
+            readonly id: number;
+            status: string;
+            skills: string[];
+            company?: string;
+            website?: string;
+            location?: string;
+            bio?: string;
+            github_username?: string;
+            user: number | null;
+            /** Format: date-time */
+            readonly created_at: string;
+        };
+        ProfileDetail: {
+            readonly id: number;
+            readonly user: components["schemas"]["User"];
+            readonly experiences: components["schemas"]["Experience"][] | null;
+            readonly educations: components["schemas"]["Education"][] | null;
+            readonly social: components["schemas"]["Social"] | null;
+            status: string;
+            skills?: unknown;
             company?: string | null;
             website?: string | null;
             location?: string | null;
             bio?: string | null;
             github_username?: string | null;
-            experiences?: components["schemas"]["ExperienceDto"][] | null;
-            educations?: components["schemas"]["EducationDto"][] | null;
-            social?: components["schemas"]["SocialDto"] | null;
-            user?: components["schemas"]["UserDto2"];
+            /** Format: date-time */
+            readonly created_at: string;
         };
-        RegisterDto: {
-            name: string | null;
-            email: string | null;
-            password: string | null;
+        RestAuthDetail: {
+            readonly detail: string;
         };
-        SocialDto: {
+        Social: {
+            readonly id: number;
             youtube?: string | null;
             twitter?: string | null;
             facebook?: string | null;
             linkedin?: string | null;
             instagram?: string | null;
-        } | null;
-        UserDto: {
-            /** Format: int32 */
-            id?: number;
-            email: string | null;
-            username: string | null;
+            profile: number | null;
         };
-        UserDto2: {
-            /** Format: int32 */
-            id?: number;
-            email: string | null;
-            username: string | null;
-        } | null;
+        TokenRefresh: {
+            readonly access: string;
+            refresh: string;
+        };
+        TokenVerify: {
+            token: string;
+        };
+        User: {
+            readonly id: number;
+            username: string;
+            /** Format: email */
+            email: string;
+            avatar?: string;
+            password: string;
+            /** Format: date-time */
+            readonly created_at: string;
+        };
+        /** @description User model w/o password */
+        UserDetails: {
+            /** ID */
+            readonly pk: number;
+            /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
+            username: string;
+            /**
+             * Email address
+             * Format: email
+             */
+            readonly email: string;
+            first_name?: string;
+            last_name?: string;
+        };
     };
     responses: never;
     parameters: never;
@@ -690,13 +540,533 @@ export interface components {
     headers: never;
     pathItems: never;
 }
-export type EducationDto = components['schemas']['EducationDto'];
-export type ExperienceDto = components['schemas']['ExperienceDto'];
-export type LoginDto = components['schemas']['LoginDto'];
-export type ProfileDto = components['schemas']['ProfileDto'];
-export type RegisterDto = components['schemas']['RegisterDto'];
-export type SocialDto = components['schemas']['SocialDto'];
-export type UserDto = components['schemas']['UserDto'];
-export type UserDto2 = components['schemas']['UserDto2'];
+export type Education = components['schemas']['Education'];
+export type Experience = components['schemas']['Experience'];
+export type Jwt = components['schemas']['JWT'];
+export type Login = components['schemas']['Login'];
+export type PasswordChange = components['schemas']['PasswordChange'];
+export type PasswordReset = components['schemas']['PasswordReset'];
+export type PasswordResetConfirm = components['schemas']['PasswordResetConfirm'];
+export type PatchedUserDetails = components['schemas']['PatchedUserDetails'];
+export type Profile = components['schemas']['Profile'];
+export type ProfileDetail = components['schemas']['ProfileDetail'];
+export type RestAuthDetail = components['schemas']['RestAuthDetail'];
+export type Social = components['schemas']['Social'];
+export type TokenRefresh = components['schemas']['TokenRefresh'];
+export type TokenVerify = components['schemas']['TokenVerify'];
+export type User = components['schemas']['User'];
+export type UserDetails = components['schemas']['UserDetails'];
 export type $defs = Record<string, never>;
-export type operations = Record<string, never>;
+export interface operations {
+    accounts_info_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["User"];
+                };
+            };
+        };
+    };
+    accounts_register_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["User"];
+                "application/x-www-form-urlencoded": components["schemas"]["User"];
+                "multipart/form-data": components["schemas"]["User"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["User"];
+                };
+            };
+        };
+    };
+    auth_login_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Login"];
+                "application/x-www-form-urlencoded": components["schemas"]["Login"];
+                "multipart/form-data": components["schemas"]["Login"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["JWT"];
+                };
+            };
+        };
+    };
+    auth_logout_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RestAuthDetail"];
+                };
+            };
+        };
+    };
+    auth_password_change_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PasswordChange"];
+                "application/x-www-form-urlencoded": components["schemas"]["PasswordChange"];
+                "multipart/form-data": components["schemas"]["PasswordChange"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RestAuthDetail"];
+                };
+            };
+        };
+    };
+    auth_password_reset_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PasswordReset"];
+                "application/x-www-form-urlencoded": components["schemas"]["PasswordReset"];
+                "multipart/form-data": components["schemas"]["PasswordReset"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RestAuthDetail"];
+                };
+            };
+        };
+    };
+    auth_password_reset_confirm_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PasswordResetConfirm"];
+                "application/x-www-form-urlencoded": components["schemas"]["PasswordResetConfirm"];
+                "multipart/form-data": components["schemas"]["PasswordResetConfirm"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RestAuthDetail"];
+                };
+            };
+        };
+    };
+    auth_token_refresh_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TokenRefresh"];
+                "application/x-www-form-urlencoded": components["schemas"]["TokenRefresh"];
+                "multipart/form-data": components["schemas"]["TokenRefresh"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TokenRefresh"];
+                };
+            };
+        };
+    };
+    auth_token_verify_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TokenVerify"];
+                "application/x-www-form-urlencoded": components["schemas"]["TokenVerify"];
+                "multipart/form-data": components["schemas"]["TokenVerify"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TokenVerify"];
+                };
+            };
+        };
+    };
+    auth_user_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserDetails"];
+                };
+            };
+        };
+    };
+    auth_user_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UserDetails"];
+                "application/x-www-form-urlencoded": components["schemas"]["UserDetails"];
+                "multipart/form-data": components["schemas"]["UserDetails"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserDetails"];
+                };
+            };
+        };
+    };
+    auth_user_partial_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["PatchedUserDetails"];
+                "application/x-www-form-urlencoded": components["schemas"]["PatchedUserDetails"];
+                "multipart/form-data": components["schemas"]["PatchedUserDetails"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserDetails"];
+                };
+            };
+        };
+    };
+    profiles_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Profile"][];
+                };
+            };
+        };
+    };
+    profiles_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Profile"];
+                "application/x-www-form-urlencoded": components["schemas"]["Profile"];
+                "multipart/form-data": components["schemas"]["Profile"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProfileDetail"];
+                };
+            };
+        };
+    };
+    profiles_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProfileDetail"];
+                };
+            };
+        };
+    };
+    profiles_education_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Education"];
+                "application/x-www-form-urlencoded": components["schemas"]["Education"];
+                "multipart/form-data": components["schemas"]["Education"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProfileDetail"];
+                };
+            };
+        };
+    };
+    profiles_experience_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Experience"];
+                "application/x-www-form-urlencoded": components["schemas"]["Experience"];
+                "multipart/form-data": components["schemas"]["Experience"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProfileDetail"];
+                };
+            };
+        };
+    };
+    profiles_experience_destroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProfileDetail"];
+                };
+            };
+        };
+    };
+    profiles_github_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                username: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No response body */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    profiles_me_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProfileDetail"];
+                };
+            };
+        };
+    };
+    profiles_user_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                user_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProfileDetail"];
+                };
+            };
+        };
+    };
+    schema_retrieve: {
+        parameters: {
+            query?: {
+                format?: "json" | "yaml";
+                lang?: "af" | "ar" | "ar-dz" | "ast" | "az" | "be" | "bg" | "bn" | "br" | "bs" | "ca" | "ckb" | "cs" | "cy" | "da" | "de" | "dsb" | "el" | "en" | "en-au" | "en-gb" | "eo" | "es" | "es-ar" | "es-co" | "es-mx" | "es-ni" | "es-ve" | "et" | "eu" | "fa" | "fi" | "fr" | "fy" | "ga" | "gd" | "gl" | "he" | "hi" | "hr" | "hsb" | "ht" | "hu" | "hy" | "ia" | "id" | "ig" | "io" | "is" | "it" | "ja" | "ka" | "kab" | "kk" | "km" | "kn" | "ko" | "ky" | "lb" | "lt" | "lv" | "mk" | "ml" | "mn" | "mr" | "ms" | "my" | "nb" | "ne" | "nl" | "nn" | "os" | "pa" | "pl" | "pt" | "pt-br" | "ro" | "ru" | "sk" | "sl" | "sq" | "sr" | "sr-latn" | "sv" | "sw" | "ta" | "te" | "tg" | "th" | "tk" | "tr" | "tt" | "udm" | "ug" | "uk" | "ur" | "uz" | "vi" | "zh-hans" | "zh-hant";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/vnd.oai.openapi": {
+                        [key: string]: unknown;
+                    };
+                    "application/yaml": {
+                        [key: string]: unknown;
+                    };
+                    "application/vnd.oai.openapi+json": {
+                        [key: string]: unknown;
+                    };
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+        };
+    };
+}

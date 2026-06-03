@@ -2,10 +2,10 @@ import { Fragment, FunctionComponent } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGlobe } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faGithub, faInstagram, faLinkedin, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
-import { ProfileDto } from '../../types/api'
+import { ProfileDetail } from '../../types/api'
 import Avatar from './ProfileAvatar'
 
-type Props = { profile: ProfileDto }
+type Props = { profile: ProfileDetail }
 
 const ProfileTop: FunctionComponent<Props> = ({
     profile: {
@@ -24,7 +24,7 @@ const ProfileTop: FunctionComponent<Props> = ({
                 {user && (
                     <Fragment>
                         <Avatar avatar={user.avatar} size={150}></Avatar>
-                        <h1 className="my-3">{user.name}</h1>
+                        <h1 className="my-3">{user.username}</h1>
                     </Fragment>
                 )}
                 <p className="lead">
