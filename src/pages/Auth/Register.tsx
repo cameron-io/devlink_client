@@ -1,23 +1,14 @@
 import { Fragment, FunctionComponent, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
-// Redux
-import { connect } from 'react-redux'
-import { setAlert } from '../../redux/dispatchers/alert'
-import { registerAction } from '../../redux/dispatchers/auth'
-import { RootState } from '../../redux/store'
+import { useAuthStore, useAlertStore } from '../../stores'
 
-type Props = {
-    setAlert: any
-    registerAction: (name: string, email: string, password: string) => Promise<void>
-    isAuthenticated: boolean | null
-}
+type Props = {}
 
 // Call setAlert from state properties
-const Register: FunctionComponent<Props> = ({
-    setAlert,
-    registerAction,
-    isAuthenticated,
-}) => {
+const Register: FunctionComponent<Props> = () => {
+    const isAuthenticated = useAuthStore((state) => state.isAuthenticated)
+    const register = useAuthStore((state) => state.register)
+    const setAlert = useAlertStore((state) => state.setAlert)
     // Set registration fields in initialState
     const [formData, setFormData] = useState({
         name: '',
@@ -39,10 +30,9 @@ const Register: FunctionComponent<Props> = ({
     const onSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (password !== password2) {
-            // Call state property
             setAlert('Passwords do not match', 'danger')
         } else {
-            registerAction(name, email, password)
+            register(name, email, password)
         }
     }
 
@@ -118,9 +108,4 @@ const Register: FunctionComponent<Props> = ({
     )
 }
 
-const mapStateToProps = (state: RootState) => ({
-    isAuthenticated: state.auth.isAuthenticated,
-})
-
-// Export the action in order to map it to state properties
-export default connect(mapStateToProps, { setAlert, registerAction })(Register)
+export default Register

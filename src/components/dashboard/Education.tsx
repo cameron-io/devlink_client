@@ -1,20 +1,16 @@
 import { Fragment, FunctionComponent } from 'react'
 import Moment from 'react-moment'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
-import { deleteEducation } from '../../redux/dispatchers/profile'
+import { useProfileStore } from '../../stores'
 
 type Props = {
     education?: any[]
-    deleteEducation: (id: number) => Promise<void>
 }
 
-const Education: FunctionComponent<Props> = ({
-    education,
-    deleteEducation,
-}) => {
+const Education: FunctionComponent<Props> = ({ education }) => {
+    const deleteEducation = useProfileStore((state) => state.deleteEducation)
     return (
         <Fragment>
             <h2 className="my2">Education Credentials</h2>
@@ -74,4 +70,4 @@ const Education: FunctionComponent<Props> = ({
     )
 }
 
-export default connect(null, { deleteEducation })(Education)
+export default Education

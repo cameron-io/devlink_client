@@ -1,30 +1,25 @@
 import { Fragment, FunctionComponent, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { getCurrentProfile, deleteAccount } from '../../redux/dispatchers/profile'
 import DashboardActions from '../../components/dashboard/DashboardActions'
 import Experience from '../../components/dashboard/Experience'
 import Education from '../../components/dashboard/Education'
 import Spinner from '../../components/layout/Spinner'
-import { RootState } from '../../redux/store'
-import { StateAuth, StateProfile } from '../../types/common'
+import { useAuthStore, useProfileStore } from '../../stores'
 
-type Props = {
-    getCurrentProfile: () => Promise<void>
-    deleteAccount: () => Promise<void>
-    authData: StateAuth
-    profileData: StateProfile
-}
+type Props = {}
 
-const Dashboard: FunctionComponent<Props> = ({
-    getCurrentProfile,
-    deleteAccount,
-    authData: { user },
-    profileData: { profile, loading },
-}) => {
-    useEffect(() => {getCurrentProfile()}, [getCurrentProfile])
+const Dashboard: FunctionComponent<Props> = () => {
+    const getCurrentProfile = useProfileStore((state) => state.getCurrentProfile)
+    const deleteAccount = useProfileStore((state) => state.deleteAccount)
+    const user = useAuthStore((state) => state.user)
+    const profile = useProfileStore((state) => state.profile)
+    const loading = useProfileStore((state) => state.loading)
+
+    useEffect(() => {
+        getCurrentProfile()
+    }, [getCurrentProfile])
 
     let page = (
         <Fragment>
@@ -69,11 +64,4 @@ const Dashboard: FunctionComponent<Props> = ({
     return loading && profile === null ? (<Spinner />) : page
 }
 
-const mapStateToProps = (state: RootState) => ({
-    authData: state.auth,
-    profileData: state.profile,
-})
-
-export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
-    Dashboard
-)
+export default Dashboard

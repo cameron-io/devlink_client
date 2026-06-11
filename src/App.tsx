@@ -1,9 +1,6 @@
 // React
 import { Fragment, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-// Redux
-import { Provider } from 'react-redux'
-import store from './redux/store'
 // Main page
 import Navbar from './components/layout/Navbar'
 import Landing from './pages/Landing/Landing'
@@ -22,68 +19,64 @@ import Profiles from './pages/Profiles/Profiles'
 // Alerts
 import Alert from './components/layout/Alert'
 // Auth
-import { loadUserAction } from './redux/dispatchers/auth'
+import { useAuthStore } from './stores'
 import PrivateRoute from './components/routing/PrivateRoute'
 
 const App = () => {
     useEffect(() => {
-        var user = loadUserAction()
-        store.dispatch(user)
+        useAuthStore.getState().loadUser()
     }, [])
 
     return (
-        // Connects React app to Redux
-        <Provider store={store}>
-            <Router>
-                {/*Group elements */}
-                <Fragment>
-                    {/* Navigation */}
-                    <Navbar />
-                    {/* Wrap in container for padding */}
-                    <section className="container my-5 py-5" style={{minHeight: "80svh"}}>
-                        <Alert />
-                        {/* Wrap other routes in a Switch */}
-                        <Routes>
-                            {/* Entry route */}
-                            <Route path="/" element={<Landing />} />
-                            <Route path="/register" element={<Register />} />
-                            <Route path="/login" element={<Login />} />
-                            <Route path="/profile/:id" element={<Profile />} />
-                            <Route path="/profiles" element={<Profiles />} />
-                            <Route
-                                path="/dashboard"
-                                element={<PrivateRoute component={Dashboard} />}
-                            />
-                            <Route
-                                path="/create-profile"
-                                element={
-                                    <PrivateRoute component={ProfileDetailsForm} />
-                                }
-                            />
-                            <Route
-                                path="/edit-profile"
-                                element={
-                                    <PrivateRoute component={ProfileDetailsForm} />
-                                }
-                            />
-                            <Route
-                                path="/add-experience"
-                                element={
-                                    <PrivateRoute component={AddExperience} />
-                                }
-                            />
-                            <Route
-                                path="/add-education"
-                                element={
-                                    <PrivateRoute component={AddEducation} />
-                                }
-                            />
-                        </Routes>
-                    </section>
-                    <Footer></Footer>
-                </Fragment>
-            </Router>
-        </Provider>
+        <Router>
+            {/*Group elements */}
+            <Fragment>
+                {/* Navigation */}
+                <Navbar />
+                {/* Wrap in container for padding */}
+                <section className="container my-5 py-5" style={{ minHeight: '80svh' }}>
+                    <Alert />
+                    {/* Wrap other routes in a Switch */}
+                    <Routes>
+                        {/* Entry route */}
+                        <Route path="/" element={<Landing />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/profile/:id" element={<Profile />} />
+                        <Route path="/profiles" element={<Profiles />} />
+                        <Route
+                            path="/dashboard"
+                            element={<PrivateRoute component={Dashboard} />}
+                        />
+                        <Route
+                            path="/create-profile"
+                            element={
+                                <PrivateRoute component={ProfileDetailsForm} />
+                            }
+                        />
+                        <Route
+                            path="/edit-profile"
+                            element={
+                                <PrivateRoute component={ProfileDetailsForm} />
+                            }
+                        />
+                        <Route
+                            path="/add-experience"
+                            element={
+                                <PrivateRoute component={AddExperience} />
+                            }
+                        />
+                        <Route
+                            path="/add-education"
+                            element={
+                                <PrivateRoute component={AddEducation} />
+                            }
+                        />
+                    </Routes>
+                </section>
+                <Footer />
+            </Fragment>
+        </Router>
     )
 }
 

@@ -1,25 +1,18 @@
 import { Navigate } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { RootState } from '../../redux/store'
 import { FunctionComponent } from 'react'
+import { useAuthStore } from '../../stores'
 
-type Props = { component: FunctionComponent; authData: any }
+type Props = { component: FunctionComponent }
 
-const PrivateRoute: FunctionComponent<Props> = ({
-    component: Component,
-    authData: { isAuthenticated, loading },
-    ...props
-}) =>
-    !isAuthenticated && !loading ? (
-        // Back to login page
+const PrivateRoute: FunctionComponent<Props> = ({ component: Component, ...props }) => {
+    const isAuthenticated = useAuthStore((state) => state.isAuthenticated)
+    const loading = useAuthStore((state) => state.loading)
+
+    return !isAuthenticated && !loading ? (
         <Navigate to="/login" />
     ) : (
-        // Else display component
         <Component {...props} />
     )
+}
 
-const mapStateToProps = (state: RootState) => ({
-    authData: state.auth,
-})
-
-export default connect(mapStateToProps)(PrivateRoute)
+export default PrivateRoute

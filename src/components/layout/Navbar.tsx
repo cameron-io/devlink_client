@@ -1,22 +1,16 @@
 import { Fragment, FunctionComponent } from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignOut, faUser, faNetworkWired } from '@fortawesome/free-solid-svg-icons'
 import { faDev } from '@fortawesome/free-brands-svg-icons'
-import { logoutAction } from '../../redux/dispatchers/auth'
-import type { RootState } from '../../redux/store'
-import { StateAuth } from '../../types/common'
+import { useAuthStore } from '../../stores'
 
-type Props = {
-    authData: StateAuth;
-    logoutAction: () => Promise<void>
-}
+type Props = {}
 
-const Navbar: FunctionComponent<Props> = ({
-    authData: { isAuthenticated, loading },
-    logoutAction,
-}) => {
+const Navbar: FunctionComponent<Props> = () => {
+    const isAuthenticated = useAuthStore((state) => state.isAuthenticated)
+    const loading = useAuthStore((state) => state.loading)
+    const logout = useAuthStore((state) => state.logout)
     const authLinks = (
         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li className='nav-item border rounded-3 px-3'>
@@ -32,7 +26,7 @@ const Navbar: FunctionComponent<Props> = ({
                 </Link>
             </li>
             <li className='nav-item border rounded-3 px-3 mt-2'>
-                <Link className='nav-link' onClick={logoutAction} to="#!">
+                <Link className='nav-link' onClick={logout} to="#!">
                     <FontAwesomeIcon icon={faSignOut} className='me-2'/>
                     <span className="hide-sm">Logout</span>
                 </Link>
@@ -81,8 +75,4 @@ const Navbar: FunctionComponent<Props> = ({
     )
 }
 
-const mapStateToProps = (state: RootState) => ({
-    authData: state.auth,
-})
-
-export default connect(mapStateToProps, { logoutAction })(Navbar)
+export default Navbar

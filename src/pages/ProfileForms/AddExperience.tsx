@@ -1,14 +1,14 @@
 import { Fragment, FunctionComponent, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCodeBranch } from '@fortawesome/free-solid-svg-icons'
-import { addExperience } from '../../redux/dispatchers/profile'
+import { useProfileStore } from '../../stores'
 
-type Props = { addExperience: any }
+type Props = {}
 
-const AddExperience: FunctionComponent<Props> = ({ addExperience }) => {
+const AddExperience: FunctionComponent<Props> = () => {
     let navigate = useNavigate()
+    const addExperience = useProfileStore((state) => state.addExperience)
     const [formData, setFormData] = useState({
         company: '',
         title: '',
@@ -147,4 +147,4 @@ const AddExperience: FunctionComponent<Props> = ({ addExperience }) => {
     )
 }
 
-export default connect(null, { addExperience })(AddExperience)
+export default AddExperience

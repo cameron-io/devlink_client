@@ -1,11 +1,12 @@
 import { Link, Navigate } from 'react-router-dom'
-import { connect } from 'react-redux'
-import type { RootState } from '../../redux/store'
 import { FunctionComponent } from 'react'
+import { useAuthStore } from '../../stores'
 
-type Props = { isAuthenticated: boolean | null }
+type Props = {}
 
-const Landing: FunctionComponent<Props> = function ({ isAuthenticated }) {
+const Landing: FunctionComponent<Props> = function () {
+    const isAuthenticated = useAuthStore((state) => state.isAuthenticated)
+
     if (isAuthenticated) {
         return <Navigate to="/dashboard" />
     }
@@ -33,8 +34,4 @@ const Landing: FunctionComponent<Props> = function ({ isAuthenticated }) {
     )
 }
 
-const mapStateToProps = (state: RootState) => ({
-    isAuthenticated: state.auth.isAuthenticated,
-})
-
-export default connect(mapStateToProps)(Landing)
+export default Landing

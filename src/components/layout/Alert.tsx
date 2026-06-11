@@ -1,19 +1,17 @@
-import { connect } from 'react-redux'
-import type { RootState } from '../../redux/store'
+import { useAlertStore } from '../../stores'
 
-// If alerts property contains a state alert, output div with alert.msg
-const Alert = ({ alertsData }: { alertsData: any }) =>
-    alertsData !== null &&
-    alertsData.length > 0 &&
-    alertsData.map((alert: any) => (
-        <div key={alert.id} className={`alert alert-${alert.alertType}`}>
-            {alert.msg}
-        </div>
-    ))
+const Alert = () => {
+    const alerts = useAlertStore((state) => state.alerts)
 
-// Remap redux state to property in react component
-const mapStateToProps = (state: RootState) => ({
-    alertsData: state.alert,
-})
+    return (
+        <>
+            {alerts.map((alert) => (
+                <div key={alert.id} className={`alert alert-${alert.alertType}`}>
+                    {alert.msg}
+                </div>
+            ))}
+        </>
+    )
+}
 
-export default connect(mapStateToProps)(Alert)
+export default Alert

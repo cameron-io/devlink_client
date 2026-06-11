@@ -1,25 +1,20 @@
 import { FunctionComponent, useEffect, Fragment } from 'react'
-import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-import { RootState } from '../../redux/store'
-import { getGithubRepos } from '../../redux/dispatchers/profile';
-import Spinner from '../layout/Spinner';
+import { useProfileStore } from '../../stores'
+import Spinner from '../layout/Spinner'
 
 type Props = {
-    gitHubUsername: string,
-    getGithubRepos: any,
-    repos: Array<any>
+    gitHubUsername: string
 }
 
-const ProfileGithub: FunctionComponent<Props> = ({
-    gitHubUsername,
-    getGithubRepos,
-    repos
-}) => {
+const ProfileGithub: FunctionComponent<Props> = ({ gitHubUsername }) => {
+    const getGithubRepos = useProfileStore((state) => state.getGithubRepos)
+    const repos = useProfileStore((state) => state.repos)
+
     useEffect(() => {
         getGithubRepos(gitHubUsername)
-    }, [getGithubRepos])
+    }, [getGithubRepos, gitHubUsername])
 
     return (
         <Fragment>
@@ -58,8 +53,4 @@ const ProfileGithub: FunctionComponent<Props> = ({
     );
 }
 
-const mapStateToProps = (state: RootState) => ({
-    repos: state.profile.repos
-})
-
-export default connect(mapStateToProps, {getGithubRepos})(ProfileGithub);
+export default ProfileGithub

@@ -1,29 +1,26 @@
 import { Fragment, FunctionComponent, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { connect } from 'react-redux'
 import Spinner from '../../components/layout/Spinner'
-import { getProfileById } from '../../redux/dispatchers/profile'
 import ProfileTop from '../../components/profile/ProfileTop'
 import ProfileAbout from '../../components/profile/ProfileAbout'
-import type { RootState } from '../../redux/store'
-import { StateAuth, StateProfile } from '../../types/common'
 import ProfileGithub from '../../components/profile/ProfileGithub'
+import { useAuthStore, useProfileStore } from '../../stores'
 
-type Props = {
-    getProfileById: (userId: string) => Promise<void>
-    profileData: StateProfile
-    authData: StateAuth
-}
+type Props = {}
 
-const Profile: FunctionComponent<Props> = ({
-    getProfileById,
-    profileData: { profile, loading },
-    authData,
-}) => {
+const Profile: FunctionComponent<Props> = () => {
     const id: string = useParams().id!
+    const getProfileById = useProfileStore((state) => state.getProfileById)
+    const profile = useProfileStore((state) => state.profile)
+    const loading = useProfileStore((state) => state.loading)
+    const isAuthenticated = useAuthStore((state) => state.isAuthenticated)
+    const authLoading = useAuthStore((state) => state.loading)
+    const user = useAuthStore((state) => state.user)
 
     useEffect(() => {
-        getProfileById(id)
+        if (id) {
+            getProfileById(id)
+        }
     }, [getProfileById, id])
 
     return (
@@ -35,9 +32,9 @@ const Profile: FunctionComponent<Props> = ({
                     <Link to="/profiles" className="btn btn-primary m-2">
                         Back to Profiles
                     </Link>
-                    {authData.isAuthenticated &&
-                        authData.loading === false &&
-                        authData.user!.id === profile.user?.id && (
+                    {isAuthenticated &&
+                        authLoading === false &&
+                        user?.id === profile.user?.id && (
                             <Link to="/edit-profile" className="btn border m-2">
                                 Edit Profile
                             </Link>
@@ -59,9 +56,4 @@ const Profile: FunctionComponent<Props> = ({
     )
 }
 
-const mapStateToProps = (state: RootState) => ({
-    profileData: state.profile,
-    authData: state.auth,
-})
-
-export default connect(mapStateToProps, { getProfileById })(Profile)
+export default Profile

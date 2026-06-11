@@ -1,25 +1,16 @@
 import { Fragment, useState, useEffect, FunctionComponent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faInstagram, faLinkedin, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
-import { createProfile, getCurrentProfile } from '../../redux/dispatchers/profile'
-import { RootState } from '../../redux/store'
-import { StateProfile } from '../../types/common'
+import { useProfileStore } from '../../stores'
 
-type Props = {
-    createProfile: any;
-    profileData: StateProfile;
-    getCurrentProfile: any
-}
+type Props = {}
 
-const ProfileDetailsForm: FunctionComponent<Props> = ({
-    profileData,
-    createProfile,
-    getCurrentProfile
-}) => {
+const ProfileDetailsForm: FunctionComponent<Props> = () => {
     let navigate = useNavigate()
+    const profileData = useProfileStore((state) => state)
+    const createProfile = useProfileStore((state) => state.createProfile)
     const [formData, setFormData] = useState({
         company: '',
         website: '',
@@ -47,48 +38,48 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
         skills,
         gitHubUsername,
         bio,
-        social
+        social,
     } = formData
 
-    if (profileData.profile) {
-        var { profile, loading } = profileData
+    const { profile, loading } = profileData
 
-        useEffect(() => {
-            setFormData({
-                company: loading || !profile.company ? '' : profile.company,
-                website: loading || !profile.website ? '' : profile.website,
-                location: loading || !profile.location ? '' : profile.location,
-                status: loading || !profile.status ? '' : profile.status,
-                skills: loading || !profile.skills ? '' : Array.isArray(profile.skills) ? profile.skills.join(', ') : profile.skills,
-                gitHubUsername: loading || !profile.gitHubUsername ? '' : profile.gitHubUsername,
-                bio: loading || !profile.bio ? '' : profile.bio,
-                social: loading || !profile.social ? {
-                    twitter: '',
-                    facebook: '',
-                    linkedIn: '',
-                    youTube: '',
-                    instagram: '',
-                } : {
-                    twitter: profile.social?.twitter || '',
-                    facebook: profile.social?.facebook || '',
-                    linkedIn: profile.social?.linkedIn || '',
-                    youTube: profile.social?.youTube || '',
-                    instagram: profile.social?.instagram || '',
-                },
-            })
-        }, [
-            loading,
-            getCurrentProfile,
-            profile.company,
-            profile.website,
-            profile.location,
-            profile.status,
-            profile.skills,
-            profile.gitHubUsername,
-            profile.bio,
-            profile.social,
-        ])
-    }
+    useEffect(() => {
+        if (!profile) {
+            return
+        }
+
+        setFormData({
+            company: loading || !profile.company ? '' : profile.company,
+            website: loading || !profile.website ? '' : profile.website,
+            location: loading || !profile.location ? '' : profile.location,
+            status: loading || !profile.status ? '' : profile.status,
+            skills:
+                loading || !profile.skills
+                    ? ''
+                    : Array.isArray(profile.skills)
+                    ? profile.skills.join(', ')
+                    : profile.skills,
+            gitHubUsername:
+                loading || !profile.gitHubUsername ? '' : profile.gitHubUsername,
+            bio: loading || !profile.bio ? '' : profile.bio,
+            social:
+                loading || !profile.social
+                    ? {
+                          twitter: '',
+                          facebook: '',
+                          linkedIn: '',
+                          youTube: '',
+                          instagram: '',
+                      }
+                    : {
+                          twitter: profile.social?.twitter || '',
+                          facebook: profile.social?.facebook || '',
+                          linkedIn: profile.social?.linkedIn || '',
+                          youTube: profile.social?.youTube || '',
+                          instagram: profile.social?.instagram || '',
+                      },
+        })
+    }, [loading, profile])
 
     const onChange = (
         e:
@@ -112,7 +103,7 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
 
     const onSubmit = (e: React.SubmitEvent) => {
         e.preventDefault()
-        // call action
+
         createProfile(formData, navigate, true)
     }
 
@@ -326,10 +317,4 @@ const ProfileDetailsForm: FunctionComponent<Props> = ({
     )
 }
 
-const mapStateToProps = (state: RootState) => ({
-    profileData: state.profile,
-})
-
-export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
-    ProfileDetailsForm
-)
+export default ProfileDetailsForm

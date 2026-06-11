@@ -1,15 +1,12 @@
 import { Fragment, FunctionComponent, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { loginAction } from '../../redux/dispatchers/auth'
-import { RootState } from '../../redux/store'
+import { useAuthStore } from '../../stores'
 
-type Props = {
-    loginAction: (email: string, password: string) => Promise<void>
-    isAuthenticated: boolean | null
-}
+type Props = {}
 
-const Login: FunctionComponent<Props> = ({ loginAction, isAuthenticated }) => {
+const Login: FunctionComponent<Props> = () => {
+    const isAuthenticated = useAuthStore((state) => state.isAuthenticated)
+    const login = useAuthStore((state) => state.login)
     // Set login fields in initialState
     const [formData, setFormData] = useState({
         email: '',
@@ -31,7 +28,7 @@ const Login: FunctionComponent<Props> = ({ loginAction, isAuthenticated }) => {
 
     const onSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault()
-        loginAction(email, password)
+        login(email, password)
     }
 
     // Redirect if logged in
@@ -91,8 +88,4 @@ const Login: FunctionComponent<Props> = ({ loginAction, isAuthenticated }) => {
     )
 }
 
-const mapStateToProps = (state: RootState) => ({
-    isAuthenticated: state.auth.isAuthenticated,
-})
-
-export default connect(mapStateToProps, { loginAction })(Login)
+export default Login

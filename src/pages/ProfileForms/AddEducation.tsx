@@ -1,14 +1,14 @@
 import React, { Fragment, FunctionComponent, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCodeBranch } from '@fortawesome/free-solid-svg-icons'
-import { addEducation } from '../../redux/dispatchers/profile'
+import { useProfileStore } from '../../stores'
 
-type Props = { addEducation: any }
+type Props = {}
 
-const AddEducation: FunctionComponent<Props> = ({ addEducation }) => {
+const AddEducation: FunctionComponent<Props> = () => {
     let navigate = useNavigate()
+    const addEducation = useProfileStore((state) => state.addEducation)
     const [formData, setFormData] = useState({
         school: '',
         degree: '',
@@ -147,4 +147,4 @@ const AddEducation: FunctionComponent<Props> = ({ addEducation }) => {
     )
 }
 
-export default connect(null, { addEducation })(AddEducation)
+export default AddEducation

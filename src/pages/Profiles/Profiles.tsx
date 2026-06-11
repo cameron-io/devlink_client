@@ -1,19 +1,18 @@
 import { Fragment, FunctionComponent, useEffect } from 'react'
-import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleNodes } from '@fortawesome/free-solid-svg-icons'
-import { getProfiles } from '../../redux/dispatchers/profile'
 import ProfileItem from '../../components/profiles/ProfileItem'
 import Spinner from '../../components/layout/Spinner'
-import { RootState } from '../../redux/store'
+import { useProfileStore } from '../../stores'
 import { ProfileDto } from '../../types/api'
 
-type Props = { profileData: any; getProfiles: any }
+type Props = {}
 
-const Profiles: FunctionComponent<Props> = ({
-    getProfiles,
-    profileData: { profiles, loading },
-}) => {
+const Profiles: FunctionComponent<Props> = () => {
+    const profiles = useProfileStore((state) => state.profiles)
+    const loading = useProfileStore((state) => state.loading)
+    const getProfiles = useProfileStore((state) => state.getProfiles)
+
     useEffect(() => {
         getProfiles()
     }, [getProfiles])
@@ -45,8 +44,4 @@ const Profiles: FunctionComponent<Props> = ({
     )
 }
 
-const mapStateToProps = (state: RootState) => ({
-    profileData: state.profile,
-})
-
-export default connect(mapStateToProps, { getProfiles })(Profiles)
+export default Profiles

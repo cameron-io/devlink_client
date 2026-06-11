@@ -1,21 +1,17 @@
 import { Fragment, FunctionComponent } from 'react'
 import Moment from 'react-moment'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faBlackTie } from '@fortawesome/free-brands-svg-icons'
-import { deleteExperience } from '../../redux/dispatchers/profile'
+import { useProfileStore } from '../../stores'
 
 type Props = {
     experience?: any[]
-    deleteExperience: (id: number) => Promise<void>
 }
 
-const Experience: FunctionComponent<Props> = ({
-    experience,
-    deleteExperience,
-}) => {
+const Experience: FunctionComponent<Props> = ({ experience }) => {
+    const deleteExperience = useProfileStore((state) => state.deleteExperience)
     return (
         <Fragment>
             <h2 className="my2">Experience Credentials</h2>
@@ -75,4 +71,4 @@ const Experience: FunctionComponent<Props> = ({
     )
 }
 
-export default connect(null, { deleteExperience })(Experience)
+export default Experience
