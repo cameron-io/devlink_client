@@ -29,7 +29,7 @@ const Login: FunctionComponent<Props> = ({ loginAction, isAuthenticated }) => {
         }
     }
 
-    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault()
         loginAction(email, password)
     }

@@ -36,7 +36,7 @@ const Register: FunctionComponent<Props> = ({
         // target is set to direct each input value to all inputs with name='*'
         setFormData({ ...formData, [e.target.name]: e.target.value })
 
-    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (password !== password2) {
             // Call state property
