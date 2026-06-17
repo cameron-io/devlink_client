@@ -15,7 +15,7 @@ const Footer = () => {
             <div className="text-center mt-3"
             >
                 <p>
-                    Copyright &copy; 2025 by Linkdev. All rights reserved.
+                    Copyright &copy; 2026 by Linkdev. All rights reserved.
                 </p>
             </div>
         </footer>
