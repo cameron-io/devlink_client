@@ -9,12 +9,11 @@ type Props = {
 }
 
 const ProfileGithub: FunctionComponent<Props> = ({ gitHubUsername }) => {
-    const getGithubRepos = useProfileStore((state) => state.getGithubRepos)
     const repos = useProfileStore((state) => state.repos)
 
     useEffect(() => {
-        getGithubRepos(gitHubUsername)
-    }, [getGithubRepos, gitHubUsername])
+        useProfileStore.getState().getGithubRepos(gitHubUsername)
+    }, [gitHubUsername])
 
     return (
         <Fragment>

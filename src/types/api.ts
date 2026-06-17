@@ -657,7 +657,7 @@ export interface components {
             experience?: components["schemas"]["ExperienceDto"][] | null;
             education?: components["schemas"]["EducationDto"][] | null;
             social?: components["schemas"]["SocialDto"];
-            user?: components["schemas"]["UserDto2"];
+            user?: components["schemas"]["UserDto"];
         };
         RegisterDto: {
             name: string | null;
@@ -672,19 +672,14 @@ export interface components {
             instagram?: string | null;
         } | null;
         UserDto: {
-            /** Format: int32 */
-            id?: number;
-            email: string | null;
-            name: string | null;
-            avatar?: string | null;
+            sub: string;
+            email: string;
+            email_verified: boolean;
+            name: string;
+            preferred_username: string;
+            given_name: string;
+            family_name: string;
         };
-        UserDto2: {
-            /** Format: int32 */
-            id?: number;
-            email: string | null;
-            name: string | null;
-            avatar?: string | null;
-        } | null;
     };
     responses: never;
     parameters: never;
@@ -699,6 +694,5 @@ export type ProfileDto = components['schemas']['ProfileDto'];
 export type RegisterDto = components['schemas']['RegisterDto'];
 export type SocialDto = components['schemas']['SocialDto'];
 export type UserDto = components['schemas']['UserDto'];
-export type UserDto2 = components['schemas']['UserDto2'];
 export type $defs = Record<string, never>;
 export type operations = Record<string, never>;

@@ -13,7 +13,6 @@ const Profile: FunctionComponent<Props> = () => {
     const getProfileById = useProfileStore((state) => state.getProfileById)
     const profile = useProfileStore((state) => state.profile)
     const loading = useProfileStore((state) => state.loading)
-    const isAuthenticated = useAuthStore((state) => state.isAuthenticated)
     const authLoading = useAuthStore((state) => state.loading)
     const user = useAuthStore((state) => state.user)
 
@@ -32,9 +31,8 @@ const Profile: FunctionComponent<Props> = () => {
                     <Link to="/profiles" className="btn btn-primary m-2">
                         Back to Profiles
                     </Link>
-                    {isAuthenticated &&
-                        authLoading === false &&
-                        user?.id === profile.user?.id && (
+                    {authLoading === false &&
+                        user?.id === profile.user?.sub && (
                             <Link to="/edit-profile" className="btn border m-2">
                                 Edit Profile
                             </Link>

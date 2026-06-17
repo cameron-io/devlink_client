@@ -8,7 +8,6 @@ import { useAuthStore } from '../../stores'
 type Props = {}
 
 const Navbar: FunctionComponent<Props> = () => {
-    const isAuthenticated = useAuthStore((state) => state.isAuthenticated)
     const loading = useAuthStore((state) => state.loading)
     const logout = useAuthStore((state) => state.logout)
     const authLinks = (
@@ -34,20 +33,6 @@ const Navbar: FunctionComponent<Props> = () => {
         </ul>
     )
 
-    const guestLinks = (
-        <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li className='nav-item border rounded-3 px-3'>
-                <Link className='nav-link' to="/profiles">Developers</Link>
-            </li>
-            <li className='nav-item border rounded-3 px-3 mt-2'>
-                <Link className='nav-link' to="/register">Register</Link>
-            </li>
-            <li className='nav-item border rounded-3 px-3 mt-2'>
-                <Link className='nav-link' to="/login">Login</Link>
-            </li>
-        </ul>
-    )
-
     return (
         <nav className="navbar bg-body-tertiary fixed-top">
             <div className="container-fluid">
@@ -65,7 +50,7 @@ const Navbar: FunctionComponent<Props> = () => {
                 <div className="offcanvas-body">
                     {!loading && (
                         <Fragment>
-                            {isAuthenticated ? authLinks : guestLinks}
+                            {authLinks}
                         </Fragment>
                     )}
                 </div>

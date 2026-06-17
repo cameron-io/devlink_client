@@ -6,13 +6,19 @@ import './styles/scss/styles.scss'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-let container = document.getElementById('root')
-if (container) {
-    const root = ReactDOM.createRoot(container)
+import keycloak from "./auth/keycloak";
 
-    root.render(
+keycloak.init({
+  onLoad: "login-required",
+  checkLoginIframe: false,
+}).then((authenticated) => {
+    if (!authenticated) {
+        keycloak.login();
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')!).render(
         <React.StrictMode>
-            <App />
+            <App keycloak={keycloak} />
         </React.StrictMode>
     )
-}
+});
