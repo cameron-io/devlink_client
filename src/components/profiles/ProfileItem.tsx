@@ -13,23 +13,23 @@ const ProfileItem: FunctionComponent<Props> = ({
         company,
         location,
         skills,
-        user: user
+        user_id
     },
 }) => {
     return (
         <Fragment>
-            {user && (
+            {user_id && (
                 <div className="container border rounded-3 p-4">
                     <div className='row'>
                         <div className='col me-4' style={{maxWidth: 150}}>
-                            <Avatar avatar={user.avatar} size={150}></Avatar>
+                            <Avatar avatar={undefined} size={150}></Avatar>
                         </div>
                         <div className='col border-end'>
                             <div>
-                                <h2>{user.name}</h2>
+                                <h2>Name</h2>
                                 <p>{status} {company && <span> @ {company}</span>}</p>
                                 <p>{location && <span>{location}</span>}</p>
-                                <Link to={`/profile/${user.id}`} className="btn btn-primary">
+                                <Link to={`/profile/${user_id}`} className="btn btn-primary">
                                     View Profile
                                 </Link>
                             </div>

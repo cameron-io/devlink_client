@@ -103,17 +103,10 @@ const useProfileStore = create<ProfileStore>((set, get) => ({
       const res = await axios.get(`/api/profiles/github/${gitHubUsername}`)
       set({ repos: res.data, loading: false })
     } catch (err) {
-      if (axios.isAxiosError(err) && err.response) {
-        set({
-          error: {
-            msg: err.response.statusText,
-            status: err.response.status,
-          },
+      useAlertStore.getState().setAlert('Cannot retrieve GitHub profile', 'danger')
+      set({
           loading: false,
         })
-      } else {
-        set({ loading: false })
-      }
     }
   },
 

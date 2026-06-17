@@ -11,7 +11,8 @@ const Landing: FunctionComponent<Props> = function () {
                 <p className="lead mb-4">Create and Showcase your Portfolio.</p>
                 <Dashboard />
             </div>
-            <br></br>
+            <br />
+            <br />
             <div className="container px-5 mt-0 mb-0 pb-0">
                 <img src="assets/showcase.jpg" className="img-fluid border rounded-3 shadow-lg mb-4" alt="Hero image" height="500" loading="lazy"></img>
             </div>

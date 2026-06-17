@@ -13,7 +13,7 @@ const ProfileGithub: FunctionComponent<Props> = ({ gitHubUsername }) => {
 
     useEffect(() => {
         useProfileStore.getState().getGithubRepos(gitHubUsername)
-    }, [gitHubUsername])
+    }, [])
 
     return (
         <Fragment>

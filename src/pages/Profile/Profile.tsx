@@ -32,7 +32,7 @@ const Profile: FunctionComponent<Props> = () => {
                         Back to Profiles
                     </Link>
                     {authLoading === false &&
-                        user?.id === profile.user?.sub && (
+                        user?.sub === profile.user_id && (
                             <Link to="/edit-profile" className="btn border m-2">
                                 Edit Profile
                             </Link>

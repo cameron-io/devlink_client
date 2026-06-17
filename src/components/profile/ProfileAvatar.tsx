@@ -2,12 +2,12 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Fragment } from 'react'
 
-type AvatarProps = {
+type Props = {
     avatar: string | null | undefined
     size: number | string
 }
 
-const Avatar = (props: AvatarProps) => (
+const Avatar = (props: Props) => (
     <Fragment>
         <div className="d-flex justify-content-center bg-black rounded" style={{height: props.size, width: props.size}} >
             {props.avatar

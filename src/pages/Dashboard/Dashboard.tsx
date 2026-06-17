@@ -19,25 +19,26 @@ const Dashboard: FunctionComponent<Props> = () => {
 
     useEffect(() => {
         getCurrentProfile()
-    }, [getCurrentProfile])
+    }, [])
 
     let page = (
         <Fragment>
             <div className='container'>
-                <div className='row'>
-                    <h1 className="col text-primary text-start">Home</h1>
-                    <div className='col text-end'>
-                        <DashboardActions deleteAccount={deleteAccount} />
-                    </div>
-                </div>
+                <br />
                 <div className='row'>
                     <p className="col lead">
                         <FontAwesomeIcon icon={faUser} className='me-2'/>
                         Welcome {user && user.name}
                     </p>
                 </div>
+                <br />
+                <div className='row'>
+                    <h1 className="col text-primary text-start">Dashboard</h1>
+                    <div className='col text-end'>
+                        <DashboardActions deleteAccount={deleteAccount} />
+                    </div>
+                </div>
             </div>
-            <br></br>
             {profile && (
                 <div className='container mt-3'>
                     <div className='row'>

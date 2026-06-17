@@ -657,7 +657,7 @@ export interface components {
             experience?: components["schemas"]["ExperienceDto"][] | null;
             education?: components["schemas"]["EducationDto"][] | null;
             social?: components["schemas"]["SocialDto"];
-            user?: components["schemas"]["UserDto"];
+            user_id?: string;
         };
         RegisterDto: {
             name: string | null;

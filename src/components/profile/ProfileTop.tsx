@@ -15,16 +15,16 @@ const ProfileTop: FunctionComponent<Props> = ({
         website,
         gitHubUsername,
         social,
-        user: user,
+        user_id,
     },
 }) => {
     return (
         <div className="d-flex justify-content-center border rounded-3 p-4 mb-4">
             <div>
-                {user && (
+                {user_id && (
                     <Fragment>
-                        <Avatar avatar={user.avatar} size={150}></Avatar>
-                        <h1 className="my-3">{user.name}</h1>
+                        <Avatar avatar={undefined} size={150}></Avatar>
+                        <h1 className="my-3">Name</h1>
                     </Fragment>
                 )}
                 <p className="lead">
