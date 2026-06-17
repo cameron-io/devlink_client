@@ -15,7 +15,6 @@ type AuthStore = AuthState & {
 }
 
 const useAuthStore = create<AuthStore>((set, _get) => ({
-  isAuthenticated: null,
   loading: true,
   user: null,
   setAuth: (authState) => set((state) => ({ ...state, ...authState })),

@@ -267,7 +267,7 @@ const useProfileStore = create<ProfileStore>((set, get) => ({
       await axios.delete('/api/accounts')
       get().clearProfile()
       const authModule = await import('./authStore')
-      authModule.default.getState().setAuth({ isAuthenticated: false, user: null, loading: false })
+      authModule.default.getState().setAuth({ user: null, loading: false })
       useAlertStore.getState().setAlert('Your account has been deleted.', 'success')
     } catch (err) {
       if (axios.isAxiosError(err) && err.response) {
