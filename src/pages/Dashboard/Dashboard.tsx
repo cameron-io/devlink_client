@@ -11,11 +11,8 @@ import { useAuthStore, useProfileStore } from '../../stores'
 type Props = {}
 
 const Dashboard: FunctionComponent<Props> = () => {
-    const getCurrentProfile = useProfileStore((state) => state.getCurrentProfile)
-    const deleteAccount = useProfileStore((state) => state.deleteAccount)
-    const user = useAuthStore((state) => state.user)
-    const profile = useProfileStore((state) => state.profile)
-    const loading = useProfileStore((state) => state.loading)
+    const {user, deleteUser} = useAuthStore()
+    const {loading: profileLoading, profile, getCurrentProfile} = useProfileStore()
 
     useEffect(() => {
         getCurrentProfile()
@@ -35,7 +32,7 @@ const Dashboard: FunctionComponent<Props> = () => {
                 <div className='row'>
                     <h1 className="col text-primary text-start">Dashboard</h1>
                     <div className='col text-end'>
-                        <DashboardActions deleteAccount={deleteAccount} />
+                        <DashboardActions deleteUser={deleteUser} />
                     </div>
                 </div>
             </div>
@@ -62,7 +59,7 @@ const Dashboard: FunctionComponent<Props> = () => {
         </Fragment>
     )
 
-    return loading && profile === null ? (<Spinner />) : page
+    return profileLoading && profile === null ? (<Spinner />) : page
 }
 
 export default Dashboard

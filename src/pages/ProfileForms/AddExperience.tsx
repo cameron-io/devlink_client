@@ -38,12 +38,18 @@ const AddExperience: FunctionComponent<Props> = () => {
         <Fragment>
             <h1 className="text-primary">Add An Experience</h1>
             <p className="lead">
-                <FontAwesomeIcon icon={faCodeBranch} className='me-2'/>
-                Add any developer/programming positions that you have had in the past
+                <FontAwesomeIcon icon={faCodeBranch} className="me-2" />
+                Add any developer/programming positions that you have had in the
+                past
             </p>
-            <div className='d-flex align-items-center py-4 bg-body-tertiary border rounded'>
-                <div className='w-100 m-auto mt-4' style={{maxWidth: "330px", padding: "1rem"}}>
-                    <h1 className="h3 mb-3 fw-normal">Work Experience Details</h1>
+            <div className="d-flex align-items-center py-4 bg-body-tertiary border rounded">
+                <div
+                    className="w-100 m-auto mt-4"
+                    style={{ maxWidth: '330px', padding: '1rem' }}
+                >
+                    <h1 className="h3 mb-3 fw-normal">
+                        Work Experience Details
+                    </h1>
                     <small>* = required field</small>
                     <form
                         className="form"
@@ -54,7 +60,7 @@ const AddExperience: FunctionComponent<Props> = () => {
                     >
                         <div className="form-floating">
                             <input
-                                className='form-control'
+                                className="form-control"
                                 type="text"
                                 placeholder="* Job Title"
                                 name="title"
@@ -66,7 +72,7 @@ const AddExperience: FunctionComponent<Props> = () => {
                         </div>
                         <div className="form-floating">
                             <input
-                                className='form-control'
+                                className="form-control"
                                 type="text"
                                 placeholder="* Company"
                                 name="company"
@@ -78,7 +84,7 @@ const AddExperience: FunctionComponent<Props> = () => {
                         </div>
                         <div className="form-floating">
                             <input
-                                className='form-control'
+                                className="form-control"
                                 type="text"
                                 placeholder="Location"
                                 name="location"
@@ -90,7 +96,7 @@ const AddExperience: FunctionComponent<Props> = () => {
                         <div className="form-floating my-3">
                             <h4>From Date</h4>
                             <input
-                                className='form-control'
+                                className="form-control"
                                 type="date"
                                 name="from"
                                 value={from}
@@ -100,13 +106,16 @@ const AddExperience: FunctionComponent<Props> = () => {
                         <div className="form-check my-3">
                             <p>
                                 <input
-                                    className='form-check-input'
+                                    className="form-check-input"
                                     type="checkbox"
                                     name="current"
                                     checked={current}
                                     value={current.toString()}
                                     onChange={(_e) => {
-                                        setFormData({ ...formData, current: !current })
+                                        setFormData({
+                                            ...formData,
+                                            current: !current,
+                                        })
                                         toggleDisabled(!toDateDisabled)
                                     }}
                                 />{' '}
@@ -116,7 +125,7 @@ const AddExperience: FunctionComponent<Props> = () => {
                         <div className="form-floating">
                             <h4>To Date</h4>
                             <input
-                                className='form-control'
+                                className="form-control"
                                 type="date"
                                 name="to"
                                 value={to}
@@ -126,7 +135,7 @@ const AddExperience: FunctionComponent<Props> = () => {
                         </div>
                         <div className="form-floating">
                             <textarea
-                                className='form-control'
+                                className="form-control"
                                 name="description"
                                 cols={30}
                                 rows={5}
@@ -134,7 +143,9 @@ const AddExperience: FunctionComponent<Props> = () => {
                                 value={description}
                                 onChange={(e) => onChange(e)}
                             ></textarea>
-                            <label htmlFor="floatingInput">Job Description</label>
+                            <label htmlFor="floatingInput">
+                                Job Description
+                            </label>
                         </div>
                         <input type="submit" className="btn btn-primary my-1" />
                         <Link className="btn border my-3 mx-2" to="/dashboard">

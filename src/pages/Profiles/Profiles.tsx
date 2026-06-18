@@ -25,15 +25,15 @@ const Profiles: FunctionComponent<Props> = () => {
                 <Fragment>
                     <h1 className="text-primary">Developers</h1>
                     <p className="lead">
-                        <FontAwesomeIcon icon={faCircleNodes} className='me-2'/>
+                        <FontAwesomeIcon
+                            icon={faCircleNodes}
+                            className="me-2"
+                        />
                         Browse and connect with developers
                     </p>
                     {profiles.length > 0 ? (
                         profiles.map((profile: ProfileDto) => (
-                            <ProfileItem
-                                key={profile.id}
-                                profile={profile}
-                            />
+                            <ProfileItem key={profile.id} profile={profile} />
                         ))
                     ) : (
                         <h4>No profiles found...</h4>

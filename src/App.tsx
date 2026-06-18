@@ -17,13 +17,13 @@ import Profiles from './pages/Profiles/Profiles'
 import Alert from './components/layout/Alert'
 // Auth
 import { useAuthStore } from './stores'
-import Keycloak from "keycloak-js";
+import Keycloak from 'keycloak-js'
 
 type Props = {
     keycloak: Keycloak
 }
 
-const App: FunctionComponent<Props> = ({keycloak}) => {
+const App: FunctionComponent<Props> = ({ keycloak }) => {
     const loadUser = useAuthStore((state) => state.loadUser)
 
     useEffect(() => {
@@ -37,7 +37,10 @@ const App: FunctionComponent<Props> = ({keycloak}) => {
                 {/* Navigation */}
                 <Navbar />
                 {/* Wrap in container for padding */}
-                <section className="container my-5 py-5" style={{ minHeight: '80svh' }}>
+                <section
+                    className="container my-5 py-5"
+                    style={{ minHeight: '80svh' }}
+                >
                     <Alert />
                     {/* Wrap other routes in a Switch */}
                     <Routes>
@@ -46,10 +49,22 @@ const App: FunctionComponent<Props> = ({keycloak}) => {
                         <Route path="/profile/:id" element={<Profile />} />
                         <Route path="/profiles" element={<Profiles />} />
                         <Route path="/dashboard" element={<Dashboard />} />
-                        <Route path="/create-profile" element={<ProfileDetailsForm />} />
-                        <Route path="/edit-profile" element={<ProfileDetailsForm />} />
-                        <Route path="/add-experience" element={<AddExperience />} />
-                        <Route path="/add-education" element={<AddEducation />} />
+                        <Route
+                            path="/create-profile"
+                            element={<ProfileDetailsForm />}
+                        />
+                        <Route
+                            path="/edit-profile"
+                            element={<ProfileDetailsForm />}
+                        />
+                        <Route
+                            path="/add-experience"
+                            element={<AddExperience />}
+                        />
+                        <Route
+                            path="/add-education"
+                            element={<AddEducation />}
+                        />
                     </Routes>
                 </section>
                 <Footer />

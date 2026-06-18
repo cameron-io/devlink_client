@@ -2,7 +2,13 @@ import { Fragment, useState, useEffect, FunctionComponent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { faFacebook, faInstagram, faLinkedin, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
+import {
+    faFacebook,
+    faInstagram,
+    faLinkedin,
+    faXTwitter,
+    faYoutube,
+} from '@fortawesome/free-brands-svg-icons'
 import { useProfileStore } from '../../stores'
 
 type Props = {}
@@ -57,10 +63,12 @@ const ProfileDetailsForm: FunctionComponent<Props> = () => {
                 loading || !profile.skills
                     ? ''
                     : Array.isArray(profile.skills)
-                    ? profile.skills.join(', ')
-                    : profile.skills,
+                      ? profile.skills.join(', ')
+                      : profile.skills,
             gitHubUsername:
-                loading || !profile.gitHubUsername ? '' : profile.gitHubUsername,
+                loading || !profile.gitHubUsername
+                    ? ''
+                    : profile.gitHubUsername,
             bio: loading || !profile.bio ? '' : profile.bio,
             social:
                 loading || !profile.social
@@ -111,21 +119,27 @@ const ProfileDetailsForm: FunctionComponent<Props> = () => {
         <Fragment>
             <h1 className="text-primary">Customize your Profile</h1>
             <p className="lead">
-                <FontAwesomeIcon icon={faUser} className='me-2'/> Let's make your profile stand out.
+                <FontAwesomeIcon icon={faUser} className="me-2" /> Let's make
+                your profile stand out.
             </p>
-            <div className='d-flex align-items-center py-4 bg-body-tertiary border rounded'>
-                <div className='w-100 m-auto' style={{maxWidth: "330px", padding: "1rem"}}>
+            <div className="d-flex align-items-center py-4 bg-body-tertiary border rounded">
+                <div
+                    className="w-100 m-auto"
+                    style={{ maxWidth: '330px', padding: '1rem' }}
+                >
                     <h1 className="h3 mb-3 fw-normal">Your Details</h1>
                     <small>* = required field</small>
                     <form className="form" onSubmit={(e) => onSubmit(e)}>
                         <div className="form-text">
                             <select
-                                className='form-select'
+                                className="form-select"
                                 name="status"
                                 defaultValue={status}
                                 onChange={(e) => onChange(e)}
                             >
-                                <option value="0">* Select Professional Status</option>
+                                <option value="0">
+                                    * Select Professional Status
+                                </option>
                                 <option value="Developer">Developer</option>
                                 <option value="Junior Developer">
                                     Junior Developer
@@ -144,12 +158,13 @@ const ProfileDetailsForm: FunctionComponent<Props> = () => {
                                 <option value="Other">Other</option>
                             </select>
                             <small className="form-text">
-                                Give us an idea of where you are at in your career
+                                Give us an idea of where you are at in your
+                                career
                             </small>
                         </div>
                         <div className="form-text mt-3">
                             <input
-                                className='form-control'
+                                className="form-control"
                                 type="text"
                                 placeholder="Company"
                                 name="company"
@@ -162,7 +177,7 @@ const ProfileDetailsForm: FunctionComponent<Props> = () => {
                         </div>
                         <div className="form-text mt-3">
                             <input
-                                className='form-control'
+                                className="form-control"
                                 type="text"
                                 placeholder="Website"
                                 name="website"
@@ -175,7 +190,7 @@ const ProfileDetailsForm: FunctionComponent<Props> = () => {
                         </div>
                         <div className="form-text mt-3">
                             <input
-                                className='form-control'
+                                className="form-control"
                                 type="text"
                                 placeholder="Location"
                                 name="location"
@@ -188,7 +203,7 @@ const ProfileDetailsForm: FunctionComponent<Props> = () => {
                         </div>
                         <div className="form-text mt-3">
                             <input
-                                className='form-control'
+                                className="form-control"
                                 type="text"
                                 placeholder="* Skills"
                                 name="skills"
@@ -202,7 +217,7 @@ const ProfileDetailsForm: FunctionComponent<Props> = () => {
                         </div>
                         <div className="form-text mt-3">
                             <input
-                                className='form-control'
+                                className="form-control"
                                 type="text"
                                 placeholder="Github Username"
                                 name="gitHubUsername"
@@ -210,13 +225,13 @@ const ProfileDetailsForm: FunctionComponent<Props> = () => {
                                 onChange={(e) => onChange(e)}
                             />
                             <small className="form-text">
-                                If you want your latest repos and a Github link, include
-                                your username
+                                If you want your latest repos and a Github link,
+                                include your username
                             </small>
                         </div>
                         <div className="form-text mt-3">
                             <textarea
-                                className='form-control'
+                                className="form-control"
                                 placeholder="A short bio of yourself"
                                 name="bio"
                                 defaultValue={bio}
@@ -229,78 +244,78 @@ const ProfileDetailsForm: FunctionComponent<Props> = () => {
 
                         <div className="mt-3">
                             <button
-                                onClick={() => toggleSocialInputs(!displaySocialInputs)}
+                                onClick={() =>
+                                    toggleSocialInputs(!displaySocialInputs)
+                                }
                                 type="button"
                                 className="btn border"
                             >
                                 Add Social Network Links
                             </button>
-                            <small className="form-text mx-3">
-                                Optional
-                            </small>
+                            <small className="form-text mx-3">Optional</small>
                         </div>
 
                         {displaySocialInputs && (
                             <Fragment>
-                                <div className='border rounded p-3'>
+                                <div className="border rounded p-3">
                                     <div className="form-text social-input">
                                         <input
-                                            className='mx-3 rounded'
+                                            className="mx-3 rounded"
                                             type="text"
                                             placeholder="Twitter URL"
                                             name="social.twitter"
                                             defaultValue={social.twitter}
                                             onChange={(e) => onChange(e)}
                                         />
-                                        <FontAwesomeIcon icon={faXTwitter}/>
+                                        <FontAwesomeIcon icon={faXTwitter} />
                                     </div>
 
                                     <div className="form-text social-input">
                                         <input
-                                            className='mx-3 rounded'
+                                            className="mx-3 rounded"
                                             type="text"
                                             placeholder="Facebook URL"
                                             name="social.facebook"
                                             defaultValue={social.facebook}
                                             onChange={(e) => onChange(e)}
                                         />
-                                        <FontAwesomeIcon icon={faFacebook}/>
+                                        <FontAwesomeIcon icon={faFacebook} />
                                     </div>
 
                                     <div className="form-text social-input">
                                         <input
-                                            className='mx-3 rounded'
+                                            className="mx-3 rounded"
                                             type="text"
                                             placeholder="YouTube URL"
                                             name="social.youTube"
                                             defaultValue={social.youTube}
                                             onChange={(e) => onChange(e)}
                                         />
-                                        <FontAwesomeIcon icon={faYoutube}/>
+                                        <FontAwesomeIcon icon={faYoutube} />
                                     </div>
 
                                     <div className="form-text social-input">
                                         <input
-                                            className='mx-3 rounded'
+                                            className="mx-3 rounded"
                                             type="text"
                                             placeholder="Linkedin URL"
                                             name="social.linkedIn"
                                             defaultValue={social.linkedIn}
                                             onChange={(e) => onChange(e)}
                                         />
-                                        <FontAwesomeIcon icon={faLinkedin}/>
+                                        <FontAwesomeIcon icon={faLinkedin} />
                                     </div>
 
                                     <div className="form-text social-input">
                                         <input
-                                            className='mx-3 rounded'
+                                            className="mx-3 rounded"
                                             type="text"
                                             placeholder="Instagram URL"
                                             name="social.instagram"
                                             defaultValue={social.instagram}
                                             onChange={(e) => onChange(e)}
                                         />
-                                        <FontAwesomeIcon icon={faInstagram}/>
+                                        <FontAwesomeIcon icon={faInstagram} />
                                     </div>
                                 </div>
                             </Fragment>

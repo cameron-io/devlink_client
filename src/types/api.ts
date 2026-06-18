@@ -4,695 +4,695 @@
  */
 
 export interface paths {
-    "/api/accounts/info": {
+    '/api/accounts/info': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
         get: {
             parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
+                query?: never
+                header?: never
+                path?: never
+                cookie?: never
+            }
+            requestBody?: never
             responses: {
                 /** @description OK */
                 200: {
                     headers: {
-                        [name: string]: unknown;
-                    };
+                        [name: string]: unknown
+                    }
                     content: {
-                        "text/plain": components["schemas"]["UserDto"];
-                        "application/json": components["schemas"]["UserDto"];
-                        "text/json": components["schemas"]["UserDto"];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/accounts/login": {
+                        'text/plain': components['schemas']['UserDto']
+                        'application/json': components['schemas']['UserDto']
+                        'text/json': components['schemas']['UserDto']
+                    }
+                }
+            }
+        }
+        put?: never
+        post?: never
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/api/accounts/login': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
+        get?: never
+        put?: never
         post: {
             parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
+                query?: never
+                header?: never
+                path?: never
+                cookie?: never
+            }
             requestBody: {
                 content: {
-                    "application/json": components["schemas"]["LoginDto"];
-                    "text/json": components["schemas"]["LoginDto"];
-                    "application/*+json": components["schemas"]["LoginDto"];
-                };
-            };
+                    'application/json': components['schemas']['LoginDto']
+                    'text/json': components['schemas']['LoginDto']
+                    'application/*+json': components['schemas']['LoginDto']
+                }
+            }
             responses: {
                 /** @description OK */
                 200: {
                     headers: {
-                        [name: string]: unknown;
-                    };
+                        [name: string]: unknown
+                    }
                     content: {
-                        "text/plain": components["schemas"]["UserDto"];
-                        "application/json": components["schemas"]["UserDto"];
-                        "text/json": components["schemas"]["UserDto"];
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/accounts/logout": {
+                        'text/plain': components['schemas']['UserDto']
+                        'application/json': components['schemas']['UserDto']
+                        'text/json': components['schemas']['UserDto']
+                    }
+                }
+            }
+        }
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/api/accounts/logout': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
+        get?: never
+        put?: never
         post: {
             parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
+                query?: never
+                header?: never
+                path?: never
+                cookie?: never
+            }
+            requestBody?: never
             responses: {
                 /** @description OK */
                 200: {
                     headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/accounts/register": {
+                        [name: string]: unknown
+                    }
+                    content?: never
+                }
+            }
+        }
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/api/accounts/register': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
+        get?: never
+        put?: never
         post: {
             parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
+                query?: never
+                header?: never
+                path?: never
+                cookie?: never
+            }
             requestBody: {
                 content: {
-                    "application/json": components["schemas"]["RegisterDto"];
-                    "text/json": components["schemas"]["RegisterDto"];
-                    "application/*+json": components["schemas"]["RegisterDto"];
-                };
-            };
+                    'application/json': components['schemas']['RegisterDto']
+                    'text/json': components['schemas']['RegisterDto']
+                    'application/*+json': components['schemas']['RegisterDto']
+                }
+            }
             responses: {
                 /** @description OK */
                 200: {
                     headers: {
-                        [name: string]: unknown;
-                    };
+                        [name: string]: unknown
+                    }
                     content: {
-                        "text/plain": components["schemas"]["UserDto"];
-                        "application/json": components["schemas"]["UserDto"];
-                        "text/json": components["schemas"]["UserDto"];
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/accounts/emailexists": {
+                        'text/plain': components['schemas']['UserDto']
+                        'application/json': components['schemas']['UserDto']
+                        'text/json': components['schemas']['UserDto']
+                    }
+                }
+            }
+        }
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/api/accounts/emailexists': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
         get: {
             parameters: {
                 query?: {
-                    email?: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
+                    email?: string
+                }
+                header?: never
+                path?: never
+                cookie?: never
+            }
+            requestBody?: never
             responses: {
                 /** @description OK */
                 200: {
                     headers: {
-                        [name: string]: unknown;
-                    };
+                        [name: string]: unknown
+                    }
                     content: {
-                        "text/plain": boolean;
-                        "application/json": boolean;
-                        "text/json": boolean;
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/accounts": {
+                        'text/plain': boolean
+                        'application/json': boolean
+                        'text/json': boolean
+                    }
+                }
+            }
+        }
+        put?: never
+        post?: never
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/api/accounts': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
+        get?: never
+        put?: never
+        post?: never
         delete: {
             parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
+                query?: never
+                header?: never
+                path?: never
+                cookie?: never
+            }
+            requestBody?: never
             responses: {
                 /** @description OK */
                 200: {
                     headers: {
-                        [name: string]: unknown;
-                    };
+                        [name: string]: unknown
+                    }
                     content: {
-                        "text/plain": boolean;
-                        "application/json": boolean;
-                        "text/json": boolean;
-                    };
-                };
-            };
-        };
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/profiles": {
+                        'text/plain': boolean
+                        'application/json': boolean
+                        'text/json': boolean
+                    }
+                }
+            }
+        }
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/api/profiles': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
         get: {
             parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
+                query?: never
+                header?: never
+                path?: never
+                cookie?: never
+            }
+            requestBody?: never
             responses: {
                 /** @description OK */
                 200: {
                     headers: {
-                        [name: string]: unknown;
-                    };
+                        [name: string]: unknown
+                    }
                     content: {
-                        "text/plain": components["schemas"]["ProfileDto"][];
-                        "application/json": components["schemas"]["ProfileDto"][];
-                        "text/json": components["schemas"]["ProfileDto"][];
-                    };
-                };
-            };
-        };
-        put?: never;
+                        'text/plain': components['schemas']['ProfileDto'][]
+                        'application/json': components['schemas']['ProfileDto'][]
+                        'text/json': components['schemas']['ProfileDto'][]
+                    }
+                }
+            }
+        }
+        put?: never
         post: {
             parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
+                query?: never
+                header?: never
+                path?: never
+                cookie?: never
+            }
             requestBody: {
                 content: {
-                    "application/json": components["schemas"]["ProfileDto"];
-                    "text/json": components["schemas"]["ProfileDto"];
-                    "application/*+json": components["schemas"]["ProfileDto"];
-                };
-            };
+                    'application/json': components['schemas']['ProfileDto']
+                    'text/json': components['schemas']['ProfileDto']
+                    'application/*+json': components['schemas']['ProfileDto']
+                }
+            }
             responses: {
                 /** @description OK */
                 200: {
                     headers: {
-                        [name: string]: unknown;
-                    };
+                        [name: string]: unknown
+                    }
                     content: {
-                        "text/plain": components["schemas"]["ProfileDto"];
-                        "application/json": components["schemas"]["ProfileDto"];
-                        "text/json": components["schemas"]["ProfileDto"];
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/profiles/{id}": {
+                        'text/plain': components['schemas']['ProfileDto']
+                        'application/json': components['schemas']['ProfileDto']
+                        'text/json': components['schemas']['ProfileDto']
+                    }
+                }
+            }
+        }
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/api/profiles/{id}': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
         get: {
             parameters: {
-                query?: never;
-                header?: never;
+                query?: never
+                header?: never
                 path: {
-                    id: number;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
+                    id: number
+                }
+                cookie?: never
+            }
+            requestBody?: never
             responses: {
                 /** @description OK */
                 200: {
                     headers: {
-                        [name: string]: unknown;
-                    };
+                        [name: string]: unknown
+                    }
                     content: {
-                        "text/plain": components["schemas"]["ProfileDto"];
-                        "application/json": components["schemas"]["ProfileDto"];
-                        "text/json": components["schemas"]["ProfileDto"];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/profiles/user/{id}": {
+                        'text/plain': components['schemas']['ProfileDto']
+                        'application/json': components['schemas']['ProfileDto']
+                        'text/json': components['schemas']['ProfileDto']
+                    }
+                }
+            }
+        }
+        put?: never
+        post?: never
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/api/profiles/user/{id}': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
         get: {
             parameters: {
-                query?: never;
-                header?: never;
+                query?: never
+                header?: never
                 path: {
-                    id: number;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
+                    id: number
+                }
+                cookie?: never
+            }
+            requestBody?: never
             responses: {
                 /** @description OK */
                 200: {
                     headers: {
-                        [name: string]: unknown;
-                    };
+                        [name: string]: unknown
+                    }
                     content: {
-                        "text/plain": components["schemas"]["ProfileDto"];
-                        "application/json": components["schemas"]["ProfileDto"];
-                        "text/json": components["schemas"]["ProfileDto"];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/profiles/me": {
+                        'text/plain': components['schemas']['ProfileDto']
+                        'application/json': components['schemas']['ProfileDto']
+                        'text/json': components['schemas']['ProfileDto']
+                    }
+                }
+            }
+        }
+        put?: never
+        post?: never
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/api/profiles/me': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
         get: {
             parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
+                query?: never
+                header?: never
+                path?: never
+                cookie?: never
+            }
+            requestBody?: never
             responses: {
                 /** @description OK */
                 200: {
                     headers: {
-                        [name: string]: unknown;
-                    };
+                        [name: string]: unknown
+                    }
                     content: {
-                        "text/plain": components["schemas"]["ProfileDto"];
-                        "application/json": components["schemas"]["ProfileDto"];
-                        "text/json": components["schemas"]["ProfileDto"];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/profiles/github/{username}": {
+                        'text/plain': components['schemas']['ProfileDto']
+                        'application/json': components['schemas']['ProfileDto']
+                        'text/json': components['schemas']['ProfileDto']
+                    }
+                }
+            }
+        }
+        put?: never
+        post?: never
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/api/profiles/github/{username}': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
         get: {
             parameters: {
-                query?: never;
-                header?: never;
+                query?: never
+                header?: never
                 path: {
-                    username: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
+                    username: string
+                }
+                cookie?: never
+            }
+            requestBody?: never
             responses: {
                 /** @description OK */
                 200: {
                     headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/profiles/experience": {
+                        [name: string]: unknown
+                    }
+                    content?: never
+                }
+            }
+        }
+        put?: never
+        post?: never
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/api/profiles/experience': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
+        get?: never
         put: {
             parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
+                query?: never
+                header?: never
+                path?: never
+                cookie?: never
+            }
             requestBody: {
                 content: {
-                    "application/json": components["schemas"]["ExperienceDto"];
-                    "text/json": components["schemas"]["ExperienceDto"];
-                    "application/*+json": components["schemas"]["ExperienceDto"];
-                };
-            };
+                    'application/json': components['schemas']['ExperienceDto']
+                    'text/json': components['schemas']['ExperienceDto']
+                    'application/*+json': components['schemas']['ExperienceDto']
+                }
+            }
             responses: {
                 /** @description OK */
                 200: {
                     headers: {
-                        [name: string]: unknown;
-                    };
+                        [name: string]: unknown
+                    }
                     content: {
-                        "text/plain": components["schemas"]["ProfileDto"];
-                        "application/json": components["schemas"]["ProfileDto"];
-                        "text/json": components["schemas"]["ProfileDto"];
-                    };
-                };
-            };
-        };
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/profiles/education": {
+                        'text/plain': components['schemas']['ProfileDto']
+                        'application/json': components['schemas']['ProfileDto']
+                        'text/json': components['schemas']['ProfileDto']
+                    }
+                }
+            }
+        }
+        post?: never
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/api/profiles/education': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
+        get?: never
         put: {
             parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
+                query?: never
+                header?: never
+                path?: never
+                cookie?: never
+            }
             requestBody: {
                 content: {
-                    "application/json": components["schemas"]["EducationDto"];
-                    "text/json": components["schemas"]["EducationDto"];
-                    "application/*+json": components["schemas"]["EducationDto"];
-                };
-            };
+                    'application/json': components['schemas']['EducationDto']
+                    'text/json': components['schemas']['EducationDto']
+                    'application/*+json': components['schemas']['EducationDto']
+                }
+            }
             responses: {
                 /** @description OK */
                 200: {
                     headers: {
-                        [name: string]: unknown;
-                    };
+                        [name: string]: unknown
+                    }
                     content: {
-                        "text/plain": components["schemas"]["ProfileDto"];
-                        "application/json": components["schemas"]["ProfileDto"];
-                        "text/json": components["schemas"]["ProfileDto"];
-                    };
-                };
-            };
-        };
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/profiles/experience/{id}": {
+                        'text/plain': components['schemas']['ProfileDto']
+                        'application/json': components['schemas']['ProfileDto']
+                        'text/json': components['schemas']['ProfileDto']
+                    }
+                }
+            }
+        }
+        post?: never
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/api/profiles/experience/{id}': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
+        get?: never
+        put?: never
+        post?: never
         delete: {
             parameters: {
-                query?: never;
-                header?: never;
+                query?: never
+                header?: never
                 path: {
-                    id: number;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
+                    id: number
+                }
+                cookie?: never
+            }
+            requestBody?: never
             responses: {
                 /** @description OK */
                 200: {
                     headers: {
-                        [name: string]: unknown;
-                    };
+                        [name: string]: unknown
+                    }
                     content: {
-                        "text/plain": components["schemas"]["ProfileDto"];
-                        "application/json": components["schemas"]["ProfileDto"];
-                        "text/json": components["schemas"]["ProfileDto"];
-                    };
-                };
-            };
-        };
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/profiles/education/{id}": {
+                        'text/plain': components['schemas']['ProfileDto']
+                        'application/json': components['schemas']['ProfileDto']
+                        'text/json': components['schemas']['ProfileDto']
+                    }
+                }
+            }
+        }
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/api/profiles/education/{id}': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
+        get?: never
+        put?: never
+        post?: never
         delete: {
             parameters: {
-                query?: never;
-                header?: never;
+                query?: never
+                header?: never
                 path: {
-                    id: number;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
+                    id: number
+                }
+                cookie?: never
+            }
+            requestBody?: never
             responses: {
                 /** @description OK */
                 200: {
                     headers: {
-                        [name: string]: unknown;
-                    };
+                        [name: string]: unknown
+                    }
                     content: {
-                        "text/plain": components["schemas"]["ProfileDto"];
-                        "application/json": components["schemas"]["ProfileDto"];
-                        "text/json": components["schemas"]["ProfileDto"];
-                    };
-                };
-            };
-        };
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
+                        'text/plain': components['schemas']['ProfileDto']
+                        'application/json': components['schemas']['ProfileDto']
+                        'text/json': components['schemas']['ProfileDto']
+                    }
+                }
+            }
+        }
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
 }
-export type webhooks = Record<string, never>;
+export type webhooks = Record<string, never>
 export interface components {
     schemas: {
         EducationDto: {
             /** Format: int32 */
-            id?: number;
-            school: string | null;
-            degree: string | null;
-            fieldOfStudy: string | null;
-            from: string | null;
-            to?: string | null;
-            current?: boolean;
-            description?: string | null;
-        };
+            id?: number
+            school: string | null
+            degree: string | null
+            fieldOfStudy: string | null
+            from: string | null
+            to?: string | null
+            current?: boolean
+            description?: string | null
+        }
         ExperienceDto: {
             /** Format: int32 */
-            id?: number;
-            title: string | null;
-            company: string | null;
-            from: string | null;
-            location?: string | null;
-            to?: string | null;
-            current?: boolean;
-            description?: string | null;
-        };
+            id?: number
+            title: string | null
+            company: string | null
+            from: string | null
+            location?: string | null
+            to?: string | null
+            current?: boolean
+            description?: string | null
+        }
         LoginDto: {
-            email: string | null;
-            password: string | null;
-        };
+            email: string | null
+            password: string | null
+        }
         ProfileDto: {
             /** Format: int32 */
-            id?: number;
-            status: string | null;
-            skills: string[] | null;
-            company?: string | null;
-            website?: string | null;
-            location?: string | null;
-            bio?: string | null;
-            gitHubUsername?: string | null;
-            experience?: components["schemas"]["ExperienceDto"][] | null;
-            education?: components["schemas"]["EducationDto"][] | null;
-            social?: components["schemas"]["SocialDto"];
-            user_id?: string;
-        };
+            id?: number
+            status: string | null
+            skills: string[] | null
+            company?: string | null
+            website?: string | null
+            location?: string | null
+            bio?: string | null
+            gitHubUsername?: string | null
+            experience?: components['schemas']['ExperienceDto'][] | null
+            education?: components['schemas']['EducationDto'][] | null
+            social?: components['schemas']['SocialDto']
+            user_id?: string
+        }
         RegisterDto: {
-            name: string | null;
-            email: string | null;
-            password: string | null;
-        };
+            name: string | null
+            email: string | null
+            password: string | null
+        }
         SocialDto: {
-            youTube?: string | null;
-            twitter?: string | null;
-            facebook?: string | null;
-            linkedIn?: string | null;
-            instagram?: string | null;
-        } | null;
+            youTube?: string | null
+            twitter?: string | null
+            facebook?: string | null
+            linkedIn?: string | null
+            instagram?: string | null
+        } | null
         UserDto: {
-            sub: string;
-            email: string;
-            email_verified: boolean;
-            name: string;
-            preferred_username: string;
-            given_name: string;
-            family_name: string;
-        };
-    };
-    responses: never;
-    parameters: never;
-    requestBodies: never;
-    headers: never;
-    pathItems: never;
+            sub: string
+            email: string
+            email_verified: boolean
+            name: string
+            preferred_username: string
+            given_name: string
+            family_name: string
+        }
+    }
+    responses: never
+    parameters: never
+    requestBodies: never
+    headers: never
+    pathItems: never
 }
-export type EducationDto = components['schemas']['EducationDto'];
-export type ExperienceDto = components['schemas']['ExperienceDto'];
-export type LoginDto = components['schemas']['LoginDto'];
-export type ProfileDto = components['schemas']['ProfileDto'];
-export type RegisterDto = components['schemas']['RegisterDto'];
-export type SocialDto = components['schemas']['SocialDto'];
-export type UserDto = components['schemas']['UserDto'];
-export type $defs = Record<string, never>;
-export type operations = Record<string, never>;
+export type EducationDto = components['schemas']['EducationDto']
+export type ExperienceDto = components['schemas']['ExperienceDto']
+export type LoginDto = components['schemas']['LoginDto']
+export type ProfileDto = components['schemas']['ProfileDto']
+export type RegisterDto = components['schemas']['RegisterDto']
+export type SocialDto = components['schemas']['SocialDto']
+export type UserDto = components['schemas']['UserDto']
+export type $defs = Record<string, never>
+export type operations = Record<string, never>

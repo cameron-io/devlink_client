@@ -14,35 +14,37 @@ const ProfileGithub: FunctionComponent<Props> = ({ repos }) => {
                 <h5 className="card-header">GitHub Public Repos</h5>
                 <div className="card-body">
                     <ul>
-                        {repos && (
-                            repos.map(repo => (
+                        {(repos &&
+                            repos.map((repo) => (
                                 <li key={repo.id}>
-                                    <div className='container'>
-                                        <div className='row'>
-                                            <h4 className='col'>
+                                    <div className="container">
+                                        <div className="row">
+                                            <h4 className="col">
                                                 <a
-                                                    href={repo.html_url} 
-                                                    target='_blank'
-                                                    rel='noopener noreferrer'
+                                                    href={repo.html_url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
                                                 >
                                                     {repo.name}
                                                 </a>
                                             </h4>
-                                            <p className='col text-end'>
-                                                <FontAwesomeIcon icon={faStar} className='me-1 text-warning'/>
+                                            <p className="col text-end">
+                                                <FontAwesomeIcon
+                                                    icon={faStar}
+                                                    className="me-1 text-warning"
+                                                />
                                                 {repo.stargazers_count}
                                             </p>
                                         </div>
                                     </div>
                                     <p>{repo.description}</p>
                                 </li>
-                            ))
-                        ) || <Spinner />}
+                            ))) || <Spinner />}
                     </ul>
                 </div>
             </div>
         </Fragment>
-    );
+    )
 }
 
 export default ProfileGithub

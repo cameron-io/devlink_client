@@ -22,14 +22,13 @@ type ProfileStore = ProfileState & {
   addEducation: (formData: any, navigate: any) => Promise<void>
   deleteExperience: (id: number) => Promise<void>
   deleteEducation: (id: number) => Promise<void>
-  deleteAccount: () => Promise<void>
   clearProfile: () => void
 }
 
 const useProfileStore = create<ProfileStore>()(
     devtools(
         persist(
-            (set, get) => ({
+            (set) => ({
                 profile: null,
                 profiles: [],
                 repos: [],
@@ -267,28 +266,7 @@ const useProfileStore = create<ProfileStore>()(
                             set({ loading: false })
                         }
                     }
-                },
-
-                deleteAccount: async () => {
-                    set({ loading: true })
-                    try {
-                        await axios.delete('/api/accounts')
-                        get().clearProfile()
-                        const authModule = await import('./authStore')
-                        authModule.default.getState().setAuth({ user: null, loading: false })
-                        useAlertStore.getState().setAlert('Your account has been deleted.', 'success')
-                    } catch (err) {
-                        if (axios.isAxiosError(err) && err.response) {
-                            set({
-                                error: {
-                                    msg: err.response.statusText,
-                                    status: err.response.status,
-                                },
-                                loading: false,
-                            })
-                        }
-                    }
-                },
+                }
             }),
             {
                 name: 'profile-storage',

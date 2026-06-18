@@ -8,20 +8,13 @@ import ProfileExperience from '../../components/profile/ProfileExperience'
 type Props = { profile: ProfileDto }
 
 const ProfileAbout: FunctionComponent<Props> = ({
-    profile: {
-        bio,
-        education,
-        experience,
-        skills,
-    },
+    profile: { bio, education, experience, skills },
 }) => (
     <Fragment>
         {bio && (
             <Fragment>
                 <div className="card">
-                    <h5 className="card-header">
-                        About Me
-                    </h5>
+                    <h5 className="card-header">About Me</h5>
                     <div className="card-body">
                         <p>{bio}</p>
                     </div>
@@ -30,17 +23,20 @@ const ProfileAbout: FunctionComponent<Props> = ({
         )}
         <Fragment>
             <div className="card mt-4">
-                <h5 className="card-header">
-                    Skill Set
-                </h5>
+                <h5 className="card-header">Skill Set</h5>
                 <div className="card-body">
-                    <div className='container'>
-                        <div className='row'>
-                            {skills && skills.map((skill: string, index: number) => (
-                                <div className='col' key={index}>
-                                    <FontAwesomeIcon icon={faCheck} className='me-2'/>{skill}
-                                </div>
-                            ))}
+                    <div className="container">
+                        <div className="row">
+                            {skills &&
+                                skills.map((skill: string, index: number) => (
+                                    <div className="col" key={index}>
+                                        <FontAwesomeIcon
+                                            icon={faCheck}
+                                            className="me-2"
+                                        />
+                                        {skill}
+                                    </div>
+                                ))}
                         </div>
                     </div>
                 </div>
@@ -51,14 +47,12 @@ const ProfileAbout: FunctionComponent<Props> = ({
             <div className="card-body">
                 {experience && experience.length > 0 ? (
                     <Fragment>
-                        {experience.map(
-                            (experience: any) => (
-                                <ProfileExperience
-                                    key={experience.id}
-                                    experience={experience}
-                                />
-                            )
-                        )}
+                        {experience.map((experience: any) => (
+                            <ProfileExperience
+                                key={experience.id}
+                                experience={experience}
+                            />
+                        ))}
                     </Fragment>
                 ) : (
                     <p>No experience credentials</p>
@@ -70,14 +64,12 @@ const ProfileAbout: FunctionComponent<Props> = ({
             <div className="card-body">
                 {education && education.length > 0 ? (
                     <Fragment>
-                        {education.map(
-                            (education: any) => (
-                                <ProfileEducation
-                                    key={education.id}
-                                    education={education}
-                                />
-                            )
-                        )}
+                        {education.map((education: any) => (
+                            <ProfileEducation
+                                key={education.id}
+                                education={education}
+                            />
+                        ))}
                     </Fragment>
                 ) : (
                     <p>No experience credentials</p>

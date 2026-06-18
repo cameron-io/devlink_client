@@ -38,11 +38,14 @@ const AddEducation: FunctionComponent<Props> = () => {
         <Fragment>
             <h1 className="text-primary">Add Your Education</h1>
             <p className="lead">
-                <FontAwesomeIcon icon={faCodeBranch} className='me-2'/>
+                <FontAwesomeIcon icon={faCodeBranch} className="me-2" />
                 Add any school or bootcamp you have attended
             </p>
-            <div className='d-flex align-items-center py-4 bg-body-tertiary border rounded'>
-                <div className='w-100 m-auto mt-4' style={{maxWidth: "330px", padding: "1rem"}}>
+            <div className="d-flex align-items-center py-4 bg-body-tertiary border rounded">
+                <div
+                    className="w-100 m-auto mt-4"
+                    style={{ maxWidth: '330px', padding: '1rem' }}
+                >
                     <h1 className="h3 mb-3 fw-normal">Education Details</h1>
                     <small>* = required field</small>
                     <form
@@ -54,7 +57,7 @@ const AddEducation: FunctionComponent<Props> = () => {
                     >
                         <div className="form-floating">
                             <input
-                                className='form-control'
+                                className="form-control"
                                 type="text"
                                 placeholder="* School or Bootcamp"
                                 name="school"
@@ -62,11 +65,13 @@ const AddEducation: FunctionComponent<Props> = () => {
                                 onChange={(e) => onChange(e)}
                                 required
                             />
-                            <label htmlFor="floatingInput">* School or Bootcamp</label>
+                            <label htmlFor="floatingInput">
+                                * School or Bootcamp
+                            </label>
                         </div>
                         <div className="form-floating">
                             <input
-                                className='form-control'
+                                className="form-control"
                                 type="text"
                                 placeholder="* Degree or Certificate"
                                 name="degree"
@@ -74,23 +79,27 @@ const AddEducation: FunctionComponent<Props> = () => {
                                 onChange={(e) => onChange(e)}
                                 required
                             />
-                            <label htmlFor="floatingInput">* Degree or Certificate</label>
+                            <label htmlFor="floatingInput">
+                                * Degree or Certificate
+                            </label>
                         </div>
                         <div className="form-floating">
                             <input
-                                className='form-control'
+                                className="form-control"
                                 type="text"
                                 placeholder="Field of Study"
                                 name="fieldofstudy"
                                 value={fieldofstudy}
                                 onChange={(e) => onChange(e)}
                             />
-                            <label htmlFor="floatingInput">Field of Study</label>
+                            <label htmlFor="floatingInput">
+                                Field of Study
+                            </label>
                         </div>
                         <div className="form-floating my-3">
                             <h4>From Date</h4>
                             <input
-                                className='form-control'
+                                className="form-control"
                                 type="date"
                                 name="from"
                                 value={from}
@@ -100,13 +109,16 @@ const AddEducation: FunctionComponent<Props> = () => {
                         <div className="form-check my-3">
                             <p>
                                 <input
-                                    className='form-check-input'
+                                    className="form-check-input"
                                     type="checkbox"
                                     name="current"
                                     checked={current}
                                     value={current.toString()}
                                     onChange={(_e) => {
-                                        setFormData({ ...formData, current: !current })
+                                        setFormData({
+                                            ...formData,
+                                            current: !current,
+                                        })
                                         toggleDisabled(!toDateDisabled)
                                     }}
                                 />{' '}
@@ -116,7 +128,7 @@ const AddEducation: FunctionComponent<Props> = () => {
                         <div className="form-floating">
                             <h4>To Date</h4>
                             <input
-                                className='form-control'
+                                className="form-control"
                                 type="date"
                                 name="to"
                                 value={to}
@@ -127,7 +139,7 @@ const AddEducation: FunctionComponent<Props> = () => {
                         <div className="form-floating">
                             <textarea
                                 name="description"
-                                className='form-control'
+                                className="form-control"
                                 cols={30}
                                 rows={5}
                                 placeholder="Programme Description"

@@ -15,10 +15,9 @@ const Experience: FunctionComponent<Props> = ({ experience }) => {
     return (
         <Fragment>
             <h2 className="my2">Experience Credentials</h2>
-            {experience == null || experience.length == 0 ?
-                (
-                    <p>No Entries.</p>
-                ) : (
+            {experience == null || experience.length == 0 ? (
+                <p>No Entries.</p>
+            ) : (
                 <div className="table-responsive">
                     <table className="table table-striped-columns">
                         <thead>
@@ -35,34 +34,46 @@ const Experience: FunctionComponent<Props> = ({ experience }) => {
                                 <tr key={exp.id}>
                                     <td>{exp.company}</td>
                                     <td>{exp.title}</td>
-                                    <td><Moment format="YYYY/MM/DD">{exp.from}</Moment></td>
                                     <td>
-                                        {exp.to === null ?
-                                            (
-                                                'Now'
-                                            ) : (
-                                                <Moment format="YYYY/MM/DD">{exp.end}</Moment>
-                                            )
-                                        }
+                                        <Moment format="YYYY/MM/DD">
+                                            {exp.from}
+                                        </Moment>
+                                    </td>
+                                    <td>
+                                        {exp.to === null ? (
+                                            'Now'
+                                        ) : (
+                                            <Moment format="YYYY/MM/DD">
+                                                {exp.end}
+                                            </Moment>
+                                        )}
                                     </td>
                                     <td>{exp.description}</td>
                                     <button
                                         onClick={() => deleteExperience(exp.id)}
                                         className="btn btn-danger"
                                     >
-                                        <FontAwesomeIcon icon={faTrash} className='text-danger'/>
+                                        <FontAwesomeIcon
+                                            icon={faTrash}
+                                            className="text-danger"
+                                        />
                                     </button>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                 </div>
-                )
-            }
-            <div className='border text-center rounded-3 mt-3' style={{width: 200}}>
-                <Link className='btn' to="/add-experience">
+            )}
+            <div
+                className="border text-center rounded-3 mt-3"
+                style={{ width: 200 }}
+            >
+                <Link className="btn" to="/add-experience">
                     <span>
-                        <FontAwesomeIcon icon={faBlackTie} className='text-primary me-2'/>
+                        <FontAwesomeIcon
+                            icon={faBlackTie}
+                            className="text-primary me-2"
+                        />
                         Add Experience
                     </span>
                 </Link>

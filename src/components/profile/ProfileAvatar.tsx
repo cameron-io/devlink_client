@@ -9,13 +9,13 @@ type Props = {
 
 const Avatar = (props: Props) => (
     <Fragment>
-        <div className="d-flex justify-content-center bg-black rounded" style={{height: props.size, width: props.size}} >
-            {props.avatar
-                &&
+        <div
+            className="d-flex justify-content-center bg-black rounded"
+            style={{ height: props.size, width: props.size }}
+        >
+            {(props.avatar && (
                 <img src={props.avatar} alt="" className="border rounded-3" />
-                ||
-                <FontAwesomeIcon icon={faUser} className='p-4 fa-6x' />
-            }
+            )) || <FontAwesomeIcon icon={faUser} className="p-4 fa-6x" />}
         </div>
     </Fragment>
 )

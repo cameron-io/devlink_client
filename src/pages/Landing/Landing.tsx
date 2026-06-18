@@ -16,10 +16,16 @@ const Landing: FunctionComponent<Props> = function () {
             <br />
             <br />
             <div className="container px-5 mt-0 mb-0 pb-0">
-                <img src="assets/showcase.jpg" className="img-fluid border rounded-3 shadow-lg mb-4" alt="Hero image" height="500" loading="lazy"></img>
+                <img
+                    src="assets/showcase.jpg"
+                    className="img-fluid border rounded-3 shadow-lg mb-4"
+                    alt="Hero image"
+                    height="500"
+                    loading="lazy"
+                ></img>
             </div>
             <p className="mb-4">
-                    Blog, share posts and get help from fellow developers!
+                Blog, share posts and get help from fellow developers!
             </p>
             <br></br>
         </div>
