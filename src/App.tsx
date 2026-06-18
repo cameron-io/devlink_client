@@ -24,8 +24,10 @@ type Props = {
 }
 
 const App: FunctionComponent<Props> = ({keycloak}) => {
+    const loadUser = useAuthStore((state) => state.loadUser)
+
     useEffect(() => {
-        useAuthStore.getState().loadUser(keycloak)
+        loadUser(keycloak)
     }, [])
 
     return (

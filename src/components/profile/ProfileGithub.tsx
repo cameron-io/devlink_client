@@ -1,20 +1,13 @@
-import { FunctionComponent, useEffect, Fragment } from 'react'
+import { FunctionComponent, Fragment } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-import { useProfileStore } from '../../stores'
 import Spinner from '../layout/Spinner'
 
 type Props = {
-    gitHubUsername: string
+    repos: any[]
 }
 
-const ProfileGithub: FunctionComponent<Props> = ({ gitHubUsername }) => {
-    const repos = useProfileStore((state) => state.repos)
-
-    useEffect(() => {
-        useProfileStore.getState().getGithubRepos(gitHubUsername)
-    }, [])
-
+const ProfileGithub: FunctionComponent<Props> = ({ repos }) => {
     return (
         <Fragment>
             <div className="card mt-4">

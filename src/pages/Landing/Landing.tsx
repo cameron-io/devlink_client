@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import Dashboard from '../Dashboard/Dashboard'
+import { Link } from 'react-router-dom'
 
 type Props = {}
 
@@ -9,7 +9,9 @@ const Landing: FunctionComponent<Props> = function () {
             <h1 className="display-4 fw-bold">The Developer Network</h1>
             <div className="col-lg-6 mx-auto">
                 <p className="lead mb-4">Create and Showcase your Portfolio.</p>
-                <Dashboard />
+                <Link to="/dashboard" className="btn btn-primary btn-lg px-4">
+                    Dashboard
+                </Link>
             </div>
             <br />
             <br />

@@ -9,29 +9,25 @@ import { useAuthStore, useProfileStore } from '../../stores'
 type Props = {}
 
 const Profile: FunctionComponent<Props> = () => {
-    const id: string = useParams().id!
-    const getProfileById = useProfileStore((state) => state.getProfileById)
-    const profile = useProfileStore((state) => state.profile)
-    const loading = useProfileStore((state) => state.loading)
-    const authLoading = useAuthStore((state) => state.loading)
-    const user = useAuthStore((state) => state.user)
+    const profileId: string = useParams().id!
+    const {loading: userLoading, user } = useAuthStore()
+    const {loading: profileLoading, getProfileById, profile, repos: profileRepos, getGithubRepos } = useProfileStore()
 
     useEffect(() => {
-        if (id) {
-            getProfileById(id)
-        }
-    }, [getProfileById, id])
+        getProfileById(profileId)
+        getGithubRepos(profile?.gitHubUsername!)
+    }, [])
 
     return (
         <Fragment>
-            {profile === null || loading ? (
+            {profile === null || profileLoading ? (
                 <Spinner />
             ) : (
                 <Fragment>
                     <Link to="/profiles" className="btn btn-primary m-2">
                         Back to Profiles
                     </Link>
-                    {authLoading === false &&
+                    {userLoading === false &&
                         user?.sub === profile.user_id && (
                             <Link to="/edit-profile" className="btn border m-2">
                                 Edit Profile
@@ -41,7 +37,7 @@ const Profile: FunctionComponent<Props> = () => {
                         <div className='row'>
                             <div className='col'>
                                 <ProfileTop profile={profile} />
-                                {profile.gitHubUsername && <ProfileGithub gitHubUsername={profile.gitHubUsername} />}
+                                <ProfileGithub repos={profileRepos} />
                             </div>
                             <div className='col'>
                                 <ProfileAbout profile={profile} />

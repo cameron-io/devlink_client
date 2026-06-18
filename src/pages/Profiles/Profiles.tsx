@@ -10,16 +10,16 @@ type Props = {}
 
 const Profiles: FunctionComponent<Props> = () => {
     const profiles = useProfileStore((state) => state.profiles)
-    const loading = useProfileStore((state) => state.loading)
+    const profilesLoading = useProfileStore((state) => state.loading)
     const getProfiles = useProfileStore((state) => state.getProfiles)
 
     useEffect(() => {
         getProfiles()
-    }, [getProfiles])
+    }, [])
 
     return (
         <Fragment>
-            {loading ? (
+            {profilesLoading ? (
                 <Spinner />
             ) : (
                 <Fragment>
